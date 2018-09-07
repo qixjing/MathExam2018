@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class RandomOfAdd extends RandomNumber {
 	// 生成一年级加法运算的题目 A+B
 	// 先生成A的值,再根据A的值生成B，A和B可以为个位数或者两位数

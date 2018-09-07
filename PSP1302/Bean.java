@@ -1,8 +1,9 @@
 
 public class Bean {
+	private int argsLength=0; //主函数中的参数args数组的长度
 	private int count = 1; // 题号，初始为1
 	private int quizNumber = 0; // 题目数
-	private int grade = 0; // 年级
+	private int grade = 1; // 年级数默认为1
 	private int StudentId = 1302; // 学号
 	private String OperationType = null; // 题目类型，加减题还是乘除题
 	private String symbol = null; // 题目的运算符号
@@ -19,14 +20,19 @@ public class Bean {
 	}
 
 	public void setQuizNumber(String input) {
-		// 用正则表达式检查输入的字符串是否是“非0开头的纯数字”
-		if (input.matches("[0-9]\\d*")) {
-			int number = Integer.valueOf(input);
-			// 检查输入的数字是否负数或者过大（大于10万）
-			if (number < 0 || number >= 100000) {
+		// 用正则表达式检查输入的字符串是否是“非零的纯数字”
+		if (input.matches("[1-9]\\d*")) {
+			if(input.length()>5){
 				exception();
 			}
-			quizNumber = number;
+			else{
+				int number = Integer.valueOf(input);
+				// 检查输入的数字是否为负数或者过大（大于1万）
+				if (number < 0 || number > 10000) {
+					exception();
+				}
+				quizNumber = number;
+			}
 		} else {
 			exception();
 		}
@@ -37,7 +43,7 @@ public class Bean {
 	}
 
 	public void setGrade(String grade) {
-		// 用正则表达式检查grade是否为“1”或者“2”
+		// 用正则表达式检查grade是否为“1”或者“2”		
 		if (grade.matches("[12]")) {
 			this.grade = Integer.valueOf(grade);
 		} else {
@@ -137,6 +143,19 @@ public class Bean {
 
 	public void setMod(int mod) {
 		this.mod = mod;
+	}
+
+	public int getArgsLength() {
+		return argsLength;
+	}
+
+	public void setArgsLength(int argsLength) {
+		if(argsLength ==1 || argsLength==2){	
+			this.argsLength=argsLength;
+		}
+		else{
+			exception();
+		}
 	}
 
 }
