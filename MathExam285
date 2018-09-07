@@ -40,7 +40,7 @@ public class MathExam285 {
 					return ;
 				}
 			}
-			args[0]=args[0].replaceFirst("^0*", "");//用来去掉数字面前的0
+			args[1]=args[1].replaceFirst("^0*", "");//用来去掉数字面前的0
 			if(args[0].length()>8) {
 				System.out.println("只能输入1或2");
 				return ;
