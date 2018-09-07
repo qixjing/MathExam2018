@@ -8,7 +8,10 @@ public class OperationDiv extends Operation {
 
 	public void calculate() {
 		int result = bean.getNumberA() / bean.getNumberB();
+		int mod=0;
+		mod = bean.getNumberA() % bean.getNumberB();
 		bean.setResult(result);
+		bean.setMod(mod);
 	}
 
 }

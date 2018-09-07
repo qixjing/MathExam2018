@@ -11,12 +11,12 @@ public class MathExam1302 {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		String number = input.nextLine();
+		String number = input.next();
+		String grade = input.next();
 		input.close();
 		bean.setQuizNumber(number);// 设置出题数
-		// 参数为“+-” ，代表出题类型为一年级的加减题
-		// 参数为“*/” ，代表出题类型为二年级的乘除题
-		bean.setOperationType("+-");
+		bean.setGrade(grade); //设置年级数
+
 		for (int n = 0; n < bean.getQuizNumber(); n++) {
 			getSymbol(); // 产生运算符号
 			RandomNumber ran = RandomNumberFactory.createRan(bean.getSymbol());
@@ -29,10 +29,11 @@ public class MathExam1302 {
 		createMathExamTxt();
 	}
 
+
 	private static void getSymbol() {
 		Random ran = new Random();
-		switch (bean.getOperationType()) {
-		case "+-":
+		switch (bean.getGrade()) {
+		case 1:
 			// 随机产生true或false，若true则为“+”，若false则为“-”
 			if (ran.nextBoolean()) {
 				bean.setSymbol("+");
@@ -40,7 +41,7 @@ public class MathExam1302 {
 				bean.setSymbol("-");
 			}
 			break;
-		case "*/":
+		case 2:
 			// 随机产生true或false，若true则为“*”，若false则为“/”
 			if (ran.nextBoolean()) {
 				bean.setSymbol("*");
@@ -60,6 +61,17 @@ public class MathExam1302 {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}
+		
+	}
+	//粗略检测数字是否有误
+	@SuppressWarnings("unused")
+	private static void checkNumberCorrection() {
+		if(bean.getSymbol()=="/"){
+			if(bean.getNumberA()<bean.getNumberB()){
+				System.out.println("ERROR");
+				System.exit(0);
+			}
 		}
 		
 	}

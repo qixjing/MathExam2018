@@ -9,7 +9,6 @@ public class RandomOfSubtract extends RandomNumber {
 		int randomB = random.nextInt(randomA + 1);
 		bean.setNumberA(randomA);
 		bean.setNumberB(randomB);
-		// System.out.println(randomA + " " + randomB);
 	}
 
 }
