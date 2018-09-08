@@ -1,33 +1,31 @@
-package PSP4331;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class OutPutSet {                //ç”¨äºè¾“å‡ºé›†åˆä¸­çš„é¢˜ç›®
+public class OutPutSet {                //ÓÃÓÚÊä³ö¼¯ºÏÖĞµÄÌâÄ¿
 
-	public OutPutSet(int n) {               //nç”¨æ¥åˆ¤æ–­æœ‰å‡ ä¸ªé¢˜ç›®
+	public OutPutSet(int n) {               //nÓÃÀ´ÅĞ¶ÏÓĞ¼¸¸öÌâÄ¿
 		
-		//PrintWriter
-		File file=new File("");
-		System.out.println("file:è·¯å¾„"+file.getName());
-		try ( PrintWriter w = new PrintWriter("out.txt")) //æ‰“å°åˆ°out.txtæ–‡æ¡£
+		
+		try ( PrintWriter w = new PrintWriter("out.txt")) //´òÓ¡µ½out.txtÎÄµµ
 		{
 			
 			for(int i=0;i<=(2*n-2);i=i+2)
-				w.println(MathExam4331.answerSet.get(i));  //è¾“å‡ºé¢˜ç›®
+				w.println(MathExam4331.answerSet.get(i));  //Êä³öÌâÄ¿
 			
-			w.println("--------------------æ ‡å‡†ç­”æ¡ˆ-----------------");
+			w.println("");
 			
 			for(int i=0;i<=(2*n-2);i=i+2)
 			{
-				w.print(MathExam4331.answerSet.get(i));      //è¾“å‡ºé¢˜ç›®
-				w.println(MathExam4331.answerSet.get(i+1));     //è¾“å‡ºç­”æ¡ˆ
+				w.print(MathExam4331.answerSet.get(i));      //Êä³öÌâÄ¿
+				w.println(MathExam4331.answerSet.get(i+1));     //Êä³ö´ğ°¸
 				
 			}
-			w.close();//å…³é—­æµ
+			w.close();//¹Ø±ÕÁ÷
 		} catch(IOException e){
-			// handle exception
+			
 		}
 				
 	}

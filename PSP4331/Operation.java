@@ -1,11 +1,11 @@
-package PSP4331;
+
 
 
 
 public class Operation {
-	int firstNumber; //绗竴涓殢鏈烘暟
-	int secondNumber; //绗簩涓殢鏈烘暟
-	int answerNumber; //绛旀
+	int firstNumber; //第一个随机数
+	int secondNumber; //第二个随机数
+	int answerNumber; //答案
 	
 	public int getFirstNumber() {
 		return firstNumber;

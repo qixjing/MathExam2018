@@ -1,6 +1,6 @@
-package PSP4331;
 
-//ä¸»æ–¹æ³•
+
+//Ö÷·½·¨
 
 
 import java.util.ArrayList;
@@ -8,35 +8,44 @@ import java.util.Random;
 
 class MathExam4331{
 	
-	static ArrayList<String> answerSet; //ç­”æ¡ˆé›†åˆ
-	static int testNumber=0;//é¢˜å·	
-	static int n=10;//é¢˜æ•°
+	static ArrayList<String> answerSet;      //´ğ°¸¼¯ºÏ
+	static int testNumber=0;                  //ÌâºÅ	
+	static int n=0;                            //ÌâÊı
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		if(args.length!=0) {     //nÊäÈëºÏ·¨µÄÊ±ºò
+		
+		n=Integer.valueOf(args[0]);
 		answerSet=new ArrayList();
-		//Random rand = new Random();
-		//int s=rand.nextInt(2);
+		Random rand=new Random();
+		
 		for(int i=1;i<=n;i++) {
-			switch(0) {
-				case 0:                          //ä¸ºåŠ å·æ—¶
+			int s=rand.nextInt(2);
+			switch(s) {
+				case 0:                          //Îª¼ÓºÅÊ±
 				{
 					testNumber++;
 					AddOperation opp=new AddOperation(answerSet,testNumber);
 					break;
 				}
-				case 1:                      //ä¸ºå‡å·æ—¶
+				case 1:                      //Îª¼õºÅÊ±
 				{
-					Subtraction opp=new Subtraction();
+					testNumber++;
+					Subtraction opp=new Subtraction(answerSet,testNumber);
 					break;
 				}
 			}
 			
 		}
 		
-		//è¾“å‡ºé¢˜ç›®(æµ‹è¯•)
+		//Êä³öÌâÄ¿(²âÊÔ)
 		OutPutSet ops=new OutPutSet(n);
+		}
+		else
+			System.out.println("ÊäÈëÓĞÎó£¬ÇëÊäÈëĞ¡ÓÚ20000µÄÊı×Ö");
 		
 	}
 

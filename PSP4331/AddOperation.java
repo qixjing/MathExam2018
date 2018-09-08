@@ -1,21 +1,21 @@
-package PSP4331;
+
 
 import java.util.ArrayList;
 import java.util.Random;
 
-//åŠ æ³•è¿ç®—
+//¼Ó·¨ÔËËã
 public class AddOperation extends Operation{
 	
 	
 	public AddOperation(ArrayList<String> answerSet,int testNumber) {
 		Random rand = new Random();
 		firstNumber=rand.nextInt(100);
-		if((firstNumber/10)>0) //æ˜¯ä¸¤ä½æ•°  (æ ¹æ®æ•™å­¦å¤§çº²ï¼Œä¸¤ä½æ•°åªèƒ½åŠ ä¸ªä½æ•°æˆ–è€…æ•´åæ•°)
+		if((firstNumber/10)>0) //ÊÇÁ½Î»Êı  (¸ù¾İ½ÌÑ§´ó¸Ù£¬Á½Î»ÊıÖ»ÄÜ¼Ó¸öÎ»Êı»òÕßÕûÊ®Êı)
 		{
 			do {
-				secondNumber=rand.nextInt(10);        //è¾“å‡ºä¸ªä½æ•°
+				secondNumber=rand.nextInt(10);        //Êä³ö¸öÎ»Êı
 				int n=0;
-				n=rand.nextInt(2);         //åˆ¤æ–­æ˜¯å¦éœ€è¦å˜æˆæ•´åæ•°   0:ä¸å˜  1ï¼šå˜
+				n=rand.nextInt(2);         //ÅĞ¶ÏÊÇ·ñĞèÒª±ä³ÉÕûÊ®Êı   0:²»±ä  1£º±ä
 				if(n==0) 
 					answerNumber=firstNumber+secondNumber;
 				else 
@@ -27,7 +27,7 @@ public class AddOperation extends Operation{
 				
 			}while(answerNumber>=100);
 		}
-		else {                 //æ˜¯ä¸€ä½æ•°
+		else {                 //ÊÇÒ»Î»Êı
 			do {
 				secondNumber=rand.nextInt(100);
 				answerNumber=firstNumber+secondNumber;
@@ -35,8 +35,8 @@ public class AddOperation extends Operation{
 			
 
 		}
-		answerSet.add("("+testNumber+")"+" "+firstNumber+" + "+secondNumber+" =");//æŠŠç»“æœè¾“å‡ºçš„é›†åˆä¸­
-		answerSet.add(" "+answerNumber); //æŠŠç­”æ¡ˆè¾“å‡ºåˆ°é›†åˆä¸­
+		answerSet.add("("+testNumber+")"+" "+firstNumber+" + "+secondNumber+" =");//°Ñ½á¹ûÊä³öµÄ¼¯ºÏÖĞ
+		answerSet.add(" "+answerNumber); //°Ñ´ğ°¸Êä³öµ½¼¯ºÏÖĞ
 		
 	}
 	
