@@ -26,7 +26,7 @@ public class MathExam7246 {
     
     public static void main(String[] args) throws IOException {
         // 处理参数输入问题
-        if (args.length == 1 || args.length ==2) {
+        if (args.length == 1 || args.length == 2) {
             // 题目个数参数处理
             try {
                 num = Integer.parseInt(args[0]);
@@ -45,11 +45,13 @@ public class MathExam7246 {
             strArrayA = new String[num];
             // 年级选择参数处理
             try {
-                grade = Integer.parseInt(args[1]);
-                if (grade == 1) {
-                    grade1();
-                } else if (grade == 2) {
-                    grade2();
+                // 解决只输入一个参数的问题，默认为一年级
+                if (args.length == 1) {
+                    grade = 1;
+                } else if (args.length == 2) {
+                    grade = Integer.parseInt(args[1]);
+                }
+                if (grade == 1 || grade == 2) {
                 } else {
                     System.out.println("年级选择超出范围，请选择一年级或者二年级。");
                     System.exit(0);
@@ -61,6 +63,11 @@ public class MathExam7246 {
         } else {
             System.out.println("参数个数有误！请重新运行！");
             System.exit(0);
+        }
+        if (grade == 1) {
+            grade1();
+        } else if (grade == 2) {
+            grade2();
         }
         writeToTxt();
     }
