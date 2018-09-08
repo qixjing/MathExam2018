@@ -5,106 +5,108 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MathExam7246 {
-	
-	final static int GRADE1MAX = 20;
-	final static int GRADE2MAX = 100;
-	static int number1, number2, number3;// Á½¸öÔËËãÊıÒÔ¼°ÔËËã½á¹û
-	static int fuhao;// 0,1,2,3·Ö±ğ¶ÔÓ¦¼Ó¡¢¼õ¡¢³Ë¡¢³ı
-	static int num;
-	static String[] strArrayQ;// ´æ·Å´ıĞ´ÈëtxtÎÄ¼şµÄÌâÄ¿
-	static String[] strArrayA;// ´æ·Å´ıĞ´ÈëtxtÎÄ¼şµÄ´ğ°¸
-	final static String FILENAME = "out.txt";
-	
-	public static void main(String args[]) throws IOException {
-		if (args.length == 1 || args.length ==2) {
-			// ´¦Àí²ÎÊıÊäÈëÎÊÌâ
-			try {
-				num = Integer.parseInt(args[0]);
-				if (num < 0) {
-					System.out.println("ÌâÄ¿ÊıÁ¿Îª¸º£¡ÇëÖØĞÂÔËĞĞ£¡");
-				}else if (num == 0) {
-					System.out.println("ÇëÊäÈëºÏÊÊµÄÌâÄ¿ÊıÁ¿£¡");
-				}
-			} catch(NumberFormatException e) {
-				System.out.println("ÌâÄ¿ÊıÁ¿Ñ¡Ïî·ÇÕûÊı£¡ÇëÖØĞÂÔËĞĞ£¡");
-			}
-		}else {
-			System.out.println("²ÎÊı¸öÊıÓĞÎó£¡ÇëÖØĞÂÔËĞĞ£¡");
-			System.exit(0);
-		}
-		strArrayQ = new String[num];
-		strArrayA = new String[num];
-		grade1();
-		createTxt();
-		writeToTxt();
-	}
-	
-	private static void grade1() {
-		// Ò»Äê¼¶
-		int result = 0;
-		for(int i = 1; i <= num; i++) {
-			number1 = (int)(Math.random()*(GRADE1MAX+1));
-			fuhao = (int)(Math.random()*2);// ·ûºÅ½öÎª¼Ó¡¢¼õ
-			if(fuhao == 0) {
-				number2 = (int)(Math.random()*(GRADE1MAX+1));
-				result = number1 + number2;
-				// ¼ÇÂ¼ÌâÄ¿ºÍ´ğ°¸
-				strArrayQ[i-1] = "(" + i + ") " + number1 + " + " + number2 + " =";
-				strArrayA[i-1] = "(" + i + ") " + number1 + " + " + number2 + " = " + result;
-			}else if(fuhao ==1) {
-				do {
-					number2 = (int)(Math.random()*(GRADE1MAX+1));
-				}while(number2 > number1);
-				result = number1 - number2;
-				// ¼ÇÂ¼ÌâÄ¿ºÍ´ğ°¸
-				strArrayQ[i-1] = "(" + i + ") " + number1 + " - " + number2 + " =";
-				strArrayA[i-1] = "(" + i + ") " + number1 + " - " + number2 + " = " + result;
-			}
-		}
-	}
-	
-	private static void createTxt() throws IOException {
-		// ´´½¨ÎÄ¼şÔÚÄ¬ÈÏÎ»ÖÃ
-		File file = new File(FILENAME);
-		file.createNewFile();
-	}
-	
-	private static void writeToTxt() {
-		// ÏòtxtÎÄ¼şÖĞĞ´ÈëÄÚÈİ
-		File file = new File(FILENAME);
-		FileWriter fw = null;
-		try {
-			fw = new FileWriter(file);
-			// ¾ßÌåĞ´ÈëÄÚÈİ
-			for (int i = 0; i < num; i++) {
-				fw.write(strArrayQ[i]);
-				fw.write("\r\n");
-			}
-			fw.write("--------------±ê×¼´ğ°¸--------------");
-			fw.write("\r\n");
-			for (int i = 0; i < num; i++) {
-				fw.write(strArrayA[i]);
-				fw.write("\r\n");
-			}
-			fw.write("     " + txtFoot());
-			fw.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally {
-			if (fw != null) {
-				try {
-					fw.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-	
-	private static String txtFoot() {
-		// ½Å²¿ĞÅÏ¢Éú³É
-		SimpleDateFormat df = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ HH:mm");
-		String timeStr = df.format(new Date());
-		return "211617246 ÕÅ¿¢ä¿ " + timeStr;
-	}
+    
+    final static int GRADE1_MAX = 20;
+    final static int GRADE2_MAX = 100;
+    static int number1, number2, number3;// ä¸¤ä¸ªè¿ç®—æ•°ä»¥åŠè¿ç®—ç»“æœ
+    static int fuhao;// 0,1,2,3åˆ†åˆ«å¯¹åº”åŠ ã€å‡ã€ä¹˜ã€é™¤
+    static int num;
+    static String[] strArrayQ;// å­˜æ”¾å¾…å†™å…¥txtæ–‡ä»¶çš„é¢˜ç›®
+    static String[] strArrayA;// å­˜æ”¾å¾…å†™å…¥txtæ–‡ä»¶çš„ç­”æ¡ˆ
+    final static String FILENAME = "out.txt";
+    
+    public static void main(String[] args) throws IOException {
+        if (args.length == 1 || args.length ==2) {
+            // å¤„ç†å‚æ•°è¾“å…¥é—®é¢˜
+            try {
+                num = Integer.parseInt(args[0]);
+                if (num < 0) {
+                    System.out.println("é¢˜ç›®æ•°é‡ä¸ºè´Ÿï¼è¯·é‡æ–°è¿è¡Œï¼");
+                    System.exit(0);
+                } else if (num == 0 || num > 1000) {
+                    System.out.println("è¯·è¾“å…¥åˆé€‚çš„é¢˜ç›®æ•°é‡ï¼");
+                    System.exit(0);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("é¢˜ç›®æ•°é‡é€‰é¡¹éæ•´æ•°ï¼è¯·é‡æ–°è¿è¡Œï¼");
+                System.exit(0);
+            }
+        } else {
+            System.out.println("å‚æ•°ä¸ªæ•°æœ‰è¯¯ï¼è¯·é‡æ–°è¿è¡Œï¼");
+            System.exit(0);
+        }
+        strArrayQ = new String[num];
+        strArrayA = new String[num];
+        grade1();
+        writeToTxt();
+    }
+
+    private static void grade1() {
+        // ä¸€å¹´çº§
+        int result = 0;
+        for (int i = 1; i <= num; i++) {
+            number1 = (int)(Math.random()*(GRADE1_MAX+1));
+            // ç¬¦å·ä»…ä¸ºåŠ ã€å‡
+            fuhao = (int)(Math.random()*2);
+            if (fuhao == 0) {
+                number2 = (int)(Math.random()*(GRADE1_MAX+1));
+                result = number1 + number2;
+                // è®°å½•é¢˜ç›®å’Œç­”æ¡ˆ
+                strArrayQ[i-1] = "(" + i + ") " + number1 + " + " + number2 + " =";
+                strArrayA[i-1] = "(" + i + ") " + number1 + " + " + number2 + " = " + result;
+            } else if (fuhao ==1) {
+                do {
+                    number2 = (int)(Math.random()*(GRADE1_MAX+1));
+                } while (number2 > number1);
+                result = number1 - number2;
+                // è®°å½•é¢˜ç›®å’Œç­”æ¡ˆ
+                strArrayQ[i-1] = "(" + i + ") " + number1 + " - " + number2 + " =";
+                strArrayA[i-1] = "(" + i + ") " + number1 + " - " + number2 + " = " + result;
+            }
+        }
+    }
+    
+    private static void writeToTxt() throws IOException {
+        // åˆ›å»ºæ–‡ä»¶åœ¨é»˜è®¤ä½ç½®ï¼Œå‘txtæ–‡ä»¶ä¸­å†™å…¥å†…å®¹
+        File file = new File(FILENAME);
+        file.createNewFile();
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(file);
+            // å…·ä½“å†™å…¥å†…å®¹
+            for (int i = 0; i < num; i++) {
+                System.out.println(strArrayQ[i]);
+                fw.write(strArrayQ[i]);
+                fw.write("\r\n");
+            }
+            fw.write("--------------æ ‡å‡†ç­”æ¡ˆ--------------");
+            System.out.println("--------------æ ‡å‡†ç­”æ¡ˆ--------------");
+            fw.write("\r\n");
+            for (int i = 0; i < num; i++) {
+                System.out.println(strArrayA[i]);
+                fw.write(strArrayA[i]);
+                fw.write("\r\n");
+            }
+            fw.write("     " + txtFoot());
+            System.out.println("     " + txtFoot());
+            fw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fw != null) {
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    private static String txtFoot() {
+        // è„šéƒ¨ä¿¡æ¯ç”Ÿæˆ
+        SimpleDateFormat df = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ HH:mm");
+        String timeStr = df.format(new Date());
+        return "211617246 å¼ ç«£æ·‡ " + timeStr;
+    }
 }
