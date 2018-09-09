@@ -25,10 +25,15 @@ public class Subtraction extends Operation {
 				}while(answerNumber<0);
 			}
 			else {                 //是一位数
-				
-					int n=0;
-					n=firstNumber;
-					secondNumber=rand.nextInt(n);
+					int n;
+					secondNumber=rand.nextInt(9);
+					if(secondNumber>firstNumber) // bug修复：如果第二个数比第一个数大，就交换位置
+					{
+						n=firstNumber;
+						firstNumber=secondNumber;
+						secondNumber=n;
+						
+					}
 					answerNumber=firstNumber-secondNumber;
 
 			}
