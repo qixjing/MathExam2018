@@ -70,6 +70,10 @@ public class MathExam6313 {
 				res = num1 * num2;
 				break;
 			case " / ":
+				//·ÀÖ¹³ıÊıÎª0
+				while(0 == num2) {
+					num2 = (int) (Math.random() * 101);
+				}
 				res = num1 / num2;
 				remainder = num1 % num2;
 				break;
