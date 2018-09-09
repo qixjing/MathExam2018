@@ -5,17 +5,41 @@ import java.io.OutputStream;
 import java.util.regex.Pattern;
 
 public class MathExam6313 {
-	private static int len;//保存用户输入的题目数量
+	
+	//创建两个StringBuffer对象，用来保存输出的题目和标准答案
+	private static StringBuffer topic = new StringBuffer();
+	private static StringBuffer standAnswer = new StringBuffer();
 
 	public static void main(String[] args) {
-		//判断用户输入的参数是否符合要求
-		
+
+		//判断用户输入的参数是否符合输入要求
+		if(judgmentParameter(args)) {
+			 int len = Integer.parseInt(args[0]);
+			//生成题目
+			generatingTopic(len);
+			//写入文件
+			try {
+				write("out.txt");
+				System.out.println("小学一年级数学题题目已生成，请查看out.txt文件");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	
+	/**
+	 * 
+	 * @param args 用户输入的参数
+	 * @return     当符合要求时返回 true，否则返回false
+	 */
+	private static boolean judgmentParameter(String[] args) {
 		if(0 == args.length) {
 			System.out.println("运行程序时请输入一个数字代表要生成的题数。");
-			return ;
+			return false;
 		}else if(args.length > 1){
 			System.out.println("只需要输入一个数字参数");
-			return ;
+			return false;
 		}else {
 			//去除字符串的前导0
 			String str = args[0].replaceFirst("^0*", "");
@@ -24,18 +48,22 @@ public class MathExam6313 {
 		    boolean matches = pattern.matcher(str).matches(); 
 		    if(matches && str.length() > 4) {
 				System.out.println("参数数字过大，请重新运行，输入参数");
-				return ;
+				return false;
 		    }else if(matches) {
-		    	len = Integer.parseInt(str);
+		    	return true;
 		    }else {
 				System.out.println("输入的参数不是正整数，请重新运行，输入一个正整数");
-				return ;
+				return false;
 		    }
 		}
-		
-		//创建两个StringBuffer对象，用来保存输出的题目和标准答案
-		StringBuffer topic = new StringBuffer();
-		StringBuffer standAnswer = new StringBuffer();
+	}
+	
+	
+	/**
+	 * 作用：生成题目
+	 * @param len 用户要求生成的题目数量
+	 */
+	private static void generatingTopic(int len) {
 		for(int i = 1; i <= len; i++) {
 			//获取两个随机数，num1,num2表示参与计算的两个数字; 
 			int num1 = (int) (Math.random()*101);
@@ -54,23 +82,15 @@ public class MathExam6313 {
 			topic.append("(" + i + ") " + num1 + symbol + num2 + System.lineSeparator());
 			standAnswer.append("(" + i + ") " + num1 + symbol + num2 + " = " + res + System.lineSeparator());
 		}
-		//写入文件
-		try {
-			write("out.txt",topic,standAnswer);
-			System.out.println("小学一年级数学题题目已生成，请查看out.txt文件");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
+	
 	/**
-	 * 
+	 * 作用：将生成的题目和和答案写入指定文件
 	 * @param filename     将要写入的文件名
-	 * @param topic        题目
-	 * @param standAnswer  标准答案
 	 * @throws IOException 当文件名不合法时抛出异常
 	 */
-	private static void write(String filename,StringBuffer topic,StringBuffer standAnswer) throws IOException {
+	private static void write(String filename) throws IOException {
 	    // 步骤1：确定输出的文件（目的地）
 		// 如果filename中包含路径，必须确保路径已存在
 		  File file = new File(filename);
