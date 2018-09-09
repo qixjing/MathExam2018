@@ -1,5 +1,6 @@
 package com.java1233.MathExam;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -8,9 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class MathExam233 {
 	static String s = "";
@@ -103,6 +102,8 @@ public class MathExam233 {
 			s = s + (j+a+p+b+"=" + k);
 		}
 		System.out.println(s1+"\n"+"----------------标准答案----------------"+s);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日   HH:mm:ss");//设置日期格式
+		System.out.println("         "+"211601233"+"张康凌"+df.format(new Date()));// new Date()为获取当前系统时间
 }
 
 	public static void main(String[] args) {
