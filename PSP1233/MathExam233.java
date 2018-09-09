@@ -107,12 +107,12 @@ public class MathExam233 {
 }
 
 	public static void main(String[] args) {
-		boolean isNum = args[0].matches("\\d*");
-		if ((isNum == true && args.length == 1) || (isNum == true && args.length == 2 && args[1].matches("[1]"))) {
+		boolean isNum = args[0].matches("[^0]\\d*");
+		if ((isNum == true && args.length == 1 && args[0].matches("^[0-9]*[1-9][0-9]*$")) || (isNum == true && args.length == 2 && args[1].matches("[1]")&& args[0].matches("^[0-9]*[1-9][0-9]*$"))) {
 			int num = Integer.valueOf(args[0]);
 			Math(num);
 			createtxt();
-		} else if (isNum == true && args.length == 2 && args[1].matches("[2]")) {
+		} else if (isNum == true && args.length == 2 && args[1].matches("[2]")&& args[0].matches("^[0-9]*[1-9][0-9]*$")) {
 			int num = Integer.valueOf(args[0]);
 			Math2(num);
 			createtxt();
