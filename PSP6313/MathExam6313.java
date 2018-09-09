@@ -17,17 +17,16 @@ public class MathExam6313 {
 			System.out.println("只需要输入一个数字参数");
 			return ;
 		}else {
+			//去除字符串的前导0
+			String str = args[0].replaceFirst("^0*", "");
+			//检验是否全为数字
 			Pattern pattern = Pattern.compile("[0-9]*");
-		    boolean matches = pattern.matcher(args[0]).matches(); 
-		    if(matches && args[0].length() > 9) {
+		    boolean matches = pattern.matcher(str).matches(); 
+		    if(matches && str.length() > 4) {
 				System.out.println("参数数字过大，请重新运行，输入参数");
 				return ;
 		    }else if(matches) {
-		    	len = Integer.parseInt(args[0]);
-		    	if(len < 0) {
-					System.out.println("参数数字为负数，请重新运行，输入一个正数");
-					return ;
-		    	}
+		    	len = Integer.parseInt(str);
 		    }else {
 				System.out.println("输入的参数不是正整数，请重新运行，输入一个正整数");
 				return ;
