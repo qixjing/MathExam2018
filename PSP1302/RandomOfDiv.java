@@ -1,15 +1,19 @@
 public class RandomOfDiv extends RandomNumber {
-	//二年级的除法题
-	// A和B应为一位数或者两数位
-	// A应该大于等于B
-	// A/B的值如果有余数
-	
+	// 二年级的除法题
+	// A为一位数或者两位数,B设为个位数
+	// A/B=C,C应该为个位数
+
 	public void createRandomAandB(Bean bean) {
-		//将A的取值范围设置为3到99
-		int randomA = 3 + random.nextInt(97);
-		int randomB= 0;
-		//将B的取值范围设置为2到randomA
-		randomB = 2+ random.nextInt(randomA+1-2);
+		int result = 0;
+		int randomB = 0;
+		int randomA = 0;
+		do {
+			// 将A的取值范围设置为10到99
+			randomA = 10 + random.nextInt(90);
+			// 将B的取值范围设置为1到9
+			randomB = 1 + random.nextInt(9);
+			result = randomA / randomB;
+		} while (result >= 10);
 		bean.setNumberA(randomA);
 		bean.setNumberB(randomB);
 	}

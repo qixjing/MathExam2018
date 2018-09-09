@@ -21,7 +21,7 @@ public class Bean {
 
 	public void setQuizNumber(String input) {
 		// 用正则表达式检查输入的字符串是否是“非零的纯数字”
-		if (input.matches("[1-9]\\d*")) {
+		if (input.matches("0||[1-9]\\d*")) {
 			if(input.length()>5){
 				exception();
 			}
