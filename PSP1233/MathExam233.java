@@ -68,6 +68,42 @@ public class MathExam233 {
 		}
 	}
 
+	public static void Math2(int num) {
+		int a,b,c,d,e,f;
+		String p = null,k = null;
+		for(int i=0;i<num;i++) {
+			String j="("+(i+1)+")"+" ";
+			d=(int) (Math.random()*10);
+			if(d%2==0 ) {
+				a=(int) (Math.random()*9+1);
+				b=(int) (Math.random()*9+1);
+				p="*";
+				k=String.valueOf(a*b);
+			}else {
+				p="/";
+				do {
+					a=(int) (Math.random()*90+1);
+					b=(int) (Math.random()*10+1);
+					e=a/b;
+					f=a%b;
+					if(f!=0) {
+					k=e+"..."+f;
+					}else {
+						k=String.valueOf(e);
+					}
+				}while(e<=0 || e>=10 || b==0);
+					
+
+			}
+			if(i!=0) {
+				s1= s1 + "\n";
+			}
+			s1= s1 + (j+a+p+b+"=") ;
+			s = s + "\n";
+			s = s + (j+a+p+b+"=" + k);
+		}
+		System.out.println(s1+"\n"+"----------------标准答案----------------"+s);
+}
 
 	public static void main(String[] args) {
 		boolean isNum = args[0].matches("\\d*");
@@ -75,7 +111,11 @@ public class MathExam233 {
 			int num = Integer.valueOf(args[0]);
 			Math(num);
 			createtxt();
-	} else {
+		} else if (isNum == true && args.length == 2 && args[1].matches("[2]")) {
+			int num = Integer.valueOf(args[0]);
+			Math2(num);
+			createtxt();
+		} else {
 			System.out.println("输入错误，请重新输入");
 		}
 	}
