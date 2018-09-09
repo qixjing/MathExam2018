@@ -25,16 +25,16 @@ class MathExam4331{
 		}
 		else if(!args[0].matches("\\d*")) {
 			isErro=false;
-			errMessage="第一个参数不全为数字，请输入数字";
+			errMessage="第一个参数不全为数字或为负数，请输入数字"; //改进：识别负数时提示根据准确
 		}
-		else if(args[0].length()>5 && args[0].matches("1|1\\d*")) {      
+		else if(args[0].length()>=5 || !args[0].matches("[^0]\\d*")) {   //bug修复：可以识别001参数错误 ,可以识别超过9999的错误  
 			isErro=false;
 			errMessage="第一个参数错误，题目数量需大于0小于9999";
 		} 
 		else if(args.length==2) {
 			if(!args[1].matches("\\d*")) {
 				isErro=false;
-				errMessage="第二个参数错误，年级需全为数字";
+				errMessage="第二个参数错误，年级需全为数字且不为负数";
 			}
 			else if(!args[1].matches("[12]"))
 			{
