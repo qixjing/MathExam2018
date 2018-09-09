@@ -10,7 +10,7 @@ public class MathExam6313 {
 	private static StringBuffer topic = new StringBuffer();
 	private static StringBuffer standAnswer = new StringBuffer();
 	
-	//保存4中运算符号
+	//保存4个运算符号
 	private static String[] Operator = { " + ", " - ", " * ", " / " };
 
 	public static void main(String[] args) {
@@ -47,15 +47,16 @@ public class MathExam6313 {
 			// 获取两个随机数，num1,num2表示参与计算的两个数字;
 			int num1 = (int) (Math.random() * 101);
 			int num2 = (int) (Math.random() * 101);
-			// 确保第一个数比第二个数大，避免相减出现负数，小学加减无负数
-			if (num1 < num2) {
-				int temp = num1;
-				num1 = num2;
-				num2 = temp;
-			}
+			
 			// symbol代表运算符号;
 			int index = (1 == grade) ? ((int) (Math.random() * 10)) % 2 : ((int) (Math.random() * 10)) % 4;
 			String symbol = Operator[index];
+			
+			//确保小学1年级加法不会超过100
+			while(1 == grade && 0 == index && num1 + num2 >= 100) {
+				num1 = (int) (Math.random() * 101);
+				num2 = (int) (Math.random() * 101);
+			}
 			// 计算结果
 			int res = 0;
 			int remainder = 0; // 余数
@@ -64,6 +65,12 @@ public class MathExam6313 {
 				res = num1 + num2;
 				break;
 			case " - ":
+				// 确保第一个数比第二个数大，避免相减出现负数，小学加减无负数
+				if (num1 < num2) {
+					int temp = num1;
+					num1 = num2;
+					num2 = temp;
+				}
 				res = num1 - num2;
 				break;
 			case " * ":
