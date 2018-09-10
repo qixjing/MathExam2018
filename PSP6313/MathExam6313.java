@@ -45,42 +45,60 @@ public class MathExam6313 {
 	private static void generatingTopic(int len,int grade) {
 		for (int i = 1; i <= len; i++) {
 			// 获取两个随机数，num1,num2表示参与计算的两个数字;
-			int num1 = (int) (Math.random() * 101);
-			int num2 = (int) (Math.random() * 101);
+			int num1 = (int) (Math.random() * 100);
+			int num2 = (int) (Math.random() * 100);
 			
 			// symbol代表运算符号;
 			int index = (1 == grade) ? ((int) (Math.random() * 10)) % 2 : ((int) (Math.random() * 10)) % 4;
 			String symbol = Operator[index];
 			
-			//确保小学1年级加法不会超过100
-			while(1 == grade && 0 == index && num1 + num2 >= 100) {
-				num1 = (int) (Math.random() * 101);
-				num2 = (int) (Math.random() * 101);
+			//确保和不超过100
+			while(0 == index && num1 + num2 >= 100) {
+				num1 = (int) (Math.random() * 100);
+				num2 = (int) (Math.random() * 100);
 			}
+			
 			// 计算结果
 			int res = 0;
 			int remainder = 0; // 余数
 			switch (symbol) {
 			case " + ":
+				//确保小学1年级题目为两位数加减整十数和两位数加减一位数
+				if(1 == grade && num1>10 && num2 >10 && num1%10 != 0 && num2%10 !=0) {
+					num2 = num2/10*10;
+				}
 				res = num1 + num2;
 				break;
-			case " - ":
+			case " - ":		
 				// 确保第一个数比第二个数大，避免相减出现负数，小学加减无负数
 				if (num1 < num2) {
 					int temp = num1;
 					num1 = num2;
 					num2 = temp;
 				}
+				//确保小学1年级题目为两位数加减整十数和两位数加减一位数
+				if(1 == grade && num1>10 && num2 >10 && num2%10 !=0) {
+					num2 = num2/10*10;
+				}	
 				res = num1 - num2;
 				break;
 			case " * ":
+				//确保为表内乘法
+				num1 %= 10;
+				num2 %= 10;
 				res = num1 * num2;
 				break;
 			case " / ":
 				//防止除数为0
 				while(0 == num2) {
-					num2 = (int) (Math.random() * 101);
+					num2 = (int) (Math.random() * 100);
 				}
+				
+				//确保为表内除法
+				if(num2>10) {
+					num2 /=10 ;
+				}
+				
 				res = num1 / num2;
 				remainder = num1 % num2;
 				break;
