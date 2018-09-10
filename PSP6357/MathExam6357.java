@@ -6,20 +6,30 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MathExam6357 {
+	
 
 	public static void main(String[] args) throws IOException {
+			
 			for(;;) {
 				Scanner input=new Scanner(System.in);
 				System.out.println("请输入问题数目和所需年级：");
-				//int []z =new int [args.length];
-				//z[0] = Integer.parseInt(args[0]);
-				//z[1] = Integer.parseInt(args[1]);
-			    //int n =z[0];
-			    int n = input.nextInt();
-				//int m =z[1];
-				int m = input.nextInt();
+				int []z =new int [args.length];
+				z[0] = Integer.parseInt(args[0]);
+				z[1] = Integer.parseInt(args[1]);
+			    int n =z[0];
+			    //int n = input.nextInt();
+				int m =z[1];
+				//int m = input.nextInt();
+				if(n<=0||m<=0) {
+					System.out.println("请输入大于0的正整数");
+					args[0]=input.next();
+					args[1]=input.next();
+					continue;
+				}
 				FileOutputStream in =new FileOutputStream("out.txt");
 				String[] answerlist = new String[n];
 				String[] questionlist = new String[n];
