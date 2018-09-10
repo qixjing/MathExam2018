@@ -4,15 +4,26 @@ import java.text.*;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Random;
-import java.util.Scanner;
 
 public class MathExam6356 {
-
+	static int n;
 	public static void main(String[] args) throws FileNotFoundException {
-		int n;
+
 		//Scanner input=new Scanner(System.in);
 		if(args.length==1) {
-		n=Integer.parseInt(args[0]);
+			
+			try {
+				n=Integer.parseInt(args[0]);
+				if(n<=0 || n > 500) {
+					System.out.println("请输入0-500的正整数");
+					System.exit(0);
+				}
+				
+			} catch (NumberFormatException e) {
+				System.out.println("您输入的不是正整数,请输入整数");
+				System.exit(0);
+			}
+		
 		int[] a=new int [n];
 		int[] b=new int [n];
 		int[] c=new int [n];
@@ -28,9 +39,19 @@ public class MathExam6356 {
 		PrintStream ps = new PrintStream(file);
 		System.setOut(ps);//把创建的打印输出流赋给系统。
 		for (int i = 0; i < n; i++) {
-			if (c[i]==0) {
+			if (c[i]==0) {//随机加法
+				while (a[i]+b[i]>100) {
+					//如果和大于100重新随机
+					a[i]=num1.nextInt(100);
+					b[i]=num2.nextInt(100);
+				}
 				System.out.println("("+(i+1)+") "+a[i]+"+"+b[i]+" =");
-			}else {
+			}else {//随机减法
+				while (a[i]-b[i]<0) {
+					//如果差小于0重新随机
+					a[i]=num1.nextInt(100);
+					b[i]=num2.nextInt(100);
+				}
 				System.out.println("("+(i+1)+") "+a[i]+"-"+b[i]+" =");
 			}
 			
@@ -45,7 +66,10 @@ public class MathExam6356 {
 	}
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
  		String time = sdf.format(new Date());
- 		System.out.println("211606356 " + time);//输出学号姓名 时间
+ 		System.out.println("211606356 陈宇 " + time);//输出学号姓名 时间
+	}else {
+		System.out.println("参数输入有误，请重新运行");
+		System.exit(0);
 	}
 	}
 }
