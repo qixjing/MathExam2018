@@ -7,11 +7,12 @@ public class Jianfa extends Operation{
 		first = r.nextInt(100);
 		second = r.nextInt(100);
 		int answernumber;
+		
 		if(first-second>=0) {
 		answernumber = first-second;
 		}
 		else {
-			return;
+			answernumber = second-first ;
 		}
 		answer.add("("+number+")"+"  "+first+"  -  "+second+" =");
 		answer.add(" "+answernumber);
