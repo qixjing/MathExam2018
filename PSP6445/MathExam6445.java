@@ -8,40 +8,41 @@ import java.util.Random;
 
 public class MathExam6445 {
 
+	static int n, grade;
+
 	public static void main(String[] args) {
-		int n;
-		if (!args[0].matches("\\d*")) {
-			if (args[0].matches("-\\d*")) {
-				System.out.println("è¾“å…¥ä¸€ä¸ªæ­£ç¡®çš„æ•°å­—å“¦ï¼Œä¸èƒ½ä¸ºè´Ÿ");
-			} else {
-				System.out.println("è¾“å…¥çš„é¢˜æ•°å¿…é¡»æ˜¯æ•°å­—!");
+		if (check(args[0])) {
+			create();
+			try {
+				System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("out.txt")), true));
+			} catch (FileNotFoundException e) {
+				System.out.println("Êä³öÖØ¶¨ÏòÊ§°ÜÊ§°Ü£¡");
+				e.printStackTrace();
 			}
-		} else {
-			n = Integer.parseInt(args[0]);
-			if (n > 100) {
-				System.out.println("è¾“å…¥çš„é¢˜æ•°è¿‡å¤§ï¼Œä½“è°…ä¸‹å°å­¦ç”Ÿå“¦");
-			} else {
-				File file = new File("out.txt");
-				if (!file.exists()) {
-					try {
-						file.createNewFile();
-					} catch (IOException e) {
-						System.out.println("æ–‡ä»¶åˆ›å»ºå¤±è´¥ï¼");
-						e.printStackTrace();
-					}
-				}
-				try {
-					System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("out.txt")), true));
-				} catch (FileNotFoundException e) {
-					System.out.println("è¾“å‡ºé‡å®šå‘å¤±è´¥å¤±è´¥ï¼");
-					e.printStackTrace();
-				}
-				work(n);
-			}
+			work();
 		}
 	}
 
-	private static void work(int n) {
+	public static boolean check(String strN) {
+		if (!strN.matches("\\d*")) {
+			if (strN.matches("-\\d*")) {
+				System.out.println("ÊäÈëÒ»¸öÕıÈ·µÄÊı×ÖÅ¶£¬²»ÄÜÎª¸º");
+				return false;
+			} else {
+				System.out.println("ÊäÈëµÄÌâÊı±ØĞëÊÇÊı×Ö!");
+				return false;
+			}
+		} else {
+			n = Integer.parseInt(strN);
+			if (n > 100) {
+				System.out.println("ÊäÈëµÄÌâÊı¹ı´ó£¬ÌåÁÂÏÂĞ¡Ñ§ÉúÅ¶");
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static void work() {
 		int num1, num2, op;
 		String str = "", result = "";
 		Random rand = new Random();
@@ -67,5 +68,17 @@ public class MathExam6445 {
 		}
 		System.out.println(str);
 		System.out.print(result);
+	}
+
+	public static void create() {
+		File file = new File("out.txt");
+		if (!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println("ÎÄ¼ş´´½¨Ê§°Ü£¡");
+				e.printStackTrace();
+			}
+		}
 	}
 }
