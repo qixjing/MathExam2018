@@ -16,20 +16,14 @@ public class MathExam6328a {
 		if(mathexam1.isNumber(str)) {
 			n=Integer.parseInt(str);
 		}
-		else System.out.println("ÇëÊäÈëÕıÈ·µÄÌâÊı£¡");
-		try {
-			mathexam1.grade1(n);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		else System.out.println("è¯·è¾“å…¥æ­£ç¡®çš„é¢˜æ•°ï¼");
+		mathexam1.grade1(n);
 	}
-	public void grade1(int n) throws IOException{
+	public void grade1(int n){
 		int number1[]=new int[n];
-		int number2[]=new int[n];
-		int number3[]=new int[n];		
+		int number2[]=new int[n];		
 		char sign[]=new char[n];
-		input(number1, number2, number3, sign);
+		input(number1, number2, sign);
 		int number4[]=calculate(number1, sign, number2);
 		output(number1, sign, number2, number4);
 	}
@@ -39,17 +33,18 @@ public class MathExam6328a {
 		return str.matches(regex);
 	}
 
-	public void input(int[] a,int[] b,int[] c,char[] d) {
+	public void input(int[] a,int[] b,char[] d) {
+		int t;
 		for (int i = 0; i < a.length; i++) {
 			a[i]=(int)(Math.random()*101);
 			b[i]=(int)(Math.random()*101);
-			c[i]=(int)(Math.random()*2);
-			while(a[i]<b[i]&&c[i]==1) {
+			t=(int)(Math.random()*2);
+			while(a[i]<b[i]&&t==1) {
 				a[i]=(int)(Math.random()*101);
 				b[i]=(int)(Math.random()*101);
-				c[i]=(int)(Math.random()*2);
+				t=(int)(Math.random()*2);
 			}
-			if(c[i]==0) d[i]='+';
+			if(t==0) d[i]='+';
 			else d[i]='-';
 		}
 	}
@@ -82,7 +77,7 @@ public class MathExam6328a {
 		String filename="d:\\out.txt";
 		File file=new File(filename);
 		file(file);
-		String str="-----------±ê×¼´ğ°¸-----------\r\n";
+		String str="-----------æ ‡å‡†ç­”æ¡ˆ-----------\r\n";
 		String str1[] = new String[number1.length];
 		String str2[] =new String[number1.length];
 		OutputStream out;
