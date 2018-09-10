@@ -12,28 +12,28 @@ public class MathExam6445 {
 		int n;
 		if (!args[0].matches("\\d*")) {
 			if (args[0].matches("-\\d*")) {
-				System.out.println("ÊäÈëÒ»¸öÕýÈ·µÄÊý×ÖÅ¶£¬²»ÄÜÎª¸º");
+				System.out.println("è¾“å…¥ä¸€ä¸ªæ­£ç¡®çš„æ•°å­—å“¦ï¼Œä¸èƒ½ä¸ºè´Ÿ");
 			} else {
-				System.out.println("ÊäÈëµÄÌâÊý±ØÐëÊÇÊý×Ö!");
+				System.out.println("è¾“å…¥çš„é¢˜æ•°å¿…é¡»æ˜¯æ•°å­—!");
 			}
 		} else {
 			n = Integer.parseInt(args[0]);
 			if (n > 100) {
-				System.out.println("ÊäÈëµÄÌâÊý¹ý´ó£¬ÌåÁÂÏÂÐ¡Ñ§ÉúÅ¶");
+				System.out.println("è¾“å…¥çš„é¢˜æ•°è¿‡å¤§ï¼Œä½“è°…ä¸‹å°å­¦ç”Ÿå“¦");
 			} else {
 				File file = new File("out.txt");
 				if (!file.exists()) {
 					try {
 						file.createNewFile();
 					} catch (IOException e) {
-						System.out.println("ÎÄ¼þ´´½¨Ê§°Ü£¡");
+						System.out.println("æ–‡ä»¶åˆ›å»ºå¤±è´¥ï¼");
 						e.printStackTrace();
 					}
 				}
 				try {
 					System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("out.txt")), true));
 				} catch (FileNotFoundException e) {
-					System.out.println("Êä³öÖØ¶¨ÏòÊ§°ÜÊ§°Ü£¡");
+					System.out.println("è¾“å‡ºé‡å®šå‘å¤±è´¥å¤±è´¥ï¼");
 					e.printStackTrace();
 				}
 				work(n);
@@ -50,7 +50,7 @@ public class MathExam6445 {
 			num2 = rand.nextInt(101);
 			op = rand.nextInt(2);
 			if (op == 0) {
-				if ((num1 + num2) > 0) {
+				if ((num1 + num2) > 100) {
 					i--;
 					continue;
 				}
