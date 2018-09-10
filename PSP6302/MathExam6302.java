@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class MathExam6302 {
 	@SuppressWarnings("unused")
@@ -12,6 +16,7 @@ public class MathExam6302 {
 	static StringBuffer problem = new StringBuffer(); 
 	static StringBuffer answer= new StringBuffer(); 
 
+@SuppressWarnings("unused")
 public static void main(String[] args) throws IOException {
 	String str = args[0].replaceFirst("^0*", "");
 	if (args.length == 0) {
@@ -31,6 +36,7 @@ public static void main(String[] args) throws IOException {
     private static void MathExam() {
         int result = 0; 
         int num1,num2,m;
+        //SimpleDateFormat df=new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		for (int i = 1; i <= len ; i++) {
 			 num1 = (int) (Math.random() * 101);
 			 num2 = (int) (Math.random() * 101);
@@ -53,8 +59,10 @@ public static void main(String[] args) throws IOException {
 			}
 			// 记录题目与答案
 			problem.append("("+i+") "+ num1 + " " + symbol + " " + num2 + "\r\n");
+			//problem.append("----------标准答案----------");
 			answer.append("("+i+") "+num1+" "+symbol+" "+num2+" "+"= "+result+ "\r\n");
 		}
+		answer.append("211606302 曾丽丽 "+DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG,Locale.CHINESE).format(new java.util.Date()));
     }
     public static void write6302() throws IOException {
 		// 步骤1：确定输出的文件（目的地）
