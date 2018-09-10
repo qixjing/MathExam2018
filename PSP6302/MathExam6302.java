@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.Date;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class MathExam6302 {
@@ -15,7 +13,10 @@ public class MathExam6302 {
 	private static final String[] Operator = {"+", "-"};
 	static StringBuffer problem = new StringBuffer(); 
 	static StringBuffer answer= new StringBuffer(); 
-
+	static String n[]=new String[1000];
+	static Integer n1[]=new Integer[1000];
+	static Integer n2[]=new Integer[1000];
+	static Integer n3[]=new Integer[1000];
 @SuppressWarnings("unused")
 public static void main(String[] args) throws IOException {
 	String str = args[0].replaceFirst("^0*", "");
@@ -38,30 +39,37 @@ public static void main(String[] args) throws IOException {
         int num1,num2,m;
         //SimpleDateFormat df=new SimpleDateFormat("yyyy-mm-dd HH:mm");
 		for (int i = 1; i <= len ; i++) {
-			 num1 = (int) (Math.random() * 101);
-			 num2 = (int) (Math.random() * 101);
+			String symbol = null;
+			 num1 = n1[i]=(int) (Math.random() * 101);
+			 num2 =n2[i]=(int) (Math.random() * 101);
 			 m = (int) (Math.random() *2);
-			String symbol = Operator[m];
+			symbol = Operator[m];
+			
 			switch (symbol) {
 			case "+":
-				result = num1 + num2;
+				result = n3[i]=num1 + num2;
+				n[i]="+";
 				break;
 			case "-":
 				if (num1 <num2) {
 					int t = num1;
-					num1 = t;
-					t = num2;
+					num1 = num2;
+					num2 = t;
 				}
-				result =num1 - num2;
+				result =n3[i]=num1 - num2;
+				n[i]="-";
 				break;
 			default:
 				System.out.println("unsupported sign!");
 			}
 			// 记录题目与答案
 			problem.append("("+i+") "+ num1 + " " + symbol + " " + num2 + "\r\n");
-			//problem.append("----------标准答案----------");
-			answer.append("("+i+") "+num1+" "+symbol+" "+num2+" "+"= "+result+ "\r\n");
 		}
+			problem.append("----------标准答案----------");
+			
+			for(int i = 1; i <= len ; i++) {
+			answer.append("("+i+") "+n1[i]+" "+n[i]+" "+n2[i]+" "+"= "+n3[i]+ "\r\n");
+			}
 		answer.append("211606302 曾丽丽 "+DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG,Locale.CHINESE).format(new java.util.Date()));
     }
     public static void write6302() throws IOException {
