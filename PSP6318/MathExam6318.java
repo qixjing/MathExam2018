@@ -1,7 +1,10 @@
 
 
+
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MathExam6318 {
@@ -10,9 +13,14 @@ public class MathExam6318 {
 		
 		File file =new File("out.txt");
 		if(!file.exists()){						//创建文件
-			file.createNewFile();
-           System.out.println("文件创建完成");
-        }
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				System.out.println("文件创建失败！");
+				e.printStackTrace();
+			}
+		}
+        
 		
 		
 		
@@ -33,8 +41,12 @@ public class MathExam6318 {
 		for(i=0;i<n[0];i++)
 		{													
 		int a=(int)(Math.random()*100+1);
-		int b=(int)(Math.random()*a+1);
+		int b=(int)(Math.random()*100+1);
 		int c=(int)(Math.random()*2);
+		while(a+b>=100 && c%2==0) {						//限定加法运算和不会超过100
+			 a=(int)(Math.random()*100+1);
+			 b=(int)(Math.random()*100+1);
+		}
 		if(c%2==0) {
 			System.out.println("("+(i+1)+")"+a+"+"+b+"=");			//加法运算
 			qs = new StringBuffer("("+(i+1)+")"+a+"+"+b+"=");	
@@ -44,6 +56,10 @@ public class MathExam6318 {
 			cs[i]=qs.toString();
 			}
 			else {
+				while(a-b<0 && c%2!=0) {						//限定减法运算差不会小于0
+					 a=(int)(Math.random()*100+1);
+					 b=(int)(Math.random()*a+1);
+				}	
 			System.out.println("("+(i+1)+")"+a+"-"+b+"=");			//减法运算
 			qs = new StringBuffer("("+(i+1)+")"+a+"-"+b+"=");
 			rs = new StringBuffer(" "+(a-b));
@@ -78,8 +94,8 @@ public class MathExam6318 {
 		else {
 			for(i=0;i<n[0];i++)								
 			{
-			int a=(int)(Math.random()*10+1);						
-			int b=(int)(Math.random()*10+1);
+			int a=(int)(Math.random()*10+1);									
+			int b=(int)(Math.random()*10+1);						//保证除数不为0
 			int c=(int)(Math.random()*2);
 			if(c%2==0) {
 				System.out.println("("+(i+1)+")"+a+"x"+b+"=");				//乘法运算
