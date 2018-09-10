@@ -2,10 +2,12 @@
 
 
 
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.SynchronousQueue;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,21 +16,20 @@ import java.io.IOException;
 public class MathExam6374 {
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("请输入出题的数目和年级");
-		Scanner sc=new Scanner(System.in);
 		int i,a,b,fuhao;
-		int n=sc.nextInt();
-		int grade=sc.nextInt();
-		String[] timu=new String[n+1];
-		String[] daan=new String[n+1];
+		int []c =new int [args.length] ;
+	    c[0] = Integer.parseInt(args[0]);
+	    c[1] = Integer.parseInt(args[1]);
+		String[] timu=new String[c[0]+1];
+		String[] daan=new String[c[0]+1];
 		String huanhang="\r\n";
 		File file = new File("out.txt");
         FileOutputStream u = new FileOutputStream("out.txt");
 		if(!file.exists()) {
 			file.createNewFile();
 		}
-		if(grade==1) {
-		for(i=1;i<=n;i++) {
+		if(c[1]==1) {
+		for(i=1;i<=c[0];i++) {
 			fuhao=(int)(Math.random()*2);
 			if(fuhao==0) {
 			 a=(int)(Math.random()*21);   
@@ -62,15 +63,15 @@ public class MathExam6374 {
         byte[] fg=fengexian.getBytes();
 		 byte[] h=huanhang.getBytes();
         u.write(fg);u.write(h);
-		for(i=1;i<=n;i++) {
+		for(i=1;i<=c[0];i++) {
 			System.out.println( daan[i-1]);
 	         byte[] da =daan[i-1].getBytes();
 	         u.write(da);
 	         u.write(h);
 		}
 		}	
-		else if(grade==2) {
-			for(i=1;i<=n;i++) {
+		else if(c[1]==2) {
+			for(i=1;i<=c[0];i++) {
 			fuhao=(int)(Math.random()*2);
 			if(fuhao==0) {
 			 a=(int)(Math.random()*10);   
@@ -110,7 +111,7 @@ public class MathExam6374 {
         byte[] fg=fengexian.getBytes();
 		 byte[] h=huanhang.getBytes();
         u.write(fg);u.write(h);
-		for(i=1;i<=n;i++) {
+		for(i=1;i<=c[0];i++) {
 			System.out.println( daan[i-1]);
 	         byte[] da =daan[i-1].getBytes();
 	         u.write(da);
