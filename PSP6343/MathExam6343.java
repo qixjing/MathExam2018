@@ -2,11 +2,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 //import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 //import java.io.OutputStream;
 public class MathExam6343 {
-	public static void main(String[] args) throws Exception{
-		File file = new File("cc.txt");		//输出的文件
+	public static void main(String[] args) {
+		File file = new File("out6343.txt");		//输出的文件
 		int []n =new int [args.length] ;	//创建传入参数数组
 		Scanner sc = new Scanner(System.in);			
 
@@ -39,11 +40,22 @@ public class MathExam6343 {
 	    }
 		if(!file.exists())						//判断TXT是否存在
 		{
-		file.createNewFile();
-		System.out.println("cc.txt创建完成");
+		try {
+			file.createNewFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("out6343.txt创建完成");
 		}
 		
-		FileWriter fw = new FileWriter(file);
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(file);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		BufferedWriter bw = new BufferedWriter(fw);		
 
 
@@ -138,23 +150,36 @@ public class MathExam6343 {
 		}	
 		for(int i=1;i<=n[0];i++) {
 			//System.out.print("("+i+")");
-			bw.write(String.valueOf("("+i+")"));
-			//System.out.print(as[i]);
-			bw.write(String.valueOf(as[i]));	
+			try {
+				bw.write(String.valueOf("("+i+")"));
+				bw.write(String.valueOf(as[i]));	
 			//System.out.print(cs[i]);
 			bw.write(String.valueOf(cs[i]));	
 			//System.out.println(bs[i]);
 			bw.write(String.valueOf(bs[i]));
 			bw.newLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//System.out.print(as[i]);
+			
 		}
 		//System.out.println("-------------标准答案--------------");
-		bw.write(String.valueOf("-------------标准答案--------------"));
-		bw.newLine();
+		
+		try {
+			bw.write(String.valueOf("-------------标准答案--------------"));
+			bw.newLine();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 		for(int i=1;i<=n[0];i++) {
 			//System.out.print("("+i+")");
-			bw.write(String.valueOf("("+i+")"));
-			//System.out.print(as[i]);
+			try {
+				bw.write(String.valueOf("("+i+")"));
+				//System.out.print(as[i]);
 			bw.write(String.valueOf(as[i]));
 			//System.out.print(cs[i]);
 			bw.write(String.valueOf(cs[i]));
@@ -162,18 +187,39 @@ public class MathExam6343 {
 			bw.write(String.valueOf(bs[i]));
 			//System.out.print("="+ds[i]);
 			bw.write(String.valueOf("="+ds[i]));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			if(es[i] != 0) {
 				//System.out.println("...."+es[i]);
-				bw.write(String.valueOf("...."+es[i]));
-				bw.newLine();
+				try {
+					bw.write(String.valueOf("...."+es[i]));
+					bw.newLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				continue;
 			}
 			else {
 				//System.out.print("\n");
 			}
 		
-			bw.newLine();
+			try {
+				bw.newLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		bw.close();
-		fw.close();
+		try {
+			bw.close();	fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 	}}
