@@ -5,8 +5,22 @@ import java.io.PrintStream;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MathExam1253 {
+public class MathExam1253 { 
 	public static void main(String[] args) {
+		int grade = 1;
+		if(args.length==2){
+			if (args[1].equals("1") || args[1].equals("2")) {
+				grade = Integer.valueOf(args[1]);
+			} else {
+				System.out.println("输入有误，程序结束");
+				System.exit(0);
+			}
+		}
+		if(args.length!=1 && args.length!=2 ){
+			System.out.println("输入有误，程序结束");
+			System.exit(0);
+		}
+			
 		// TODO Auto-generated method stub
 		boolean r = args[0].matches("[0-9]+");
 		String h = args[0].substring(0, 1);
@@ -14,18 +28,12 @@ public class MathExam1253 {
 		if (r == true && args[0].length() < 5 && h != "0") {
 			n = Integer.valueOf(args[0]);
 		} else {
-			System.out.println("输入有误，程序结束1");
+			System.out.println("输入有误，程序结束");
 			System.exit(0);
 		}
-		int grade = 1;
-		if (args[1].equals("1") || args[1].equals("2")) {
-			grade = Integer.valueOf(args[1]);
-		} else {
-			System.out.println("输入有误，程序结束2");
-			System.exit(0);
-		}
+		
 		Random rand = new Random();
-		if (args[1].equals("1")) {
+		if (grade==1) {
 			int d = 0;
 			String x = "";
 			String y = "";
@@ -57,11 +65,9 @@ public class MathExam1253 {
 				}
 			}
 			String z = x;
-			System.out.println(z);
 			String k = y;
-			System.out.println("\n" + k);
 			try {
-				File f = new File("out1253.txt");
+				File f = new File("out.txt");
 				PrintStream f1 = new PrintStream(new FileOutputStream(f));
 				System.setOut(f1);
 				System.out.println(z);
@@ -109,11 +115,9 @@ public class MathExam1253 {
 				}
 			}
 			String z = x;
-			System.out.println(z);
 			String k = y;
-			System.out.println("\n" + k);
 			try {
-				File f = new File("out1253.txt");
+				File f = new File("out.txt");
 				PrintStream f1 = new PrintStream(new FileOutputStream(f));
 				System.setOut(f1);
 				System.out.println(z);
