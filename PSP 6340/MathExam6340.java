@@ -64,17 +64,17 @@ public class MathExam6340 {
             System.out.println("("+(i+1)+")"+" "+num1[i]+" "+symbol+" "+num2[i]);
 
         }
-        questions.append("========Êä³öËùÓĞ´ğ°¸========");
-        System.out.println("========Êä³öËùÓĞ´ğ°¸========");
-        for (int i=0;i<number;i++) {
-            if (num2[i] != 0 && remainder == 0) {
-                answers.append("(" + (i + 1) + ")" + " " + num1[i] + " " + so[i] + " " + num2[i] + " = " + sum[i] + "\r\n");
-                System.out.println("(" + (i + 1) + ")" + " " + num1[i] + " " + so[i] + " " + num2[i] + " = " + sum[i]);
-            } else {
+        questions.append("========è¾“å‡ºæ‰€æœ‰ç­”æ¡ˆ========");
+        System.out.println("========è¾“å‡ºæ‰€æœ‰ç­”æ¡ˆ========");
+ for (int i=0;i<number;i++) {
+            if (num2[i] != 0 && so[i]=="/" && remainder != 0) {
                 answers.append("(" + (i + 1) + ")" + " " + num1[i] + " " + so[i] + " " + num2[i] + " = " + sum[i]
                         + "......" + remainder + "\r\n");
                 System.out.println("(" + (i + 1) + ")" + " " + num1[i] + " " + so[i] + " " + num2[i] + " = " + sum[i]
                         + "......" + remainder);
+            } else {
+                answers.append("(" + (i + 1) + ")" + " " + num1[i] + " " + so[i] + " " + num2[i] + " = " + sum[i] + "\r\n");
+                System.out.println("(" + (i + 1) + ")" + " " + num1[i] + " " + so[i] + " " + num2[i] + " = " + sum[i]);
             }
         }
     }
@@ -104,6 +104,6 @@ public class MathExam6340 {
         int grade = input.nextInt();
         generateExam(number,grade);
         write();
-        System.out.println("ÌâÄ¿ÒÑ¾­Éú³É£¬ÏêÇéÇë¼ûout.txt");
+        System.out.println("é¢˜ç›®å·²ç»ç”Ÿæˆï¼Œè¯¦æƒ…è¯·è§out.txt");
     }
 }
