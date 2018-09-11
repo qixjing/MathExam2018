@@ -25,7 +25,7 @@ public class MathExam6356 {
 			try {
 				n = Integer.parseInt(args[0]);
 				if (n <= 0 || n > 500) {
-					System.out.println("请输入0-500的正整数");
+					System.out.println("请输入0-500的题目数");
 					System.exit(0);
 				}
 
@@ -56,7 +56,11 @@ public class MathExam6356 {
 			a[i] = num1.nextInt(9); // 0-100的随机数
 			b[i] = num2.nextInt(9);
 			c[i] = fuhao.nextInt(2);//0是乘法1是除法
-			if(c[i]==1 || b[i]==0) {
+			if(c[i]==1 || b[i]==0) {//除数是0重新随机
+				b[i] = num2.nextInt(8)+1;
+			}
+			if(c[i]==0 || (a[i]==0 && b[i]==0)) {
+				a[i] = num2.nextInt(8)+1;
 				b[i] = num2.nextInt(8)+1;
 			}
 		}
@@ -120,7 +124,7 @@ public class MathExam6356 {
 					a[i] = num1.nextInt(100);
 					b[i] = num2.nextInt(100);
 				}
-
+				
 			} else {// 随机减法
 				while (a[i] - b[i] < 0) {
 					// 如果差小于0重新随机
