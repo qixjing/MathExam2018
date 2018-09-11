@@ -126,15 +126,19 @@ public class MathExam4269 {
 	}
 
 	public static void main(String[] args) {
-		String str = args[0];
-		if (isNum(str)) {
-			if (str.length() >= 5) {
-				System.out.println("输入数据过大,请重试");
+		if(args.length!=1) {
+			System.out.println("输入的参数个数不为1,请重试");
+		}else {
+			String str = args[0];
+			if (isNum(str)) {
+				if (str.length() >= 5) {
+					System.out.println("输入数据过大,请重试");
+				} else {
+					math(Integer.parseInt(str));
+				}
 			} else {
-				math(Integer.parseInt(str));
+				System.out.println("输入有误,请重新输入");
 			}
-		} else {
-			System.out.println("输入有误,请重新输入");
 		}
 	}
 }
