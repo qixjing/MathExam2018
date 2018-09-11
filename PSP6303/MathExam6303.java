@@ -31,7 +31,7 @@ public class MathExam6303 {
 				result = left - right;
 				break;
 			default:
-				System.out.println("unsupported sign!");
+				System.out.println("unsupported sign.");
 			}
 			// 记录题目与答案
 			questions.append("("+i+") "+ left + " " + symbol + " " + right + "\r\n");
