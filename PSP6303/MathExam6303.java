@@ -1,9 +1,7 @@
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
 
 public class MathExam6303 {	
 	private static int len;// 用户输入的题目数量
