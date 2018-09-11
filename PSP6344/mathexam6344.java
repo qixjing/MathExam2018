@@ -43,14 +43,7 @@ public class mathexam211606344 {
 				}
 				break;					
 				}
-			else {
-				try {
-					num = Integer.parseInt(stringArray[0]);
-					}catch(NumberFormatException e) {
-						System.out.println("请输入正整数的题目数！");
-						continue;
-					}
-			}
+		
 			num = Integer.parseInt(stringArray[0]);
 			break;
 			}
@@ -96,7 +89,48 @@ public class mathexam211606344 {
 				}
 		}
 		// 若grade为2，进行任务2
-		
+		if (grade == 2) {	
+			for (int i = 0;i < num;i ++){
+				int num1 = (int)(Math.random()*20);// 产生第一个随机整数
+				int num2 = (int)(Math.random()*20);// 产生第二个随机整数
+				int c = Math.random()>0.5?1:0;// 随机0或1，0为乘法，1为除法
+				int k;
+				int x;
+				if(c == 0){
+					k = num1 * num2;
+					if (k <= 100) {// 若乘积大于100， 则舍弃
+						list1.add(num1 + " × " + num2 + " = ");
+						list2.add(num1 + " × " + num2 + " = " + k);
+						}
+					else
+						i--;
+					}
+				if(c == 1){
+					k = num1 / num2;
+					x = num1 % num2;
+					if (num2 != 0) {//若除数等于0，则舍弃
+						list1.add(num1 + " ÷ " + num2 + " = ");
+					if (x != 0) {
+						list2.add(num1 + " ÷ " + num2 + " = " + k + "..." + x);
+					}else
+						list2.add(num1 + " ÷ " + num2 + " = " + k);
+					}else
+						i--;
+					}
+				}
+				for (int s = 0;s < num;s ++) {
+					System.setOut(ps);
+					System.out.println("(" + (s+1) + ") " + list1.get(s));
+				}
+				System.out.println(" ");
+				for (int p = 0;p < num;p ++) {
+					System.setOut(ps);
+					System.out.println("(" + (p+1) + ") " + list2.get(p)); 
+				}
+			}
+
+
+
 			
 			File file = new File("e:/out.txt");
 			FileReader reader = new FileReader(file);
