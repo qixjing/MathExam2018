@@ -16,28 +16,30 @@ public class MathExam6357 {
 			
 			for(;;) {
 				Scanner input=new Scanner(System.in);
-				System.out.println("请输入问题数目和所需年级：");
-				int []z =new int [args.length];
+				System.out.println("请输入问题数目和所需年级：");		
+				int []z =new int [args.length];									
 				z[0] = Integer.parseInt(args[0]);
 				z[1] = Integer.parseInt(args[1]);
 			    int n =z[0];
 			    //int n = input.nextInt();
 				int m =z[1];
 				//int m = input.nextInt();
-				if(n<=0||m<=0) {
+				if(n<=0||m<=0) {										//判断输入的数是否大于0
 					System.out.println("请输入大于0的正整数");
 					args[0]=input.next();
+					//n = input.nextInt();
 					args[1]=input.next();
+					//m = input.nextInt();
 					continue;
 				}
-				FileOutputStream in =new FileOutputStream("out.txt");
-				String[] answerlist = new String[n];
+				FileOutputStream in =new FileOutputStream("out.txt");	
+				String[] answerlist = new String[n];				//创建多个数组存储问题和答案
 				String[] questionlist = new String[n];
 				String[] yushulist = new String[n];
 				for (int i = 0; i < yushulist.length; i++) {
 					yushulist[i]="0";
 				}
-				if(m==1) {
+				if(m==1) {											//用随机数的方法来产生题目
 					for(int i=0;i<n;i++){
 						int a=(int) (Math.random()*100+1);
 						int b=(int) (Math.random()*100+1);
@@ -59,8 +61,8 @@ public class MathExam6357 {
 							answerlist[i]=" "+(a-b);
 							//result = new StringBuffer(" "+(a-b));
 							}
-						//byte[] ba = question.toString().getBytes();
-						byte[] ba = questionlist[i].getBytes();
+						//byte[] ba = question.toString().getBytes();	
+						byte[] ba = questionlist[i].getBytes();			//利用比特流输入文件
 						String pa ="\r\n";
 						byte[] ta = pa.getBytes(); 
 						in.write(ba);
@@ -98,7 +100,7 @@ public class MathExam6357 {
 						in.write(ta);
 					}
 				}
-				String wa  ="---------标准答案----------"+"\n";
+				String wa  ="---------标准答案----------"+"\r\n";
 				System.out.print(wa);
 				byte[] ea =wa.getBytes();
 				in.write(ea);
@@ -118,7 +120,7 @@ public class MathExam6357 {
 						}
 					
 					//System.out.println(questionlist[i]);
-					String pa ="\r";
+					String pa ="\r\n";
 					byte[] ta = pa.getBytes();
 					in.write(ta);
 				}
@@ -126,11 +128,36 @@ public class MathExam6357 {
 			System.out.println("请选择退出(0)或者继续(1)！");
 			int g = input.nextInt();
 			if(g==1) {
-					continue;
-				}else {
+				System.out.println("请输入问题数目和所需年级：");
+				args[0]=input.next();
+				//n = input.nextInt();
+				args[1]=input.next();
+				//m = input.nextInt();
+				continue;
+				}else if(g==0) {
 					System.out.println("谢谢使用！");
 					break;
 					
+				}
+				else {
+					boolean flag = true;
+					while(flag) {
+						if(g==1 || g==0) {
+							flag= false;
+						}
+						else {
+							System.out.println("请输入0或1之中的一个数字！");
+							g=input.nextInt();
+							if(g==1 || g==0)
+								break;
+						}
+						}
+						System.out.println("请输入问题数目和所需年级：");
+						args[0]=input.next();
+						//n = input.nextInt();
+						args[1]=input.next();
+						//m = input.nextInt();
+
 				}
 			}
 			}
