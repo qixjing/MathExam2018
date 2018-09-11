@@ -71,7 +71,7 @@ public class MathExam {
 			System.out.println("Error:004");
 			return;	
 		}
-		System.out.println(GetRandomNum()+"|"+n+"\n");
+		//System.out.println(GetRandomNum()+"|"+n+"\n");
 		GetQuestion(n);
 	}
 
