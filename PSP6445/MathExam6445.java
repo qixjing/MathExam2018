@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Random;
 
-public class MathExam6445{
+public class MathExam6445 {
 
 	static int n, grade;
 
@@ -56,9 +56,9 @@ public class MathExam6445{
 		for (int i = 1; i <= n; i++) {
 			num1 = rand.nextInt(101);
 			num2 = rand.nextInt(101);
-			if (grade == 1)
+			if (grade == 1) {
 				op = rand.nextInt(2);
-			else
+			} else
 				op = rand.nextInt(4);
 			if (op == 0) {
 				if ((num1 + num2) > 100) {
@@ -75,6 +75,8 @@ public class MathExam6445{
 				str += "(" + i + ") " + num1 + " - " + num2 + "\r\n";
 				result += "(" + i + ") " + num1 + " - " + num2 + " = " + (num1 - num2) + "\r\n";
 			} else if (op == 2) {
+				num1 = rand.nextInt(11);
+				num2 = rand.nextInt(11);
 				if ((num1 * num2) > 100) {
 					i--;
 					continue;
@@ -82,13 +84,19 @@ public class MathExam6445{
 				str += "(" + i + ") " + num1 + " * " + num2 + "\r\n";
 				result += "(" + i + ") " + num1 + " * " + num2 + " = " + (num1 * num2) + "\r\n";
 			} else {
+				num1 = rand.nextInt(11);
+				num2 = rand.nextInt(11);
 				if (num2 == 0) {
 					i--;
 					continue;
 				}
 				str += "(" + i + ") " + num1 + " / " + num2 + "\r\n";
-				result += "(" + i + ") " + num1 + " / " + num2 + 
-						" = " + (num1 / num2) + "..." + (num1 % num2) + "\r\n";
+				if (num1 % num2 != 0) {
+					result += "(" + i + ") " + num1 + " / " + num2 + " = " + (num1 / num2) + "..." + (num1 % num2)
+							+ "\r\n";
+				} else {
+					result += "(" + i + ") " + num1 + " / " + num2 + " = " + (num1 / num2) + "\r\n";
+				}
 			}
 		}
 		System.out.println(str);
