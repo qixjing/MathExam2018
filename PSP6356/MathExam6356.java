@@ -13,24 +13,29 @@ public class MathExam6356 {
 	static int[] c;
 	static Random fuhao = new Random();
 	static Random num1 = new Random();
-	static Random num2 = new Random();// ÖÖ×ÓÏàÍ¬µÄRandom¶ÔÏó£¬Éú³ÉµÄËæ»úÊıĞòÁĞÊÇÒ»ÑùµÄ¡£
-
+	static Random num2 = new Random();// ç§å­ç›¸åŒçš„Randomå¯¹è±¡ï¼Œç”Ÿæˆçš„éšæœºæ•°åºåˆ—æ˜¯ä¸€æ ·çš„ã€‚
 	public static void main(String[] args) throws FileNotFoundException {
-
-		// Scanner input=new Scanner(System.in);
 		if (args.length == 1 || args.length==2) {
 			if(args.length==2) {
-				grade=Integer.parseInt(args[1]);
+				try {grade=Integer.parseInt(args[1]);
+					if(grade<1 || grade>2) {
+						System.out.println("ç°åªæ”¯æŒ1-2å¹´çº§ï¼Œè¯·è¾“å…¥1-2çš„æ•°å­—");
+						System.exit(0);
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("æ‚¨è¾“å…¥çš„ä¸æ˜¯æ­£æ•´æ•°,è¯·è¾“å…¥æ­£æ•´æ•°");
+					System.exit(0);
+				}
 			}
 			try {
 				n = Integer.parseInt(args[0]);
 				if (n <= 0 || n > 500) {
-					System.out.println("ÇëÊäÈë0-500µÄÌâÄ¿Êı");
+					System.out.println("è¯·è¾“å…¥0-500çš„é¢˜ç›®æ•°");
 					System.exit(0);
 				}
 
 			} catch (NumberFormatException e) {
-				System.out.println("ÄúÊäÈëµÄ²»ÊÇÕıÕûÊı,ÇëÊäÈëÕûÊı");
+				System.out.println("æ‚¨è¾“å…¥çš„ä¸æ˜¯æ­£æ•´æ•°,è¯·è¾“å…¥æ­£æ•´æ•°");
 				System.exit(0);
 			}
 			if (grade==1) {
@@ -40,10 +45,10 @@ public class MathExam6356 {
 			}
 			File file = new File("out.txt");
 			PrintStream ps = new PrintStream(file);
-			System.setOut(ps);// °Ñ´´½¨µÄ´òÓ¡Êä³öÁ÷¸³¸øÏµÍ³¡£
+			System.setOut(ps);// æŠŠåˆ›å»ºçš„æ‰“å°è¾“å‡ºæµèµ‹ç»™ç³»ç»Ÿã€‚
 			outPut();
 		} else {
-			System.out.println("²ÎÊıÊäÈëÓĞÎó£¬ÇëÖØĞÂÔËĞĞ");
+			System.out.println("å‚æ•°è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°è¿");
 			System.exit(0);
 		}
 	}
@@ -53,10 +58,10 @@ public class MathExam6356 {
 		b = new int[n];
 		c = new int[n];
 		for (int i = 0; i < n; i++) {
-			a[i] = num1.nextInt(9); // 0-100µÄËæ»úÊı
+			a[i] = num1.nextInt(9); // 0-100çš„éšæœºæ•°
 			b[i] = num2.nextInt(9);
-			c[i] = fuhao.nextInt(2);//0ÊÇ³Ë·¨1ÊÇ³ı·¨
-			if(c[i]==1 || b[i]==0) {//³ıÊıÊÇ0ÖØĞÂËæ»ú
+			c[i] = fuhao.nextInt(2);// 0æ˜¯ä¹˜æ³•1æ˜¯é™¤æ³•
+			if(c[i]==1 || b[i]==0) {// é™¤æ•°æ˜¯0é‡æ–°éšæœº
 				b[i] = num2.nextInt(8)+1;
 			}
 			if(c[i]==0 || (a[i]==0 && b[i]==0)) {
@@ -83,7 +88,7 @@ public class MathExam6356 {
 				}
 			}
 		}
-		System.out.println("--------------±ê×¼´ğ°¸----------------");
+		System.out.println("--------------æ ‡å‡†ç­”æ¡ˆ----------------");
 		for (int i = 0; i < n; i++) {
 			if(grade==1) {
 			if (c[i] == 0) {
@@ -102,9 +107,9 @@ public class MathExam6356 {
 			}
 		}
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ HH:mm");
 		String time = sdf.format(new Date());
-		System.out.println("211606356 ³ÂÓî " + time);// Êä³öÑ§ºÅĞÕÃû Ê±¼ä
+		System.out.println("211606356 é™ˆå®‡ " + time);// è¾“å‡ºå­¦å·å§“åæ—¶é—´
 	}
 
 	public static void gradeOne() {
@@ -113,21 +118,21 @@ public class MathExam6356 {
 		c = new int[n];
 
 		for (int i = 0; i < n; i++) {
-			a[i] = num1.nextInt(100); // 0-100µÄËæ»úÊı
+			a[i] = num1.nextInt(100);// 0-100çš„éšæœºæ•°
 			b[i] = num2.nextInt(100);
 			c[i] = fuhao.nextInt(2);
 		}
 		for (int i = 0; i < n; i++) {
-			if (c[i] == 0) {// Ëæ»ú¼Ó·¨
+			if (c[i] == 0) {// éšæœºåŠ æ³•
 				while (a[i] + b[i] > 100) {
-					// Èç¹ûºÍ´óÓÚ100ÖØĞÂËæ»ú
+					// éšæœºå‡æ³•
 					a[i] = num1.nextInt(100);
 					b[i] = num2.nextInt(100);
 				}
 				
-			} else {// Ëæ»ú¼õ·¨
+			} else {// éšæœºå‡æ³•
 				while (a[i] - b[i] < 0) {
-					// Èç¹û²îĞ¡ÓÚ0ÖØĞÂËæ»ú
+					// å¦‚æœå·®å°äº0é‡æ–°éšæœº
 					a[i] = num1.nextInt(100);
 					b[i] = num2.nextInt(100);
 				}
