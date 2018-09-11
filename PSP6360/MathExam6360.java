@@ -22,44 +22,44 @@ public class MathExam6360 {
 		DateFormat dt = DateFormat.getDateTimeInstance();
 		dt.format(date);
 		
-		File file = new File ("out.txt");//´´½¨ÎÄ±¾
+		File file = new File ("out.txt");//åˆ›å»ºæ–‡æœ¬
 		FileWriter fw=null;
 			try {
 				fw = new FileWriter(file);
 			
 			} catch (IOException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 				e.printStackTrace();
 			}	
 			BufferedWriter bw = new BufferedWriter(fw);
 		int first=0,symbol=0,second=0,mark=0,w=0;
-		int [] an=new int[count];//´´½¨Êı×é£¬ÓÃÓÚ´æ´¢Êı¾İ£¬´æ´¢´ğ°¸¡£
-		int [] bn=new int[count];//´æ´¢µÚÒ»¸öÊı×Ö£¬Ê½×ÓµÄµÚÒ»¸öÊı£»
-		int [] cn=new int[count];//´æ´¢µÚ¶ş¸öÊı×Ö£¬ÓÃÓÚÅĞ¶Ï·ûºÅ£»
-		int [] dn=new int[count];//´æ´¢µÚÈı¸öÊı×Ö£¬Ê½×ÓµÄµÚ¶ş¸öÊı
-		int [] en=new int[count];//´æ´¢ÓàÊı£»
+		int [] an=new int[count];//åˆ›å»ºæ•°ç»„ï¼Œç”¨äºå­˜å‚¨æ•°æ®ï¼Œå­˜å‚¨ç­”æ¡ˆã€‚
+		int [] bn=new int[count];//å­˜å‚¨ç¬¬ä¸€ä¸ªæ•°å­—ï¼Œå¼å­çš„ç¬¬ä¸€ä¸ªæ•°ï¼›
+		int [] cn=new int[count];//å­˜å‚¨ç¬¬äºŒä¸ªæ•°å­—ï¼Œç”¨äºåˆ¤æ–­ç¬¦å·ï¼›
+		int [] dn=new int[count];//å­˜å‚¨ç¬¬ä¸‰ä¸ªæ•°å­—ï¼Œå¼å­çš„ç¬¬äºŒä¸ªæ•°
+		int [] en=new int[count];//å­˜å‚¨ä½™æ•°ï¼›
 		Random r =new Random(); 
 		while(w <count) {
 			
 			
-			if(mark==0) //ÅĞ¶ÏÌâºÅÊÇ·ñĞèÒª¸üĞÂ£¬ÈôĞèÒªÔòÊäÈëÌâºÅ¡£
+			if(mark==0) //åˆ¤æ–­é¢˜å·æ˜¯å¦éœ€è¦æ›´æ–°ï¼Œè‹¥éœ€è¦åˆ™è¾“å…¥é¢˜å·ã€‚
 			{
 				try {
 					bw.write(String.valueOf("("+ (w+1) +") "));
 				} catch (IOException e) {
-					// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+					// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 					e.printStackTrace();
 				}
 			}
 			
 			
-		for(int i=0;i<4;i++)//Ñ­»·ËÄ´Î£¬Ëæ»úÉú³ÉÈı¸öÊı¡£²¢ÔÚµÚËÄ´Î½øĞĞ·ûºÅÅĞ¶Ï£¬×îºóÔÚÎÄ±¾ÊäÈëÊ½×Ó¡£
+		for(int i=0;i<4;i++)//å¾ªç¯å››æ¬¡ï¼Œéšæœºç”Ÿæˆä¸‰ä¸ªæ•°ã€‚å¹¶åœ¨ç¬¬å››æ¬¡è¿›è¡Œç¬¦å·åˆ¤æ–­ï¼Œæœ€ååœ¨æ–‡æœ¬è¾“å…¥å¼å­ã€‚
 		{
 			if(i==0)
 			{
-				int number = (int)Math.floor((r.nextDouble()*100.0));//Éú³ÉÊ½×ÓµÄµÚÒ»¸öÊı
+				int number = (int)Math.floor((r.nextDouble()*100.0));//ç”Ÿæˆå¼å­çš„ç¬¬ä¸€ä¸ªæ•°
 				first=number;
-				bn[w]=first; //½«Ê½×ÓµÄÊı×Ö´æÈëÊı×éÖĞ£¬·½±ãÖ®ºóµÄÌáÈ¡
+				bn[w]=first; //å°†å¼å­çš„æ•°å­—å­˜å…¥æ•°ç»„ä¸­ï¼Œæ–¹ä¾¿ä¹‹åçš„æå–
 			}
 			
 			
@@ -67,16 +67,16 @@ public class MathExam6360 {
 			{
 				if(grade==1) 
 				{
-					int number = (int)Math.floor((r.nextDouble()*2.0));//Éú³ÉµÚ¶ş¸öÊı×Ö£¬ÓÃÓÚÅĞ¶Ï·ûºÅ
+					int number = (int)Math.floor((r.nextDouble()*2.0));//ç”Ÿæˆç¬¬äºŒä¸ªæ•°å­—ï¼Œç”¨äºåˆ¤æ–­ç¬¦å·
 					symbol=number;
 				}
 				
 				else if(grade==2)
 				{
-					int number = (int)Math.floor((r.nextDouble()*4.0));//Éú³ÉµÚ¶ş¸öÊı×Ö£¬ÓÃÓÚÅĞ¶Ï·ûºÅ
+					int number = (int)Math.floor((r.nextDouble()*4.0));//ç”Ÿæˆç¬¬äºŒä¸ªæ•°å­—ï¼Œç”¨äºåˆ¤æ–­ç¬¦å·
 					symbol=number;
 				}
-				cn[w]=symbol;//½«Ê½×ÓµÄÊı×Ö´æÈëÊı×éÖĞ£¬·½±ãÖ®ºóµÄÌáÈ¡
+				cn[w]=symbol;//å°†å¼å­çš„æ•°å­—å­˜å…¥æ•°ç»„ä¸­ï¼Œæ–¹ä¾¿ä¹‹åçš„æå–
 				
 			}
 			
@@ -85,29 +85,29 @@ public class MathExam6360 {
 			{	
 				if(symbol==3)
 				{
-					int number = 1+(int)Math.floor((r.nextDouble()*10.0));//Éú³ÉµÚÈı¸öÊı×Ö
+					int number = 1+(int)Math.floor((r.nextDouble()*10.0));//ç”Ÿæˆç¬¬ä¸‰ä¸ªæ•°å­—
 					second=number;
 				}
 				else 
 				{
-					int number = 1+(int)Math.floor((r.nextDouble()*100.0));//Éú³ÉµÚÈı¸öÊı×Ö
+					int number = 1+(int)Math.floor((r.nextDouble()*100.0));//ç”Ÿæˆç¬¬ä¸‰ä¸ªæ•°å­—
 					second=number;
 				}
-				dn[w]=second;//½«Ê½×ÓµÄÊı×Ö´æÈëÊı×éÖĞ£¬·½±ãÖ®ºóµÄÌáÈ¡
+				dn[w]=second;//å°†å¼å­çš„æ•°å­—å­˜å…¥æ•°ç»„ä¸­ï¼Œæ–¹ä¾¿ä¹‹åçš„æå–
 			}		
 			
 			
 			else if(i==3)
 			{
-				en[w]=0;//ÊäÈëÓàÊı
+				en[w]=0;//è¾“å…¥ä½™æ•°
 				
-				if (symbol==0)//ÅĞ¶Ï·ûºÅ£¬0Îª+ºÅ£¬1Îª-ºÅ£¬2Îª¡ÁºÅ£¬3Îª¡ÂºÅ
+				if (symbol==0)//åˆ¤æ–­ç¬¦å·ï¼Œ0ä¸º+å·ï¼Œ1ä¸º-å·ï¼Œ2ä¸ºÃ—å·ï¼Œ3ä¸ºÃ·å·
 				{   
 					try {
-						bw.write(String.valueOf(" "+ first+ " + " +second+" = "));//ÊäÈëÊ½×Ó
-						an[w]=first+second;//½«´ğ°¸´æ´¢ÔÚÊı×éanÖĞ
+						bw.write(String.valueOf(" "+ first+ " + " +second+" = "));//è¾“å…¥å¼å­
+						an[w]=first+second;//å°†ç­”æ¡ˆå­˜å‚¨åœ¨æ•°ç»„anä¸­
 					} catch (IOException e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 						e.printStackTrace();
 					}
 				
@@ -119,10 +119,10 @@ public class MathExam6360 {
 					if(first-second < 0)
 					{mark=1;break;}
 					try {
-						bw.write(String.valueOf(" "+ first+ " - " +second+" = "));//ÊäÈëÊ½×Ó
-						an[w]=first-second;//½«´ğ°¸´æ´¢ÔÚÊı×éanÖĞ
+						bw.write(String.valueOf(" "+ first+ " - " +second+" = "));//è¾“å…¥å¼å­
+						an[w]=first-second;//å°†ç­”æ¡ˆå­˜å‚¨åœ¨æ•°ç»„anä¸­
 					} catch (IOException e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 						e.printStackTrace();
 					}
 
@@ -133,10 +133,10 @@ public class MathExam6360 {
 				else if((symbol==2)) 
 				{
 					try {
-						bw.write(String.valueOf(" "+ first+ " ¡Á " +second+" = "));//ÊäÈëÊ½×Ó
-						an[w]=first*second;//½«´ğ°¸´æ´¢ÔÚÊı×éanÖĞ
+						bw.write(String.valueOf(" "+ first+ " Ã— " +second+" = "));//è¾“å…¥å¼å­
+						an[w]=first*second;//å°†ç­”æ¡ˆå­˜å‚¨åœ¨æ•°ç»„anä¸­
 					} catch (IOException e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 						e.printStackTrace();
 					}
 				}
@@ -148,101 +148,101 @@ public class MathExam6360 {
 					
 					
 					try {
-						en[w]=first % second;//½«ÓàÊı´æÈëÊı×éenÖĞ
-						bw.write(String.valueOf(" "+ first+ " ¡Â " +second+" = "));//ÊäÈëÊ½×Ó
-						an[w]=(int)(first/second);//½«´ğ°¸´æ´¢ÔÚÊı×éanÖĞ
+						en[w]=first % second;//å°†ä½™æ•°å­˜å…¥æ•°ç»„enä¸­
+						bw.write(String.valueOf(" "+ first+ " Ã· " +second+" = "));//è¾“å…¥å¼å­
+						an[w]=(int)(first/second);//å°†ç­”æ¡ˆå­˜å‚¨åœ¨æ•°ç»„anä¸­
 					} catch (IOException e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 						e.printStackTrace();
 					}
 				}
-			mark=0;//Ö¤Ã÷Ê½×Ó³É¹¦Ğ´Èë£¬ÌâºÅĞèÒª¸üĞÂ¡£
+			mark=0;//è¯æ˜å¼å­æˆåŠŸå†™å…¥ï¼Œé¢˜å·éœ€è¦æ›´æ–°ã€‚
 			w++;
 			
 			}	
 			
 				
-		}//ÄÚÑ­»·½áÊø
+		}//å†…å¾ªç¯ç»“æŸ
 	
 				
-		if(mark==0)//ÅĞ¶ÏÊ½×ÓÊÇ·ñ³É¹¦Ğ´Èë£¬Èç¹û³É¹ûÔòÖ´ĞĞ»»ĞĞ¡£
+		if(mark==0)//åˆ¤æ–­å¼å­æ˜¯å¦æˆåŠŸå†™å…¥ï¼Œå¦‚æœæˆæœåˆ™æ‰§è¡Œæ¢è¡Œã€‚
 			try {
 				bw.newLine();
 			} catch (IOException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 				e.printStackTrace();
 			}
-	}//whileÑ­»·½áÊø¡£
+	}//whileå¾ªç¯ç»“æŸã€‚
 		
 		
 		
 		try {
 				
-				bw.write(String.valueOf("-----------------±ê×¼´ğ°¸ -----------------------"));
+				bw.write(String.valueOf("-----------------æ ‡å‡†ç­”æ¡ˆ -----------------------"));
 				bw.newLine();
 				
 			} catch (IOException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 				e.printStackTrace();
 		}
 		
 
-		for(int i=0;i<count;i++)//Ñ­»·Êä³ö´ğ°¸£¬ÀûÓÃÊı×é¡£
+		for(int i=0;i<count;i++)//å¾ªç¯è¾“å‡ºç­”æ¡ˆï¼Œåˆ©ç”¨æ•°ç»„ã€‚
 		{
 			
-			if(cn[i]==0) //ÅĞ¶Ï·ûºÅ£¬0Îª+ºÅ£¬1Îª-ºÅ£¬2Îª¡ÁºÅ£¬3Îª¡ÂºÅ
+			if(cn[i]==0) //åˆ¤æ–­ç¬¦å·ï¼Œ0ä¸º+å·ï¼Œ1ä¸º-å·ï¼Œ2ä¸ºÃ—å·ï¼Œ3ä¸ºÃ·å·
 			{
 				try {
-					bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " + " +dn[i]+" = "+an[i]));//½«Õû¸öÊ½×ÓÊäÈë½øÎÄ±¾¡£
+					bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " + " +dn[i]+" = "+an[i]));//å°†æ•´ä¸ªå¼å­è¾“å…¥è¿›æ–‡æœ¬ã€‚
 				} catch (IOException e) {
-					// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+					// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 					e.printStackTrace();
 				}
 			}
 			
 			
-			else if(cn[i]==1) //ÅĞ¶Ï·ûºÅ£¬0Îª+ºÅ£¬1Îª-ºÅ£¬2Îª¡ÁºÅ£¬3Îª¡ÂºÅ
+			else if(cn[i]==1) //åˆ¤æ–­ç¬¦å·ï¼Œ0ä¸º+å·ï¼Œ1ä¸º-å·ï¼Œ2ä¸ºÃ—å·ï¼Œ3ä¸ºÃ·å·
 			{
 				try {
-					bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " - " +dn[i]+" = "+an[i]));//½«Õû¸öÊ½×ÓÊäÈë½øÎÄ±¾¡£
+					bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " - " +dn[i]+" = "+an[i]));//å°†æ•´ä¸ªå¼å­è¾“å…¥è¿›æ–‡æœ¬ã€‚
 				} catch (IOException e) {
-					// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+					// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 					e.printStackTrace();
 				}
 			}
 			
 			
-			else if(cn[i]==2) //ÅĞ¶Ï·ûºÅ£¬0Îª+ºÅ£¬1Îª-ºÅ£¬2Îª¡ÁºÅ£¬3Îª¡ÂºÅ
+			else if(cn[i]==2) //åˆ¤æ–­ç¬¦å·ï¼Œ0ä¸º+å·ï¼Œ1ä¸º-å·ï¼Œ2ä¸ºÃ—å·ï¼Œ3ä¸ºÃ·å·
 			{
 				try {
-					bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " ¡Á " +dn[i]+" = "+an[i]));//½«Õû¸öÊ½×ÓÊäÈë½øÎÄ±¾¡£
+					bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " Ã— " +dn[i]+" = "+an[i]));//å°†æ•´ä¸ªå¼å­è¾“å…¥è¿›æ–‡æœ¬ã€‚
 				} catch (IOException e) {
-					// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+					// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 					e.printStackTrace();
 				}
 
 			}
 			
 			
-			else if(cn[i]==3) //ÅĞ¶Ï·ûºÅ£¬0Îª+ºÅ£¬1Îª-ºÅ£¬2Îª¡ÁºÅ£¬3Îª¡ÂºÅ
+			else if(cn[i]==3) //åˆ¤æ–­ç¬¦å·ï¼Œ0ä¸º+å·ï¼Œ1ä¸º-å·ï¼Œ2ä¸ºÃ—å·ï¼Œ3ä¸ºÃ·å·
 			{
 				
-				if(en[i]==0) //ÅĞ¶ÏÓàÊıÊÇ·ñÎª0£¬Îª0ÔòÖ´ĞĞÏÂÁĞ´úÂë
+				if(en[i]==0) //åˆ¤æ–­ä½™æ•°æ˜¯å¦ä¸º0ï¼Œä¸º0åˆ™æ‰§è¡Œä¸‹åˆ—ä»£ç 
 				{
 					try {
-						bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " ¡Â " +dn[i]+" = "+an[i]));//½«Õû¸öÊ½×ÓÊäÈë½øÎÄ±¾¡£
+						bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " Ã· " +dn[i]+" = "+an[i]));//å°†æ•´ä¸ªå¼å­è¾“å…¥è¿›æ–‡æœ¬ã€‚
 					} catch (IOException e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 						e.printStackTrace();
 					}
 				}
 				
-				else if(en[i]!=0)//ÅĞ¶ÏÓàÊıÊÇ·ñÎª0£¬²»Îª0ÔòÖ´ĞĞÏÂÁĞ´úÂë
+				else if(en[i]!=0)//åˆ¤æ–­ä½™æ•°æ˜¯å¦ä¸º0ï¼Œä¸ä¸º0åˆ™æ‰§è¡Œä¸‹åˆ—ä»£ç 
 				{
 					try {
-						bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " ¡Â " +dn[i]+" = "+an[i]+ " ¡¤¡¤¡¤ "+ en[i]));//½«Õû¸öÊ½×ÓÊäÈë½øÎÄ±¾£¬°üÀ¨ÓàÊı¡£
+						bw.write(String.valueOf("("+(i+1)+") "+ bn[i]+ " Ã· " +dn[i]+" = "+an[i]+ " Â·Â·Â· "+ en[i]));//å°†æ•´ä¸ªå¼å­è¾“å…¥è¿›æ–‡æœ¬ï¼ŒåŒ…æ‹¬ä½™æ•°ã€‚
 					} catch (IOException e) {
-						// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+						// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 						e.printStackTrace();
 					}
 
@@ -252,36 +252,36 @@ public class MathExam6360 {
 			try {
 				bw.newLine();
 			} catch (IOException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 				e.printStackTrace();
 			}
 		}
 		
 		
 		try {
-				bw.write(String.valueOf("                   211606360   ¶¡ÅàêÍ "+ dt.format(date)));
+				bw.write(String.valueOf("                   211606360   ä¸åŸ¹æ™– "+ dt.format(date)));
 				bw.close();
 				fw.close();
 			} catch (IOException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO è‡ªåŠ¨ç”Ÿæˆçš„ catch å—
 				e.printStackTrace();
 				}
 	}
 	public static void main(String[] args)  {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
-		String Regex="[1-9]{1}[0-9]{0,10}";//ÕıÔò±í´ïÊ½£¬½«ÊäÈëµÄ²ÎÊıÏŞ¶¨ÔÚÕıÕûÊı·¶Î§ÄÚ£¬Í¬Ê±¸øÓè×î´ó¼«ÏŞ¡£
-		String Regex2="[-2]{1}{0}";//ÕıÔò±í´ïÊ½£¬½«ÊäÈëµÄ²ÎÊıÏŞ¶¨ÔÚÕıÕûÊı·¶Î§ÄÚ£¬Í¬Ê±¸øÓè×î´ó¼«ÏŞ¡£
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æ–¹æ³•å­˜æ ¹
+		String Regex="[1-9]{1}[0-9]{0,10}";//æ­£åˆ™è¡¨è¾¾å¼ï¼Œå°†è¾“å…¥çš„å‚æ•°é™å®šåœ¨æ­£æ•´æ•°èŒƒå›´å†…ï¼ŒåŒæ—¶ç»™äºˆæœ€å¤§æé™ã€‚
+		String Regex2="[1-2]{1}{0}";//æ­£åˆ™è¡¨è¾¾å¼ï¼Œå°†è¾“å…¥çš„å‚æ•°é™å®šåœ¨æ­£æ•´æ•°èŒƒå›´å†…ï¼ŒåŒæ—¶ç»™äºˆæœ€å¤§æé™ã€‚
 		Pattern p =Pattern.compile(Regex);
 		Pattern p2 =Pattern.compile(Regex2);		
 		Scanner sc = new Scanner(System.in);
 		int num[] = new int [args.length];
 		while(true) {
 
-			if(args.length == 1)//½«find¸ÄÎªmatches£¬ÈÃÅĞ¶Ï¸üÎª¾«×¼¡£
+			if(args.length == 1)//å°†findæ”¹ä¸ºmatchesï¼Œè®©åˆ¤æ–­æ›´ä¸ºç²¾å‡†ã€‚
 			{
-				//´´½¨Êı×é£¬ÓÃÓÚ¶ÁÈ¡²ÎÊı
+				//åˆ›å»ºæ•°ç»„ï¼Œç”¨äºè¯»å–å‚æ•°
 				Matcher count=p.matcher(args[0]);
-				//½«²ÎÊı×ª»¯ÎªÕûĞÍ
+				//å°†å‚æ•°è½¬åŒ–ä¸ºæ•´å‹
 				if(count.matches())
 				{	
 					num [0] = Integer.parseInt(args[0]);
@@ -296,14 +296,14 @@ public class MathExam6360 {
 						Matcher grade=p2.matcher(args[1]);
 						if(count.matches() && grade.matches())
 						{
-							num [1] = Integer.parseInt(args[1]);//½«²ÎÊı×ª»¯ÎªÕûĞÍ
+							num [1] = Integer.parseInt(args[1]);//å°†å‚æ•°è½¬åŒ–ä¸ºæ•´å‹
 							num [0] = Integer.parseInt(args[0]);
 							create(num[0],num[1]);
 							break;
 						}
 						
 			}
-			System.out.println("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë²ÎÊı[ÌâÊı·¶Î§£º1-99999999999£¬Äê¼¶·¶Î§£º1-2(Äê¼¶Ä¬ÈÏÎª1)]£º");
+			System.out.println("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥å‚æ•°[é¢˜æ•°èŒƒå›´ï¼š1-99999999999ï¼Œå¹´çº§èŒƒå›´ï¼š1-2(å¹´çº§é»˜è®¤ä¸º1)]ï¼š");
 			String t = sc.nextLine();
 			args = t.trim().split(" ");
 			continue;
