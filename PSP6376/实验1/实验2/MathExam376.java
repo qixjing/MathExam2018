@@ -28,6 +28,9 @@ public class MathExam376 {
 				return;
 			} else if (matches) {
 				leng = Integer.parseInt(args[0]);
+			}else {
+				System.out.println("输入的第一个参数不是正整数，请重新运行");
+				return;
 			}
 
 			if (2 == args.length) {
