@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,7 +15,6 @@ public class MathExam6357 {
 	
 
 	public static void main(String[] args) throws IOException {
-			
 			for(;;) {
 				Scanner input=new Scanner(System.in);
 				System.out.println("请输入问题数目和所需年级：");		
@@ -41,8 +42,8 @@ public class MathExam6357 {
 				}
 				if(m==1) {											//用随机数的方法来产生题目
 					for(int i=0;i<n;i++){
-						int a=(int) (Math.random()*100+1);
-						int b=(int) (Math.random()*100+1);
+						int a=(int) (Math.random()*20);
+						int b=(int) (Math.random()*(20-a));
 						int c=(int) (Math.random()*2);
 						//StringBuffer question = null;
 						//StringBuffer result = null;
@@ -52,6 +53,7 @@ public class MathExam6357 {
 							questionlist[i]="("+(i+1)+")"+a+"+"+b+"=";
 							answerlist[i]=" "+(a+b);
 							//result = new StringBuffer(" "+(a+b));
+							
 							}
 						else {
 							b=(int) (Math.random()*a+1);
@@ -160,6 +162,10 @@ public class MathExam6357 {
 
 				}
 			}
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+			String time = sdf.format(new Date());
+			System.out.println("陈远军"+time);
+
 			}
 
 }
