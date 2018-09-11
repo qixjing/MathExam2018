@@ -33,7 +33,7 @@ FileOutputStream in =new FileOutputStream("out.txt");
 	String num1[] = new String [num[0]];
 	String num2[] = new String [num[0]];
 	String num3[] = new String [num[0]];
-
+	int num4[] = new int [num[0]];
 	for (int i = 0; i < num3.length; i++) {
 		num3[i]="0";
 	}
@@ -41,8 +41,8 @@ FileOutputStream in =new FileOutputStream("out.txt");
 	for(int i = 0;i<k[0];i++) {
 	int one = (int) (Math.random()*20);
 	int two = 1+(int) (Math.random()*20);
-	int three = (int) (Math.random()*2);
-
+	int three = (int) (Math.random()*4);
+	num4[i] = three;
 if(three==0) {
 	System.out.println("("+(i+1)+")"+one+"-"+two+"=");
 	num1[i]="("+(i+1)+")"+one+"-"+two+"=";
@@ -54,7 +54,16 @@ else if(three==1) {
 	num1[i]="("+(i+1)+")"+one+"+"+two+"=";
 	num2[i]=" "+(one+two);
 }
-
+else if(three==2) {num1[i] = ("("+(i+1)+")"+one+"*"+two+"=");
+num2[i] = (" "+(one*two));
+	
+	
+}
+else if(three==3) {num1[i] = ("("+(i+1)+")"+one+"¡Â"+two+"=");
+num2[i]=(" "+(one/two));
+num3[i] = " "+"......"+(one%two);
+	
+}
 
 byte[] s =num1[i].getBytes();
 String d ="\r\n";
@@ -79,19 +88,26 @@ for(int i=0;i<k[0];i++) {
 	byte[] y = d.getBytes(); 
 	byte[] s =num1[i].getBytes();
 	byte[] p =num2[i].getBytes();
-
+	byte[] h=num3[i].getBytes();
+	if(num4[i]==3) {
 	in.write(s);
 	in.write(p);
-	
+	in.write(h);
 	in.write(y);
-
-
-
 	}
+	else {
+	
+		in.write(s);
+		in.write(p);
+	
+		in.write(y);
+	}
+}
+
+
 break;
 	}
-	
-}
+	}
 }
 
 
