@@ -33,11 +33,17 @@ public class MathExam6374 {
 			 c[1]=input.nextInt();
 			continue;
 			}
-			if(c[0]<1&&c[1]==1) {
+			if(c[0]<1) {
 			System.out.println("输入的题目数请大于1");
 			 c[0]=input.nextInt();
 			 c[1]=input.nextInt();
 			continue;
+			}
+			if(c[0]>81&&c[1]==2) {
+				System.out.println("请输入1-81之间的题目数，否则题目重复");
+				 c[0]=input.nextInt();
+				 c[1]=input.nextInt();
+				continue;
 			}
 			else {
 			flag=1;
