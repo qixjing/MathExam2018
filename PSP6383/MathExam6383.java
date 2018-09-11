@@ -14,7 +14,7 @@ public class MathExam {
 	//取一个随机数
 	public static int GetRandomNum(){
 		//(数据类型)(最小值+Math.random()*(最大值-最小值+1))
-		return (int)(1+Math.random()*(100-0+1));
+		return (int)(0+Math.random()*(100-0+1));
 	}
 	//生成题目(添加年级参数)
 	
@@ -26,11 +26,11 @@ public class MathExam {
 				int Temp=GetRandomNum();
 				int Temp2;
 				if(GetRandomNum()>49) {
-					Temp2=(int)(1+Math.random()*((100-Temp)-0+1));
+					Temp2=(int)(0+Math.random()*((100-Temp)-0+1));
 					TempQuestion=TempQuestion+"("+String.valueOf(i+1)+") "+String.valueOf(Temp)+" + "+String.valueOf(Temp2)+" ="+"\r\n";
 					TempAnswer=TempAnswer+"("+String.valueOf(i+1)+") "+String.valueOf(Temp)+" + "+String.valueOf(Temp2)+" = "+String.valueOf(Temp+Temp2)+"\r\n";
 				}else {
-					Temp2=(int)(1+Math.random()*(Temp-0+1));
+					Temp2=(int)(0+Math.random()*(Temp-0+1));
 					TempQuestion=TempQuestion+"("+String.valueOf(i+1)+") "+String.valueOf(Temp)+" - "+String.valueOf(Temp2)+" ="+"\r\n";
 					TempAnswer=TempAnswer+"("+String.valueOf(i+1)+") "+String.valueOf(Temp)+" - "+String.valueOf(Temp2)+" = "+String.valueOf(Temp-Temp2)+"\r\n";
 				}			
@@ -42,14 +42,15 @@ public class MathExam {
 			String Answer="";
 			for(int j=0;j<num;j++) {
 				int Ismul=GetRandomNum();
-				int mul1=(int)(1+Math.random()*(10-0+1));
+				int mul1=(int)(0+Math.random()*(10-0+1));
 				if(Ismul>49) {
-					int mul2=(int)(1+Math.random()*(10-0+1));
+					int mul2=(int)(0+Math.random()*(10-0+1));
 					Question=Question+"("+String.valueOf(j+1)+") "+String.valueOf(mul1)+" × "+String.valueOf(mul2)+" ="+"\r\n";
 					Answer=Answer+"("+String.valueOf(j+1)+") "+String.valueOf(mul1)+" × "+String.valueOf(mul2)+" = "+String.valueOf(mul1*mul2)+"\r\n";
 				}else {
 					int roo;
-					int mul2=(int)(1+Math.random()*(mul1-0+1));
+					//数据范围需要注意
+					int mul2=(int)(1+Math.random()*(mul1-1+1));
 					roo=mul1%mul2;
 					if(roo==0) {
 						Question=Question+"("+String.valueOf(j+1)+") "+String.valueOf(mul1)+" ÷ "+String.valueOf(mul2)+" ="+"\r\n";
