@@ -73,10 +73,45 @@ public class MathExam5240 {
 		}
 
 	}
+	public static int Input(String[] args) {
+		String regex="\\d*";
+		if(args.length!=1) {//解决输入参数为多个
+			System.out.println("请输入单个参数。");
+			Scanner input=new Scanner(System.in);
+			args[0]=input.nextLine();
+		}
+		
+		int n=nonnumeric(regex,args);
+		while(n>30 || n<0) {
+			System.out.println("请输入一个不大于30不小于0的数字");
+			Scanner input=new Scanner(System.in);
+			args[0]=input.nextLine();
+			n=nonnumeric(regex,args);
+		}
+		return n;
+		
+	}
+	public static int nonnumeric(String regex,String[] args) {
+		
+		while(!args[0].matches(regex)) {//解决如果输入不为数字
+			System.out.println("请输入正确的数字。");
+			Scanner input=new Scanner(System.in);
+			args[0]=input.nextLine();
+		
+			}
+			String s = String.valueOf(args[0]);
+			int n = Integer.parseInt(s);
+			return n;
+			
+	}
 	public static void main(String[] args){
 		// TODO 自动生成的方法存根
-		String s = String.valueOf(args[0]);
-		int n = Integer.parseInt(s);
+		System.out.println("---------------欢迎使用MathExam5240程序---------------");
+		System.out.println("1.请按照格式：输入“题目数量（数字）”。 例：8，即程序自动生成八道算数题。");
+		System.out.println("2.程序最多一次可生成30道算术题。学习是一个循序渐进的过程，不宜操之过急。");
+		System.out.println("3.使用过程中若遇到无法解决的bug，可联系博客：乌鸦君一米八进行代码改进。");
+		System.out.println("-----------------------------------------------------");
+		int n=Input(args);
 		try {
 			math(n);
 		} catch (Exception e) {
