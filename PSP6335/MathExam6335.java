@@ -1,37 +1,40 @@
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.io.ObjectOutputStream.PutField;
+import java.io.OutputStream;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class MathExam6335 {
 	/*
  * 完成一个命令行工具MathExam，自动生成一份小学一年级的数学四则运算题。
- *     1.增加了对年级参数的识别。；
- *     2.确保命令行接受的参数是空、一个参数、两个参数和多个参数都能运行。
- *     【默认值——空参数：题数为”10“，年级为”2“；    一个参数：年级默认值为”2“； 
- *     						两个参数无需使用默认值；       多个参数只接受前两个参数值。】
- *     【ps：还存在输入“00000000001”的识别错误bug，待修正】
+ *     1.修复了用户在输入参数时格式为”00000000000x“不能识别为数字”x“的bug
+ *     2.规范代码格式；
+ *     3.修改inPut()和mathProblem()方法为私有方法。
  * 		coding ： GBK
- * 		MathExam_V1.0.8
+ * 		MathExam_V2.0.0【最终版本】
  */	
 	int firstNumber, secondNumber;		
-	int symbol;	
+	int symbol;	//运算符号判断
 	static int grade;
 	static int count;		
 	int result;		
 	String cutLine = "====================标准答案====================";
 	
 	String[] str_ArithmeticProblem = new String[100+1];	//存放算术题
-	String[] str_MathAnswer = new String[100+1];	//存放算术题及答案
+	String[] str_MathAnswer = new String[100+1];	//存放题目和标准答案
 	
-	//输入的参数为空值
+	//当输入参数为空值
 	public MathExam6335(){
 		String count_Default = "10";	//定义参数默认值
 		String grade_Default = "2";
@@ -55,14 +58,14 @@ public class MathExam6335 {
 		outPut();
 	}
 
-	public void inPut(String str0,String str1) {
+	private void inPut(String str0,String str1) {
 		// TODO Auto-generated method stub
-		boolean flag1 = true;
+		boolean flag1 = true;		//跳向异常语句
 		boolean flag2 = true;
 		
 		Scanner in = new Scanner(System.in);
-		String regex1 = "[1-9]{1}[0-9]{0,1}";		//正则表达式判断输入参数为非零正整数
-		String regex2 = "[1-2]{1}{0}";
+		String regex1 = "0*[1-9]{1}[0-9]{0,1}";		//正则表达式判断输入参数为非零正整数
+		String regex2 = "0*[1-2]{1}{0}";
 		Pattern pattern1 = Pattern.compile(regex1);
 		Pattern pattern2 = Pattern.compile(regex2);
 		Matcher matcher1,matcher2;
@@ -76,7 +79,7 @@ public class MathExam6335 {
 				flag1 = matcher1.matches();
 				flag2 = matcher2.matches();
 				
-				if(!flag1 || !flag2){	
+				if(!flag1 || !flag2){		//两个参数不符合正则表达式规范
 						throw new NumberFormatException();		
 				} else {	
 					count = Integer.valueOf(str0);
@@ -94,6 +97,7 @@ public class MathExam6335 {
 				}
 				continue;
 			}			
+			in.close();
 			break;
 		}
 	}
@@ -120,7 +124,7 @@ public class MathExam6335 {
 			byte[] bytes = str.getBytes();		//string类型转换为能被机器识别的二进制码
 			byte[] bytescut = cutLine.getBytes();
 			
-			FileOutputStream fos = new FileOutputStream(file);	
+			FileOutputStream fos = new FileOutputStream(file);	//文件写入流
 			for (int i = 0; i < count; i++) {
 				byte[] b_ArithmeticProblem = str_ArithmeticProblem[i].getBytes();
 				fos.write(b_ArithmeticProblem);
@@ -138,7 +142,7 @@ public class MathExam6335 {
 			fos.flush();
 			fos.close();	//关闭文件输出流
 			
-			System.out.print("-------  本次共生成" + count + "道小学"+ grade + "年级算数题，请打开out.txt文件查看详情    -------");
+			System.out.println("-------    文件写入完毕，请打开out.txt文件查看详情    -------");
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -150,83 +154,8 @@ public class MathExam6335 {
 		
 	}
 	
-/*
-	 * 加法：
-	 *  1.一二年级的加法的两个加数在20以内。
-	 * 
-*/
-	private void add(int n1, int n2,int i) {
-		// TODO Auto-generated method stub
-		result = n1 + n2;
-		str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " + " + n2 + " = ";
-		str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " + " + n2 + " = " + result;
-	}
-	
-	/*
-	 * 减法：
-	 * 
-	 * 1.一二年级两数之差应该在大于0；
-	 * 2.被减数和减数在20以内。
-*/
-	private void sub(int n1, int n2,int i) {
-		// TODO Auto-generated method stub
-		if (n1 < n2) {
-			int num;
-			num = n1;
-			n1 = n2;
-			n2 = num;
-		}
-		result = n1 - n2;
-		str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " - " + n2 + " = ";
-		str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " - " + n2 + " = " + result;
-	}
-	
-	/*
-	 * 乘法：
-	 * 
-	 * 1.一二年级的乘法运算应该在0-9以内【九九乘法表】；
-	 * 
-*/
-	private void mul(int n1, int n2,int i) {
-		// TODO Auto-generated method stub
-		if (n1 > 9) {
-			n1 = (int)(Math.random()*10);
-		} 
-		if (n2 > 9) {
-			n2 = (int)(Math.random()*10);
-		}
-		result = n1 * n2;
-		str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " x " + n2 + " = ";
-		str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " x " + n2 + " = " + result;
-	}
-	
-	/*
-	 * 除法：
-	 * 
-	 * 1.一二年级的除法运算应该在”九九乘法表“范围以内；
-	 * 2.分母不能为”0“。
-	 * 
-*/
-	private void div(int i) {
-		// TODO Auto-generated method stub
-		while(true){
-			int n1 = (int)(Math.random()*82);
-			int n2 = (int)(Math.random()*81+1);
-			if(n1 % n2 == 0){
-				result = n1 / n2;
-				str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
-				str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = " + result;
-			}else if(n1 % n2 != 0){
-				result = n1 / n2;
-				str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
-				str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = " + result + "..." + (n1 % n2);
-			}
-			break;
-		}
-	}
-	
 	//生成算术题
-	public void mathProblem(int count) {	
+	private void mathProblem(int count) {	
 		Random rnd = new Random();
 		
 		for (int i = 0; i < count; i++) {
@@ -243,7 +172,7 @@ public class MathExam6335 {
 				case 1:
 					sub(firstNumber,secondNumber,i);
 					break;
-
+					
 				default:
 					break;
 				}
@@ -264,7 +193,7 @@ public class MathExam6335 {
 				case 3:
 					div(i);
 					break;
-
+					
 				default:
 					break;
 				}
@@ -272,8 +201,85 @@ public class MathExam6335 {
 			
 		}
 	}
+/*
+	 * 加法：
+	 *  1.一二年级的加法的两个加数在20以内。
+	 * 
+*/
+	private void add(int n1, int n2,int i) {
+		// TODO Auto-generated method stub
+		result = n1 + n2;
+		str_ArithmeticProblem[i] = "( " + (i+1) +" ) " + n1 + " + " + n2 + " = ";
+		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " + " + n2 + " = " + result;
+	}
+	
+	/*
+	 * 减法：
+	 * 
+	 * 1.一二年级两数之差应该在大于0；
+	 * 2.被减数和减数在20以内。
+*/
+	private void sub(int n1, int n2,int i) {
+		// TODO Auto-generated method stub
+		if (n1 < n2) {		//差为负数，交换数值
+			int num;
+			num = n1;
+			n1 = n2;
+			n2 = num;
+		}
+		result = n1 - n2;
+		str_ArithmeticProblem[i] = "( " + (i+1) +" ) " + n1 + " - " + n2 + " = ";
+		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " - " + n2 + " = " + result;
+	}
+	
+	/*
+	 * 乘法：
+	 * 
+	 * 1.一二年级的乘法运算应该在0-9以内【九九乘法表】；
+	 * 
+*/
+	private void mul(int n1, int n2,int i) {
+		// TODO Auto-generated method stub
+		if (n1 > 9) {
+			n1 = (int)(Math.random()*10);
+		} 
+		if (n2 > 9) {
+			n2 = (int)(Math.random()*10);
+		}
+		result = n1 * n2;
+		str_ArithmeticProblem[i] = "( " + (i+1) +" ) " + n1 + " x " + n2 + " = ";
+		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " x " + n2 + " = " + result;
+	}
+	
+	/*
+	 * 除法：
+	 * 
+	 * 1.一二年级的除法运算应该在”九九乘法表“范围以内；
+	 * 2.分母不能为”0“。
+	 * 
+*/
+	private void div(int i) {
+		// TODO Auto-generated method stub
+		while(true){
+			int n1 = (int)(Math.random()*82);
+			int n2 = (int)(Math.random()*81+1);
+			if(n1 % n2 == 0){
+				result = n1 / n2;
+				str_ArithmeticProblem[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = ";
+				str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = " + result;
+			}else if(n1 % n2 != 0){
+				result = n1 / n2;
+				str_ArithmeticProblem[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = ";
+				str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = " + result + "..." + (n1 % n2);
+			}
+			break;
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+//		MathExam.inPut(args[0], args[1]);
 		if(args.length == 0){
 			new MathExam6335();
 		} else if(args.length == 1){
@@ -285,6 +291,6 @@ public class MathExam6335 {
 			new MathExam6335(args[0], args[1]);
 		}
 		
-
 	}
+
 }
