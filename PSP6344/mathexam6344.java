@@ -43,7 +43,14 @@ public class mathexam211606344 {
 				}
 				break;					
 				}
-		
+			else {
+				try {
+					num = Integer.parseInt(stringArray[0]);
+					}catch(NumberFormatException e) {
+						System.out.println("请输入正整数的题目数！");
+						continue;
+					}
+			}
 			num = Integer.parseInt(stringArray[0]);
 			break;
 			}
@@ -129,7 +136,11 @@ public class mathexam211606344 {
 				}
 			}
 
-
+			Date day = new Date();
+			// 获取当前系统时间，并将输出改为yyyy年MM月dd日  HH:mm
+			SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日  HH:mm");
+			System.setOut(ps);
+			System.out.println("                 211606344原志斌"+df.format(day));
 
 			
 			File file = new File("e:/out.txt");
