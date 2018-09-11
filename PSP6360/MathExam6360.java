@@ -274,7 +274,7 @@ public class MathExam6360 {
 		Pattern p =Pattern.compile(Regex);
 		Pattern p2 =Pattern.compile(Regex2);		
 		Scanner sc = new Scanner(System.in);
-		int num[] = new int [args.length];
+		int num[] = new int [args.Length +5];//修改数组num[]的长度。
 		while(true) {
 
 			if(args.length == 1)//将find改为matches，让判断更为精准。
