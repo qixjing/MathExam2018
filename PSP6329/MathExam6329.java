@@ -52,8 +52,8 @@ public static void main(String[] args)throws IOException {
 		if(y==2){number = (int)Math.ceil((r.nextDouble()*2.0));
 		b[m]=number+2;
 			for(;;){
-				number = (int)Math.ceil((r.nextDouble()*99.0));a[m]=number;
-				number = (int)Math.ceil((r.nextDouble()*11.0));c[m]=number;
+				number = (int)Math.ceil((r.nextDouble()*50.0));a[m]=number;
+				number = (int)Math.ceil((r.nextDouble()*20.0));c[m]=number;
 				if(b[m]==3)if(a[m]*c[m]<100){fh="*";break;}
 				if(b[m]==4)if(a[m]%c[m]==0&&a[m]>=c[m]){fh="/";break;}
 			
