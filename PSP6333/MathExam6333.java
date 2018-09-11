@@ -20,6 +20,7 @@ public class MathExam6333 {
  			} catch(NumberFormatException e) {
  				System.out.println("题目数量必须为正整数，请重新输入！");
  			}
+			
 		String[] str=  new String[50];
 		File file =new File("out6333.txt");//把题目答案放到txt文件里
 		PrintStream ps = new PrintStream(file);
@@ -29,8 +30,26 @@ public class MathExam6333 {
 		System.out.println("-------------标准答案------------");
 		answer(n,str);
 		}
+		if(args.length==2) {//如果参数是两个该如何处理
+			n=Integer.parseInt(args[0]);//判断题目个数
+			grade=Integer.parseInt(args[1]);//判断年级
+			String[] str=  new String[50];
+			File file =new File("out6333.txt");//把题目答案放到txt文件里
+			PrintStream ps = new PrintStream(file);
+			System.setOut(ps);
+			if(grade==1) {
+				grade1(n,str);
+				System.out.println("-------------标准答案------------");
+				answer(n,str);
+				
+			}
+			if(grade==2) {
+			grade2(n,str);
+			System.out.println("-------------标准答案------------");
+			answer(n,str);
+			}
+		}
 	}
-		
 	public static void grade1(int n,String[] str) {//出题的方法
 		for(int i=0;i<n;i++) {
 			int n1=(int)(0+Math.random()*(2-1+1));//随机生成0和1，用来判断加法或者减法，0为加法，1为减法
@@ -56,13 +75,35 @@ public class MathExam6333 {
 				}
 			}
 	}
-
+	public static void grade2(int n,String[] str) {
+		for(int i=0;i<n;i++) {
+			int n1=(int)(0+Math.random()*(2-1+1));//随机生成0和1，用来判断加法或者减法，0为乘法，1为除法
+			
+			
+			if(n1==0) {
+				int n2=(int)(1+Math.random()*(10-1+1));
+				int n3=(int)(1+Math.random()*(10-1+1));
+				int x=n2*n3;
+				System.out.println("("+(i+1)+")"+n2+" "+"*"+" "+n3+" "+"=");	
+				str[i]= "("+(i+1)+")"+n2+" "+"*"+" "+n3+" "+"="+" "+x;
+			}
+			if(n1==1) {
+				int n2=(int)(0+Math.random()*(100-1+1));
+				int n3=(int)(1+Math.random()*(100-1+1));
+				int x =n2/n3;
+				int y=n2%n3;
+				System.out.println("("+(i+1)+")"+n2+" "+"÷"+" "+n3+" "+"=");
+				str[i]= "("+(i+1)+")"+n2+" "+"÷"+" "+n3+" "+"="+" "+x+"..."+y;
+			}
+			}
+		
+	}
 	public static void answer(int n,String[] str) {//用来输出答案
 		int i;
 		for(i=0;i<n;i++) {
-			System.out.println(str[i]); 
-		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
-		System.out.println("              211606333 姓名：温志铭  " +sdf.format(new Date()));
+			System.out.println(str[i]);
+			 
+		}SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+			 System.out.println("              211606333 姓名：温志铭  " +sdf.format(new Date()));
 	}
 }
