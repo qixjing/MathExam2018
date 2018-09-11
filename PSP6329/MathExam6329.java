@@ -53,7 +53,7 @@ public static void main(String[] args)throws IOException {
 		b[m]=number+2;
 			for(;;){
 				number = (int)Math.ceil((r.nextDouble()*99.0));a[m]=number;
-				number = (int)Math.ceil((r.nextDouble()*9.0));c[m]=number;
+				number = (int)Math.ceil((r.nextDouble()*11.0));c[m]=number;
 				if(b[m]==3)if(a[m]*c[m]<100){fh="*";break;}
 				if(b[m]==4)if(a[m]%c[m]==0&&a[m]>=c[m]){fh="/";break;}
 			
