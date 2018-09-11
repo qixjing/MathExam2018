@@ -114,12 +114,12 @@ class MathExam6457{
 		out.close();
 	}
      
-     public static int byteArrayToInt(byte[] b) {
-    	    return b[3] & 0xFF | (b[2] & 0xFF) << 8 | (b[1] & 0xFF) << 16 | (b[0] & 0xFF) << 24;//字节数组转换为int
-    }
+   //     public static int byteArrayToInt(byte[] b) {
+   //    	    return b[3] & 0xFF | (b[2] & 0xFF) << 8 | (b[1] & 0xFF) << 16 | (b[0] & 0xFF) << 24;//字节数组转换为int
+   //    }
      
-     public static byte[] intToByteArray457(int a) {
-    	    return new byte[] { (byte) ((a >> 24) & 0xFF), (byte) ((a >> 16) & 0xFF), (byte) ((a >> 8) & 0xFF), (byte) (a & 0xFF) };//int转换成字节数组
-    }
+    //    public static byte[] intToByteArray457(int a) {
+    //   	    return new byte[] { (byte) ((a >> 24) & 0xFF), (byte) ((a >> 16) & 0xFF), (byte) ((a >> 8) & 0xFF), (byte) (a & 0xFF) };//int转换成字节数组
+    //   }
      
 }
