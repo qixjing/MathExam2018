@@ -1,1 +1,66 @@
 
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int main(int argc,char** argv)
+{
+    int i,c1,t,d1,d2,d3,d4,d5,d6,d7,d8;                            
+    int rand(); 
+    srand((unsigned)time(NULL));
+	  printf("%d\n",argc); //cmd调用参数
+  
+	int a[1000]; //定义数组，为了实现额外输出答案
+	int b[1000]; //把随机出来的题目存在数组里
+  int c[1000];
+	int d[1000];
+	int e[1000];
+	int f[1000];
+	int g[1000];
+	int h[1000];
+
+    for(i=1;i<=10;i++)
+    {
+        d1=rand()%91+10,d2=rand()%91+10; //随机数100以内
+        d3=rand()%91+10,d4=rand()%91+10;                                                           
+         
+      
+		d5=d1+d2;d6=d3*d4;     //加减乘除运算                                         
+    d7=d1-d2;d8=d3/d4;
+		a[i]=d1;  //存入数组
+		b[i]=d2;
+		c[i]=d3;
+		d[i]=d4;
+		e[i]=d5;
+		f[i]=d6;
+		g[i]=d7;
+		h[i]=d8;
+
+
+        
+		printf("\n%d + %d = ",d1,d2);         //输出题目                           
+        printf("\n%d x %d = ",d3,d4);
+		printf("\n%d - %d = ",d1,d2);
+        printf("\n%d ÷%d = \n",d3,d4); 
+
+		
+	}
+	printf("\n----------标准答案--------------\n");  //输出答案
+	   for(i=1;i<=10;i++)
+       
+	   {
+
+		printf("\n%d + %d = %d",a[i],b[i],e[i]);             //题目和答案                
+        printf("\n%d x %d = %d",c[i],d[i],f[i]);
+		printf("\n%d - %d = %d",a[i],b[i],g[i]);
+        printf("\n%d ÷%d = %d",c[i],d[i],h[i]); 
+
+	   }
+      
+       
+		
+		
+
+        return 0; 
+    
+
+}
