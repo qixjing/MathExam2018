@@ -25,7 +25,7 @@ public class MathExam1302 {
 			
 //			time2=System.currentTimeMillis();
 //			time = time + (time2-time1);
-			//测试 end
+			//时间测试 end
 		}
 //		System.out.println(time);   //输出拼接字符串所花时间
 		bean.setTxt();

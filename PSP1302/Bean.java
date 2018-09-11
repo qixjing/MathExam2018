@@ -11,8 +11,8 @@ public class Bean {
 	private int numberB = 0;
 	private int result = 0; // 运算结果
 	private int mod = 0; //除法运算中的余数
-	private String text1 = ""; // 题目， 格式: A + B =
-	private String text2 = ""; // 答案 ，格式: A + B = C
+	private StringBuffer text1 = new StringBuffer(""); // 题目， 格式: A + B =
+	private StringBuffer text2 = new StringBuffer(""); // 答案 ，格式: A + B = C
 	private String txt = null; // txt = text1 + text2
 
 	public int getQuizNumber() {
@@ -22,7 +22,7 @@ public class Bean {
 	public void setQuizNumber(String input) {
 		// 用正则表达式检查输入的字符串是否是“非零的纯数字”
 		if (input.matches("0||[1-9]\\d*")) {
-			if(input.length()>5){
+			if(input.length()>4){
 				exception();
 			}
 			else{
@@ -81,17 +81,17 @@ public class Bean {
 
 	private void setText1() {
 		if (count != 1)
-			text1 = text1 + "\n";
-		text1 = text1 + "(" + count + ")" + " " + String.valueOf(this.getNumberA()) + " " + symbol + " "
-				+ String.valueOf(this.getNumberB()) + " =";
+			text1.append("\n") ;
+		text1.append("(" + count + ")" + " " + String.valueOf(this.getNumberA()) + " " + symbol + " "
+				+ String.valueOf(this.getNumberB()) + " =");
 	}
 
 	private void setText2() {
-		text2 = text2 + "\n";
-		text2 = text2 + "(" + count + ")" + " " + String.valueOf(this.getNumberA()) + " " + symbol + " "
-				+ String.valueOf(this.getNumberB()) + " = " + String.valueOf(this.getResult());
+		text2 = text2.append("\n");
+		text2.append("(" + count + ")" + " " + String.valueOf(this.getNumberA()) + " " + symbol + " "
+				+ String.valueOf(this.getNumberB()) + " = " + String.valueOf(this.getResult()));
 		if(mod!=0){
-			text2= text2 + "..." + String.valueOf(mod);
+			text2.append("..." + String.valueOf(mod));
 			mod=0;
 		}
 		
