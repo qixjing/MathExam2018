@@ -4,13 +4,24 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class MathExam6360 {
 	
+		
+
+	
+	
 	public static void create(int count,int grade) {
+		
+		Date date = new Date();
+		DateFormat dt = DateFormat.getDateTimeInstance();
+		dt.format(date);
+		
 		File file = new File ("out.txt");//创建文本
 		FileWriter fw=null;
 			try {
@@ -72,8 +83,16 @@ public class MathExam6360 {
 			
 			else if(i==2)
 			{	
-				int number = 1+(int)Math.floor((r.nextDouble()*100.0));//生成第三个数字
-				second=number;
+				if(symbol==3)
+				{
+					int number = 1+(int)Math.floor((r.nextDouble()*10.0));//生成第三个数字
+					second=number;
+				}
+				else 
+				{
+					int number = 1+(int)Math.floor((r.nextDouble()*100.0));//生成第三个数字
+					second=number;
+				}
 				dn[w]=second;//将式子的数字存入数组中，方便之后的提取
 			}		
 			
@@ -137,7 +156,6 @@ public class MathExam6360 {
 						e.printStackTrace();
 					}
 				}
-			System.out.println(w);
 			mark=0;//证明式子成功写入，题号需要更新。
 			w++;
 			
@@ -231,7 +249,6 @@ public class MathExam6360 {
 				}
 			}
 			
-	
 			try {
 				bw.newLine();
 			} catch (IOException e) {
@@ -242,6 +259,7 @@ public class MathExam6360 {
 		
 		
 		try {
+				bw.write(String.valueOf("                   211606360   丁培晖 "+ dt.format(date)));
 				bw.close();
 				fw.close();
 			} catch (IOException e) {
@@ -252,32 +270,45 @@ public class MathExam6360 {
 	public static void main(String[] args)  {
 		// TODO 自动生成的方法存根
 		String Regex="[1-9]{1}[0-9]{0,10}";//正则表达式，将输入的参数限定在正整数范围内，同时给予最大极限。
-		String Regex2="[1-2]{1}";//正则表达式，将输入的参数限定在正整数范围内，同时给予最大极限。
+		String Regex2="[-2]{1}{0}";//正则表达式，将输入的参数限定在正整数范围内，同时给予最大极限。
 		Pattern p =Pattern.compile(Regex);
 		Pattern p2 =Pattern.compile(Regex2);		
 		Scanner sc = new Scanner(System.in);
-		
+		int num[] = new int [args.length];
 		while(true) {
-			
-		Matcher count=p.matcher(args[0]);
-		Matcher grade=p2.matcher(args[1]);
-		
-			if(count.find() &&  grade.find())
+
+			if(args.length == 1)//将find改为matches，让判断更为精准。
 			{
-				int num[] = new int [args.length];//创建数组，用于读取参数
-				num [0] = Integer.parseInt(args[0]);//将参数转化为整型
-				num [1] = Integer.parseInt(args[1]);//将参数转化为整型
-				create(num[0],num[1]);
-				break;
+				//创建数组，用于读取参数
+				Matcher count=p.matcher(args[0]);
+				//将参数转化为整型
+				if(count.matches())
+				{	
+					num [0] = Integer.parseInt(args[0]);
+					create(num[0],1);
+					break;
+				}
+				
 			}
+			else if( args.length >= 2)
+			{
+						Matcher count=p.matcher(args[0]);
+						Matcher grade=p2.matcher(args[1]);
+						if(count.matches() && grade.matches())
+						{
+							num [1] = Integer.parseInt(args[1]);//将参数转化为整型
+							num [0] = Integer.parseInt(args[0]);
+							create(num[0],num[1]);
+							break;
+						}
+						
+			}
+			System.out.println("输入错误，请重新输入参数[题数范围：1-99999999999，年级范围：1-2(年级默认为1)]：");
+			String t = sc.nextLine();
+			args = t.trim().split(" ");
+			continue;
+
 			
-			else
-			{	
-				System.out.println("输入错误，请重新输入参数(题数范围：1-99999999999，年级范围：1-2)：");
-				String t = sc.nextLine();
-				args = t.trim().split(" ");
-				continue;
-			}
 		}
 				
 	}
