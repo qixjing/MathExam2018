@@ -10,10 +10,13 @@ import java.util.Random;
 public static void main(String args[]) {
 	
 	if(args.length==0 || args.length>2) {
-		errMesssge="参数必须是两个";
+		System.out.println("参数不能大于2，不能为空");
 	}
-		
-	else if(args.length==2) {          //n输入合法的时候
+	else if(!args[1].matches("\\d*")) {
+		System.out.println("第二个参数错");
+	}
+	
+	else if(args.length==2) {      
  		n=Integer.valueOf(args[0]);
  		if(args.length==2 && Integer.valueOf(args[1])==2) {			
  			grade=2;
@@ -57,6 +60,6 @@ public static void main(String args[]) {
 	    Output o = new Output(n);
 	}
 	else 
-		System.out.println("请输入输入两个参数！！！");
+		System.out.println("");
 } 
 }
