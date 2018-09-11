@@ -10,14 +10,13 @@ import java.util.regex.Pattern;
 
 public class MathExam6335 {
 	/*
- * 完成一个命令行工具MathExam，自动生成一份小学一年级的数学四则运算题。
- *     1.为input()方法增添一个命令行接收参数；
- *     2.将加减乘除写成四个方法；
- *     3.添加static类型的全局变量grade,接受年级参数。
- *     【ps：还存在输入“00000000001”的识别错误bug，待修正】
- * 		coding ： GBK
- * 		MathExam_V1.0.5
- */	
+	 * 完成一个命令行工具MathExam，自动生成一份小学一年级的数学四则运算题。
+	 *     1.为加减乘除运算方法添加了符合实际的限制；
+	 *     
+	 *     【ps：还存在输入“00000000001”的识别错误bug，待修正】
+	 * 		coding ： GBK
+	 * 		MathExam_V1.0.6
+	 */	
 	int firstNumber, secondNumber;		
 	int symbol;	
 	static int grade;
@@ -115,7 +114,11 @@ public class MathExam6335 {
 		
 	}
 	
-	//加法
+	/*
+	 * 加法：
+	 *  1.一二年级的加法的两个加数在20以内。
+	 * 
+*/
 	private void add(int n1, int n2,int i) {
 		// TODO Auto-generated method stub
 		result = n1 + n2;
@@ -123,34 +126,64 @@ public class MathExam6335 {
 		str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " + " + n2 + " = " + result;
 	}
 	
-	//减法
+	/*
+	 * 减法：
+	 * 
+	 * 1.一二年级两数之差应该在大于0；
+	 * 2.被减数和减数在20以内。
+*/
 	private void sub(int n1, int n2,int i) {
 		// TODO Auto-generated method stub
+		if (n1 < n2) {
+			int num;
+			num = n1;
+			n1 = n2;
+			n2 = num;
+		}
 		result = n1 - n2;
 		str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " - " + n2 + " = ";
 		str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " - " + n2 + " = " + result;
 	}
 	
-	//乘法
+	/*
+	 * 乘法：
+	 * 
+	 * 1.一二年级的乘法运算应该在0-9以内【九九乘法表】；
+	 * 
+*/
 	private void mul(int n1, int n2,int i) {
 		// TODO Auto-generated method stub
+		if (n1 > 9) {
+			n1 = (int)(Math.random()*10);
+		} 
+		if (n2 > 9) {
+			n2 = (int)(Math.random()*10);
+		}
 		result = n1 * n2;
 		str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " x " + n2 + " = ";
 		str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " x " + n2 + " = " + result;
 	}
 	
-	//除法
+	/*
+	 * 除法：
+	 * 
+	 * 1.一二年级的除法运算应该在”九九乘法表“范围以内；
+	 * 2.分母不能为”0“。
+	 * 
+*/
 	private void div(int n1, int n2,int i) {
 		// TODO Auto-generated method stub
-		if(n1 % n2 == 0){
-			result = n1 / n2;
-			str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
-			str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = " + result;
-		}else if(n1 % n2 != 0){
-			result = n1 / n2;
-			str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
-			str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / "
-					+ n2 + " = " + result + "..." + (n1 % n2);
+		while(true){
+			if(n1 % n2 == 0){
+				result = n1 / n2;
+				str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
+				str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = " + result;
+			}else if(n1 % n2 != 0){
+				n1 = (int)(Math.random()*82);
+				n2 = (int)(Math.random()*81+1);
+				continue;
+			}
+			break;
 		}
 	}
 	
