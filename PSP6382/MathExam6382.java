@@ -2,8 +2,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
-public class MathExam6382 {
-	public static void main(String[] args) throws IOException {
+public class MathExam6382{
+public static void main(String[] args) throws IOException {
+		
+	Grade1();
+	
+}
+
+	
+	public static void Grade1() throws IOException {
 		Scanner input = new Scanner(System.in);
 		int result = 0; 
 		int n=input.nextInt();
@@ -15,7 +22,11 @@ public class MathExam6382 {
 		if(!file.exists()) {
 			file.createNewFile();
 		}
-		if(n<=0) {System.out.println("请输入大于零的数");}
+		String s = String.valueOf(n);
+		char[] strArr = s.toCharArray();
+		if(n==0) {System.out.println("不能为零");}
+		if(n>100){System.out.println("题数要小于100");}
+		else {
 			for(int i=0;i<n;i++) {
 				int operator = (int)(Math.random()*2);
 				if(operator==0){
@@ -44,7 +55,8 @@ public class MathExam6382 {
 					shuchu.write(x1);
 					shuchu.write(x3);
 				}	
-			}
+			}	
+			
 			System.out.println("\n");
 			byte[] x3=fengge.getBytes();
 			shuchu.write(x3);
@@ -55,7 +67,6 @@ public class MathExam6382 {
 				shuchu.write(x3);
 				}
 				shuchu.close();
-		}
+	}	
+	}
 }
-
-
