@@ -67,6 +67,7 @@ public static void grade_two() {
 	double aj[]=new double[m];
 	double ax[]=new double[m];
 	int m1=1;
+	if(m%2==1) {
 	for(int a=0; a<m;a++)
 	{
 		int i=(int) Math.floor(Math.random()*10+1);//生成随机数
@@ -101,6 +102,38 @@ public static void grade_two() {
 		}
 	m2++;
 	}}
+	else {
+		
+		for(int a=0; a<m;a++)
+		{
+			int i=(int) Math.floor(Math.random()*20+1); //生成随机数，
+			int j=(int) Math.floor(Math.random()*20+1); //生成随机数，
+			int x=(int) Math.floor(Math.random()*2+1); //生成随机数，
+			ai[a]=i; //将随机数存入数组
+			aj[a]=j;//将随机数存入数组
+			ax[a]=x;//将随机数存入数组
+			if(x%2==1) {		//判断加减法
+			System.out.println("(" + m1 + ") "+ i +" + " + j + "=");
+			}else {
+			System.out.println("(" + m1 + ") "+ i + " - "+j+"= ");
+			}
+			m1++;  //序号持续增加
+			}
+			
+		System.out.println("                  ");		
+		int m2=1;
+		for(int a1=0;a1<m;a1++)
+		{
+		if(ax[a1]%2==1) 
+		{
+		System.out.println("("+ m2 +") "+ ai[a1] +" + "+ aj[a1] +" = "+(ai[a1]+aj[a1]));
+		}else {
+		System.out.println("("+ m2 +") "+ ai[a1] +" - "+ aj[a1] +" = "+(ai[a1]-aj[a1]));
+		}
+		m2++;
+		}}
+	}
+		
 private static String floor(double d) {
 	// TODO Auto-generated method stub
 	return null;
