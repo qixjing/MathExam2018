@@ -27,9 +27,7 @@ public class MathExam4269 {
 			} else {
 				return true;
 			}
-
 		}
-
 	}
 
 	public static boolean checkTwo() {
@@ -95,7 +93,6 @@ public class MathExam4269 {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("文件创建失败,请重试");
-				e.printStackTrace();
 			}
 		}
 		try {
@@ -109,7 +106,6 @@ public class MathExam4269 {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("写入错误!");
-					e.printStackTrace();
 				}
 			}
 			String fg = "-----------------标准答案-----------------" + "\r\n";
@@ -119,7 +115,6 @@ public class MathExam4269 {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("写入错误!");
-				e.printStackTrace();
 			}
 			for (String str : anss) {
 				str += "\r\n";
@@ -129,7 +124,6 @@ public class MathExam4269 {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("写入错误!");
-					e.printStackTrace();
 				}
 			}
 			try {
@@ -137,12 +131,10 @@ public class MathExam4269 {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("io错误");
-				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("找不到文件,请重试");
-			e.printStackTrace();
 		}
 	}
 
@@ -184,7 +176,6 @@ public class MathExam4269 {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("文件创建失败,请重试");
-				e.printStackTrace();
 			}
 		}
 		try {
@@ -198,7 +189,6 @@ public class MathExam4269 {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("写入错误!");
-					e.printStackTrace();
 				}
 			}
 			String fg = "-----------------标准答案-----------------" + "\r\n";
@@ -208,7 +198,6 @@ public class MathExam4269 {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("写入错误!");
-				e.printStackTrace();
 			}
 			for (String str : anss) {
 				str += "\r\n";
@@ -218,7 +207,6 @@ public class MathExam4269 {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					System.out.println("写入错误!");
-					e.printStackTrace();
 				}
 			}
 			try {
@@ -226,12 +214,10 @@ public class MathExam4269 {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				System.out.println("io错误");
-				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("找不到文件,请重试");
-			e.printStackTrace();
 		}
 	}
 
