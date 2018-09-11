@@ -49,23 +49,14 @@ public static void main(String[] args)throws IOException {
 			if(b[m]==2)if(a[m]-c[m]>=0){fh="-";break;}
 		}
 		}
-		//一年级
-		if(y==2){number = (int)Math.ceil((r.nextDouble()*4.0));
-		b[m]=number;
-		{
-			if(b[m]==1||b[m]==2)
-				for(;;){
-				number = (int)Math.floor((r.nextDouble()*100.0));a[m]=number;
-				number = (int)Math.floor((r.nextDouble()*100.0));c[m]=number;
-				if(b[m]==1)if(a[m]+c[m]<100){fh="+";break;}
-				if(b[m]==2)if(a[m]-c[m]>=0){fh="-";break;}
-			}
-			else for(;;){
+		if(y==2){number = (int)Math.ceil((r.nextDouble()*2.0));
+		b[m]=number+2;
+			for(;;){
 				number = (int)Math.ceil((r.nextDouble()*99.0));a[m]=number;
 				number = (int)Math.ceil((r.nextDouble()*9.0));c[m]=number;
 				if(b[m]==3)if(a[m]*c[m]<100){fh="*";break;}
 				if(b[m]==4)if(a[m]%c[m]==0&&a[m]>=c[m]){fh="/";break;}
-			}
+			
 		}
 		}//二年级	 	
 		System.out.println("("+no+") "+a[m]+" "+fh+" "+c[m]+" = ");
