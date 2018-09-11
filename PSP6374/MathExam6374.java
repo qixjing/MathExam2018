@@ -28,22 +28,28 @@ public class MathExam6374 {
 		}    // 创建out.txt文本
 		for(;;) {
 			if(c[0]>400&&c[1]==1) {
-			System.out.println("请输入1-400之间的题目数，否则题目重复");
+			System.out.println("请输入1-400之间的题目数，否则题目重复，请重新输入");
 			 c[0]=input.nextInt();
 			 c[1]=input.nextInt();
 			continue;
 			}
 			if(c[0]<1) {
-			System.out.println("输入的题目数请大于1");
+			System.out.println("输入的题目数请大于1,请重新输入");
 			 c[0]=input.nextInt();
 			 c[1]=input.nextInt();
 			continue;
 			}
 			if(c[0]>81&&c[1]==2) {
-				System.out.println("请输入1-81之间的题目数，否则题目重复");
+				System.out.println("请输入1-81之间的题目数，否则题目重复，请重新输入");
 				 c[0]=input.nextInt();
 				 c[1]=input.nextInt();
 				continue;
+			}
+			if(c[1]>2) {
+				System.out.println("本程序仅支持1年级和2年级，请重新输入");
+				c[0]=input.nextInt();
+				 c[1]=input.nextInt();
+				 continue;
 			}
 			else {
 			flag=1;
