@@ -31,6 +31,15 @@ public class MathExam4269 {
 
 	}
 
+	public static boolean isNum(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			if (!Character.isDigit(str.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static void math(int n) {
 		String prob;
 		String ans;
@@ -114,11 +123,18 @@ public class MathExam4269 {
 			System.out.println("找不到文件,请重试");
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void main(String[] args) {
-		int n = Integer.parseInt(args[0]);
-		math(n);
+		String str = args[0];
+		if (isNum(str)) {
+			if (str.length() >= 5) {
+				System.out.println("输入数据过大,请重试");
+			} else {
+				math(Integer.parseInt(str));
+			}
+		} else {
+			System.out.println("输入有误,请重新输入");
+		}
 	}
 }
