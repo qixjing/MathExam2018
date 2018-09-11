@@ -21,7 +21,20 @@ public class MathExam5240 {
 		return a*b;
 		
 	}
-
+	public static void division(int i,OutputStream out,int intArray[],int intArray1[]) {
+		int a =(int) (Math.random()*100);
+		int b =(int) (1+Math.random()*9);
+		String word=("("+(i+1)+") "+a +" / "+ b +" = ")+"\n";
+		try {
+			out.write(word.getBytes());
+		} catch (IOException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		intArray[i]=a/b;
+		intArray1[i]=a%b;
+		
+	}
 	public static int addition(int i,OutputStream out) {
 		int a =(int) (Math.random()*100);
 		int b =(int) (Math.random()*(100-a+1));
@@ -73,17 +86,7 @@ public class MathExam5240 {
 			intArray[i]=multiplication(i,out);
 			intArray1[i]=0;
 		}else{
-			int a =(int) (Math.random()*100);
-			int b =(int) (1+Math.random()*9);
-			String word=("("+(i+1)+") "+a +" / "+ b +" = ")+"\n";
-			try {
-				out.write(word.getBytes());
-			} catch (IOException e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
-			}
-			intArray[i]=a/b;
-			intArray1[i]=a%b;
+			division(i,out,intArray,intArray1);
 		}
 			
 		}
