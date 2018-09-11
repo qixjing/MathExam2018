@@ -7,59 +7,121 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class MathExam6381 {
-	private static int n,p;
-	public static void main(String[] args) { 
-		for(int i=0;i<args[0].length();i++) {
-			if(args[0].charAt(i)>'9' || args[0].charAt(i)<'0') {
-				System.out.println("输入有误，请重新输入");
-				return;
-			}
-		}
-		n=Integer.parseInt(args[0]);
-//		System.out.println("请输入正整数表示题目数量：");
-//	    Scanner sc=new Scanner(System.in);
-//	    n=sc.nextInt();
-//	    while(n<=0) {
-//	    	System.out.println("输入数字错误，请重新输入题目数量：");
-//		    Scanner s=new Scanner(System.in);
-//		    n=s.nextInt();
-//	    }
+ private static int n;
+ private static int grade = 1;
+
+ public static void main(String[] args) {
+	 for(int i=0;i<args[0].length();i++) {
+		   if(args[0].charAt(i)>'9' || args[0].charAt(i)<'0') {
+		    System.out.println("输入有误，请重新输入");
+		    return;
+		   }
+		  }
+		  n=Integer.parseInt(args[0]);
+		  for(int i=0;i<args[1].length();i++) {
+			   if(args[1].charAt(i)>'9' || args[0].charAt(i)<'0') {
+			    System.out.println("输入有误，请重新输入");
+			    return;
+			   }
+			  } 
+		  grade=Integer.parseInt(args[1]);
+		  if(!(grade>0 && grade<=2)) {
+			  System.out.println("年级数出错.年级只能输1或2");
+			  return;
+		  }
+		   StringBuffer timu= new StringBuffer();
+	       StringBuffer daan = new StringBuffer();
+	       if(grade>0 && grade<=2) {
+	       String ysf;
+	       int p=0,m;
+				  if(grade==1) {
+					  for(int i = 1; i <= n; i++) {
+						  int num1=(int) (Math.random()*101);
+	                      int num2=(int) (Math.random()*101);
+					   p=(int) (Math.random()*101)%2;
+					   if(p==0) {ysf="+";}
+					   else { ysf="-"; }
+					   if(ysf.equals("+")) { m=num1+num2; }
+					   //为避免出现负数，在进行减运算时，保证第一个数大于第二个数。
+					   else {
+					     if(num1 < num2) {
+					    int t;
+					    t= num1;
+					    num1 = num2;
+					    num2 = t;
+					   }
+					     m=num1-num2;
+					   }
+					   timu.append("(" + i + ") " + num1 +" "+ ysf +" "+ num2 +" ="+ System.lineSeparator());
+					   daan.append("(" + i + ") " + num1 + " "+ysf +" "+ num2 + " = " + m + System.lineSeparator());
+					  }
+					  }
+				  else {
+					  for(int i = 1; i <= n; i++) {
+						  int num1=(int) (Math.random()*101);
+	                      int num2=(int) (Math.random()*101);
+						  int sjs;
+						  sjs=(int) (Math.random()*101);
+						  if(sjs%4==0) {ysf="+";}
+						  else if(sjs%4==1) {ysf="-";}
+						  else if(sjs%4==2) {ysf="*";}
+						  else {ysf="/";}
+						  int q=0;
+						  if(ysf.equals("+")) {
+						   m=num1+num2;
+						  }
+						  //为避免出现负数，在进行减运算时，保证第一个数大于第二个数。
+						  else if(ysf.equals("-")){
+						    if(num1 < num2) {
+						   int t;
+						   t= num1;
+						   num1 = num2;
+						   num2 = t;
+						  }
+						    m=num1-num2;
+						  }
+						  else if(ysf.equals("*")) {
+						 	 num1=(int) (Math.random()*10);
+						 	 num2=(int) (Math.random()*10);
+						 	 m=num1*num2;
+						  }
+						  else {
+						 	 num1=(int) (Math.random()*10);
+						 	 num2=(int) (Math.random()*10);
+						 	 q=num1%num2;
+						 	 m=num1/num2;
+						  }
+						  timu.append("(" + i + ") " + num1 +" "+ ysf+" " + num2 +" ="+ System.lineSeparator());
+						  if(ysf.equals("/") && q!=0) {
+						 	 daan.append("(" + i + ") " + num1 +" "+ ysf +" "+ num2 + " = " + m +"..."+ q +System.lineSeparator());
+						  }else {
+						  daan.append("(" + i + ") " + num1 + " "+ysf +" "+ num2 + " = " + m + System.lineSeparator());
+						  
+				  }
+			  }
+ //public static void main(String[] args) {
+ // System.out.println("请输入正整数表示题目数量：");
+     //Scanner sc=new Scanner(System.in);
+     //n=sc.nextInt();
+     //while(n<=0) {
+      // s=new Scanner(System.in);
+     // n=s.nextInt();
+    // }
+   //  System.out.println("请输入1或2表示年级：");
+     //Scanner g=new Scanner(System.in);
+     //grade=g.nextInt();
+    // while(grade<=0 || grade>2) {
+    //  System.out.println("输入数字错误，请重新输入年级：");
+     // Scanner p=new Scanner(System.in);
+   //   grade=p.nextInt();
+     //}
 //创建两个StringBuffer对象，用来保存输出的题目和标准答案
-StringBuffer timu= new StringBuffer();
-StringBuffer daan = new StringBuffer();
-//n = Integer.parseInt(args[0]);
-for(int i = 1; i <= n; i++) {
- //获取两个随机数; 
- int num1=(int) (Math.random()*101);
- int num2=(int) (Math.random()*101);
- //得到运算符号;
- String ysf;
- p=(int) (Math.random()*101)%2;
- if(p==0) {
-	 ysf="+";
- }
- else {
-	 ysf="-";
- }
- //得到结果
- int m;
- if(ysf.equals("+")) {
-	 m=num1+num2;
- }
- //为避免出现负数，在进行减运算时，保证第一个数大于第二个数。
- else {
-	  if(num1 < num2) {
-  int t;
-  t= num1;
-  num1 = num2;
-  num2 = t;
- }
-	  m=num1-num2;
- }
+
  //记录题目和答案
- timu.append("(" + i + ") " + num1 +" "+ ysf +" "+ num2 +" ="+ System.lineSeparator());
- daan.append("(" + i + ") " + num1 + " "+ysf +" "+ num2 + " = " + m + System.lineSeparator());
+ 
 }
+}
+			
 //把题目和答案写入文件
 try {
  write("out6381.txt",timu,daan);
@@ -97,4 +159,3 @@ private static void write(String filename,StringBuffer timu,StringBuffer daan) t
   out.close();
  }
 }
-
