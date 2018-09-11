@@ -269,7 +269,7 @@ public class MathExam6360 {
 	}
 	public static void main(String[] args)  {
 		// TODO 自动生成的方法存根
-		String Regex="[1-9]{1}[0-9]{0,10}";//正则表达式，将输入的参数限定在正整数范围内，同时给予最大极限。
+		String Regex="[1-9]{1}[0-9]{0,2}";//正则表达式，将输入的参数限定在正整数范围内，同时给予最大极限。
 		String Regex2="[1-2]{1}{0}";//正则表达式，将输入的参数限定在正整数范围内，同时给予最大极限。
 		Pattern p =Pattern.compile(Regex);
 		Pattern p2 =Pattern.compile(Regex2);		
@@ -303,7 +303,7 @@ public class MathExam6360 {
 						}
 						
 			}
-			System.out.println("输入错误，请重新输入参数[题数范围：1-99999999999，年级范围：1-2(年级默认为1)]：");
+			System.out.println("输入错误，请重新输入参数[题数范围：1-999，年级范围：1-2(年级默认为1)]：");
 			String t = sc.nextLine();
 			args = t.trim().split(" ");
 			continue;
