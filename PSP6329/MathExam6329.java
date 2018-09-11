@@ -13,9 +13,9 @@ public static void main(String[] args)throws IOException {
 		x=Integer.parseInt(args[0]);
 		y=Integer.parseInt(args[1]);
 	//将字符串参数强制转换成int型
-		if(x<=0)System.out.println("题目数输入错误");
-		if(x>9999)System.out.println("题目数输入过大");
-		if(y!=1&&y!=2)System.out.println("年级输入错误");
+		if(x<=0)System.out.println("题目数输入错误，请输入1~9999");
+		if(x>9999)System.out.println("题目数输入过大，请输入1~9999");
+		if(y!=1&&y!=2)System.out.println("年级输入错误,请输入1或者2");
 		if(x<=9999&&x>0&&(y==1||y==2))
 			//排错
 {	
