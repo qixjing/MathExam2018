@@ -26,18 +26,17 @@ public class MathExam6318 {
 		int []n =new int [args.length] ;
 		n[0]=Integer.parseInt(args[0]);
 		n[1]=Integer.parseInt(args[1]);
-	    	if(args[0].length()>5 && Integer.parseInt(args[0])>10000) {
+	    	if(args[0].length()>5 && Integer.parseInt(args[0])>100) {
 	    		System.out.print(" 输入的题目数太大");					//限制题数过大
-				flag=0;												  }
-																	  
+				flag=0; }												  
 			if(Integer.parseInt(args[1])>2){
 				System.out.print(" 输入的年级数太大");					//限制年级数过大													 
-				flag=1;					   }									  
-	    	if(n[0]<=0) {
+				flag=1; }									  
+	    	if(n[0]<=0 && !args[0].matches("\\d*")) {
 	    		System.out.print(" 输入的题目数不对，应为正整数");			//限制题数为正整数
 	    		flag=2;
 	    				}
-	    	if(n[1]<=0) {
+	    	if(n[1]<=0 && !args[1].matches("\\d*")) {
 	    		System.out.print(" 输入的年级数不对，应为正整数");			//限制年级数为正整数
 	    		flag=3;
 	    				}
@@ -175,27 +174,22 @@ public class MathExam6318 {
 				System.out.println("请输入题目数与年级");	//新的题目数与年级
 				int []p =new int [args.length] ;
 				args[0]=sc.next();args[1]=sc.next();	
-				p[0]=Integer.parseInt(args[0]);
-				p[1]=Integer.parseInt(args[1]);
 				flag=4;
-				for(;;) {
-					if(args[0].length()>5 && p[0]>10000) {
+				for(;;) {		
+					if(args[0].length()>5 &&Integer.parseInt(args[0])>10000) {
 		    		System.out.print("输入的题目数太大");					//限制题数过大
-					flag=0;												    }
+					flag=0;}
 				if(p[1]>2){
 					System.out.print("输入的年级数太大");					//限制年级数过大													 
-					flag=1;					   }									  
-		    	if(p[0]<=0) {
+					flag=1;}									  
+		    	if(Integer.parseInt(args[0])<=0 && !args[0].matches("\\d*")) {
 		    		System.out.print("输入的题目数不对，应为正整数");			//限制题数为正整数
-		    		flag=2;
-		    				}
-		    	if(p[1]<=0) {
+		    		flag=2;}
+		    	if(Integer.parseInt(args[1])<=0 && !args[1].matches("\\d*")) {
 		    		System.out.print("输入的年级数不对，应为正整数");			//限制年级数为正整数
-		    		flag=3;
-		    				}
+		    		flag=3;}
 		    	if(flag!=4) {
-		    		System.out.println("\n"+"请输入题目数与年级");	args[0]=sc.next();args[1]=sc.next();break;	//如果输入的两个参数不对 则继续输入 直至正确为止	
-		    				}
+		    		System.out.println("\n"+"请输入题目数与年级");	args[0]=sc.next();args[1]=sc.next();break;}	//如果输入的两个参数不对 则继续输入 直至正确为止	
 		    		}continue;
 			
 							}
