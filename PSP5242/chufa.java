@@ -4,8 +4,8 @@ import java.util.Random;
 public class chufa extends Operation{
 	public chufa(ArrayList<String> answer,int number) {
 		Random r = new Random();
-		first = r.nextInt(9)+1;//被除数
-		second = r.nextInt(9)+1;//除数
+		first = r.nextInt(9)+1;//除数
+		second = r.nextInt(9)+1;//被除数
 		
 		if(first/second==0) {
 			answernumber = first/second;
@@ -13,6 +13,7 @@ public class chufa extends Operation{
 			answer.add(" "+answernumber);
 		}else if(first/second!=0) {
 			int shang = first%second;
+			answernumber = first/second;
 			answer.add("("+number+")"+"  "+first+" / "+second+" =");
 			answer.add(" "+answernumber+"..."+shang);
 		}

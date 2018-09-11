@@ -14,7 +14,7 @@ public class Jianfa extends Operation{
 		else {
 			answernumber = second-first ;
 		}
-		answer.add("("+number+")"+"  "+first+"  -  "+second+" =");
+		answer.add("("+number+")"+"  "+first+" - "+second+" =");
 		answer.add(" "+answernumber);
 	}
 	
