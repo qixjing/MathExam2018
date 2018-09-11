@@ -1,28 +1,31 @@
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-// import java.util.Scanner;
+
+//import java.util.Scanner;
 
 
 public class MathExam6387 {
 
-// 	private static Scanner in;
+	//private static Scanner in;
 	private static int x,y,f;
-	private static String[] str;
+	private static String[] str ;
 
-	public static void main(String[] args) throws FileNotFoundException, InterruptedException {
+	public static void main(String args[]) throws FileNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
-// 		int n ;
-// 		in = new Scanner(System.in);
-// 		n = in.nextInt();
+//		int n ;
+//		in = new Scanner(System.in);
+//		n = in.nextInt();
+
 		int i =Integer.valueOf(args[0]).intValue();
+
 		File file = new File("out6387.txt");
 		PrintStream ps = new PrintStream(file);
 		System.setOut(ps);
-		gradeOne(n);
+		gradeOne(i);
+		
 	}
 
 	public static void gradeOne(int n) {
@@ -37,14 +40,21 @@ public class MathExam6387 {
 				str[i] = "(" + (i+1) + ")" +" " + x + "+" + y + " " + "=" + " " + (x+y);
 			}
 			else {
-				System.out.println("(" + (i+1) + ")" +" " + x + "-" + y + " " + "=" + " ");
-				str[i] = "(" + (i+1) + ")" +" " + x + "-" + y + " " + "=" + " " + (x-y);
+				if (x-y < 0) {
+					System.out.println("(" + (i+1) + ")" +" " + y + "-" + x + " " + "=" + " ");
+					str[i] = "(" + (i+1) + ")" +" " + y + "-" + x + " " + "=" + " " + (y-x);
+				}
+				else {
+					System.out.println("(" + (i+1) + ")" +" " + x + "-" + y + " " + "=" + " ");
+					str[i] = "(" + (i+1) + ")" +" " + x + "-" + y + " " + "=" + " " + (x-y);
+				}
 			}
 		}
-		System.out.println("--------æ ‡å‡†ç­”æ¡ˆ--------");
+		System.out.println("--------±ê×¼´ð°¸--------");
 		    for(String a:str)
 		        System.out.println(a);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ HH:mm");
-		    System.out.println("              211606387 å§“åï¼šå¶å®å¥‡  " +sdf.format(new Date()));
+
+		    SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ HH:mm");
+		    System.out.println("              211606387 ÐÕÃû£ºÒ¶ºêÆæ  " +sdf.format(new Date()));
 	}
 }
