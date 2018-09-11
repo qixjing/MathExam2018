@@ -10,7 +10,16 @@ public class MathExam6333 {
 	static int grade;
 	public static void main(String args[]) throws FileNotFoundException {
 		if(args.length==1) {//判断参数个数
-			
+			try {
+ 				n = Integer.parseInt(args[0]);
+ 				if (n < 0) {
+ 					System.out.println("题目数量不能为负，请重新输入！");
+ 				}else if (n== 0) {
+ 					System.out.println("题目数量不能为0，请重新输入！");
+ 				}
+ 			} catch(NumberFormatException e) {
+ 				System.out.println("题目数量必须为正整数，请重新输入！");
+ 			}
 		String[] str=  new String[50];
 		File file =new File("out6333.txt");//把题目答案放到txt文件里
 		PrintStream ps = new PrintStream(file);
@@ -51,9 +60,9 @@ public class MathExam6333 {
 	public static void answer(int n,String[] str) {//用来输出答案
 		int i;
 		for(i=0;i<n;i++) {
-			System.out.println(str[i]);
-			 
-		}SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
-			 System.out.println("              211606333 姓名：温志铭  " +sdf.format(new Date()));
+			System.out.println(str[i]); 
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+		System.out.println("              211606333 姓名：温志铭  " +sdf.format(new Date()));
 	}
 }
