@@ -115,7 +115,7 @@ public class MathExam6350 {
    String txt = String.valueOf(chars);
    System.setOut(out);
    System.out.println(txt);
-System.out.println("e:/output.txt已生成");
+System.out.print("e:/output.txt已生成");
  }
 }
 
