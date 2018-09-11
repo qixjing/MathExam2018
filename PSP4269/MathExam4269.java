@@ -40,7 +40,7 @@ public class MathExam4269 {
 			return true;
 		} else {
 			a = (int) (1 + Math.random() * (99 - 1 + 1));
-			b = (int) (1 + Math.random() * (99 - 1 + 1));
+			b = (int) (1 + Math.random() * (9 - 1 + 1));
 			if (a < b) {
 				return false;
 			} else {
@@ -246,7 +246,6 @@ public class MathExam4269 {
 					System.out.println("输入题数过大,请重试");
 				} else {
 					if (!str2.equals("1") && !str2.equals("2")) {
-						System.out.println(str2);
 						System.out.println("输入的年级有误,请重试");
 					} else {
 						if (str2 == "1") {
