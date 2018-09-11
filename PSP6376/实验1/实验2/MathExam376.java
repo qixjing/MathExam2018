@@ -28,9 +28,6 @@ public class MathExam376 {
 				return;
 			} else if (matches) {
 				leng = Integer.parseInt(args[0]);
-			} else {
-				System.out.println("输入的第一个参数不是正整数，请重新运行");
-				return;
 			}
 
 			if (2 == args.length) {
@@ -72,7 +69,13 @@ public class MathExam376 {
 				break;
 
 			case " / ":
+			while(0 == n2) {
+					n2 = (int) (Math.random() * 101);
+				}
 				r = n1 / n2;
+				remainder = n1 % n2;
+				break;
+			default:
 				break;
 				
 			}
