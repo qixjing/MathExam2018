@@ -1,6 +1,9 @@
-package com.MathExam6364;
 
+
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,41 +12,55 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MathExam6364 {
-	public static void main(String[] args) throws FileNotFoundException{
-	Scanner input = new Scanner(System.in);
-	boolean flag = true;// 做一个标记
-	while(flag) {
-	String str = input.nextLine();
-	int num = 0;
-	int grade = 1;// 默认年级为一年级
-	int i = 0;
-	char ch = str.charAt(i);
-	while (ch != ' ') {
-		i++;
-		if (i == str.length()) {
+	public static void main(String[] args) throws IOException{
+		int num = 0 ;
+		boolean flag = true;// 做个标记
+		int grade = 1;// 默认为一年级
+		while(flag) {
+			Scanner input = new Scanner(System.in);
+			String str = input.nextLine();
+			String stringArray[] = str.split(" ");// 使用" "空格来分隔字符串成一个字符串数组
+			if(stringArray.length > 1 ){ // 长度为1即默认只输入题目数目，年级为一年级
+				try {
+					num = Integer.parseInt(stringArray[0]);
+					grade = Integer.parseInt(stringArray[1]);						
+					}catch(NumberFormatException e){
+						System.out.println("请正确输入！");
+						continue;						
+					}
+				if (stringArray.length > 2) {
+					System.out.println("请正确输入！(题目数 年级)");
+					continue;
+				}
+				num = Integer.parseInt(stringArray[0]);
+				grade = Integer.parseInt(stringArray[1]);
+				if (num < 1 || num >10000) {
+					System.out.println("请输入1~10000的正数！");
+					continue;
+				}
+				if (grade != 1 && grade != 2) {
+					System.out.println("请输入正确的年级（1 or 2）");
+					continue;
+				}
+				break;					
+				}
+			else {
+				try {
+					num = Integer.parseInt(stringArray[0]);
+					}catch(NumberFormatException e) {
+						System.out.println("请输入正整数的题目数！");
+						continue;
+					}
+			}
+			num = Integer.parseInt(stringArray[0]);
 			break;
-		}else {
-			ch = str.charAt(i);
-		}
-		}
-    num = Integer.parseInt(str.substring(0, i));// 获取第一个数字赋值给num
-	if (i != str.length()) {
-		grade = Integer.parseInt(str.substring(i+1,str.length()));}// 若有第二个值，则获取第二个值给grade
-	if (grade > 2) {
-		System.out.println("请输入正确的年级！(1 or 2)");
-	}else{
-		if (num <= 0 || num >= 10000){
-			System.out.println("输入的数字不在范围之内（1~10000）！请重新输入！");
-		}else {
-			flag = false;
-			mathExam6364(num,grade);// 产生随机数和运算的方法
-		}
-		}
-	}
+			}
+		mathExam6364(num,grade);
 }
-	static void mathExam6364(int num,int grade) throws FileNotFoundException {
+	static void mathExam6364(int num,int grade) throws IOException {
 		// 没输入的话grade默认为1，进行任务1
-		PrintStream ps = new PrintStream("e:/out.txt"); 
+		PrintStream sysout = System.out;// 先把系统输出流保存到sysout
+		PrintStream ps = new PrintStream("e:/out.txt"); // 新创建一个输出流，并在e盘新建一个 out.txt
 		List<String> list1 = new ArrayList<String>();// 用来存放式子
 		List<String> list2 = new ArrayList<String>();// 用来存放式子加答案
 		if (grade == 1) {
@@ -69,11 +86,15 @@ public class MathExam6364 {
 						i--;}
 					}
 			}
-			for (int s = 0;s < num;s ++) 
+			for (int s = 0;s < num;s ++) {
+				System.setOut(ps);
 				System.out.println("(" + (s+1) + ") " + list1.get(s));
+				}
 			System.out.println(" ");
-			for (int p = 0;p < num;p ++) 
-				System.out.println("(" + (p+1) + ") " + list2.get(p)); 
+			for (int p = 0;p < num;p ++) {
+				System.setOut(ps);
+				System.out.println("(" + (p+1) + ") " + list2.get(p));
+				}
 		}
 		// 若grade为2，进行任务2
 		if (grade == 2) {	
@@ -105,14 +126,29 @@ public class MathExam6364 {
 						i--;
 					}
 				}
-				for (int s = 0;s < num;s ++) System.out.println("(" + (s+1) + ") " + list1.get(s));
+				for (int s = 0;s < num;s ++) {
+					System.setOut(ps);
+					System.out.println("(" + (s+1) + ") " + list1.get(s));
+				}
 				System.out.println(" ");
-				for (int p = 0;p < num;p ++) System.out.println("(" + (p+1) + ") " + list2.get(p)); 
+				for (int p = 0;p < num;p ++) {
+					System.setOut(ps);
+					System.out.println("(" + (p+1) + ") " + list2.get(p)); 
+				}
 			}
 			Date day = new Date();
 			// 获取当前系统时间，并将输出改为yyyy年MM月dd日  HH:mm
-			SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日  HH:mm"); 
-			System.out.println("                 211606364李冠锐"+df.format(day));  
+			SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日  HH:mm");
+			System.setOut(ps);
+			System.out.println("                 211606364李冠锐"+df.format(day));
+			File file = new File("e:/out.txt");
+			FileReader reader = new FileReader(file);
+			int fileLen = (int)file.length();
+			char[] chars = new char[fileLen];
+			reader.read(chars);
+			String txt = String.valueOf(chars);
+			System.setOut(sysout);
+			System.out.println(txt);
+			
 	}
 	}
-	
