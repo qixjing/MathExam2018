@@ -1,8 +1,12 @@
+package c;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
-public class MathExam306 {
+public class MathExam6306 {
 
 	public static void main(String[] args) throws FileNotFoundException {		
 		// TODO 自动生成的方法存根
@@ -22,29 +26,32 @@ public class MathExam306 {
 		int y;
 		for (int i = 0; i < n; i++) {
 			int z = (int)(Math.random()*(2));
+			x = (int)(Math.random()*100);
+			y = (int)(Math.random()*100);
 			
 		if(z==0) {
-			x = (int)(Math.random()*100);
-			y = (int)(Math.random()*100);
-			System.out.println("("+(i+1)+")" + "" + x + "+" + y + "" + "=" + "" );
+			System.out.println("("+(i+1)+")" + "" + x + "+" + y + "" + "=" + " " );
 			str[i] = "(" + (i+1) + ")" +" " + x + "+" + y + " " + "=" + " " + (x+y);}
-		if(z==1) {
-			x = (int)(Math.random()*100);
-			y = (int)(Math.random()*100);
-			System.out.println("("+(i+1)+")" + "" + x + "+" + y + "" + "=" + "" );
-			str[i] = "(" + (i+1) + ")" +" " + x + "-2" + y + " " + "=" + " " + (x-y);
+		else{
+			if(x-y<0) {
+				System.out.println("("+(i+1)+")" + "" + y + "-" + x + "" + "=" + " " );
+				str[i] = "(" + (i+1) + ")" +" " + y + "-" + x + " " + "=" + " " + (y-x);
+			}
+			else {
+				System.out.println("("+(i+1)+")" + "" + x + "-" + y + "" + "=" + " " );
+				str[i] = "(" + (i+1) + ")" +" " + x + "-" + y + " " + "=" + " " + (x-y);
 		}
+			}
 		}
 		System.out.println("标准答案");
 		for(String s:str)
 			System.out.println(s);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+		System.out.println("              211606306 姓名：黄柏涛  " +sdf.format(new Date()));
+
 
 		
 	}
 		
-
-		
 		
 }
-
-
