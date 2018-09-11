@@ -2,7 +2,6 @@
 
 
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -170,17 +169,39 @@ public class MathExam6318 {
 			while(gg!=0&&gg!=1){
 				System.out.println("您输入的数字有误，无法匹配相应功能，请选择继续还是退出，退出的话输入0，继续的话输入1");      //若选择输入的数字不是0或1则一直循环至正确为止
 				gg=sc.nextInt(); 
-				 }
+			}	 
 			if(gg==0) {System.out.println("谢谢使用");break;}														//循环生成题目+答案（可自选题目数与年级）
 			else if(gg==1){
-				System.out.println("请输入题目数与年级");					//新的题目数与年级
-				args[0]=sc.next();args[1]=sc.next();			
-				continue;
-				}
+				System.out.println("请输入题目数与年级");	//新的题目数与年级
+				int []p =new int [args.length] ;
+				args[0]=sc.next();args[1]=sc.next();	
+				p[0]=Integer.parseInt(args[0]);
+				p[1]=Integer.parseInt(args[1]);
+				flag=4;
+				for(;;) {
+					if(args[0].length()>5 && p[0]>10000) {
+		    		System.out.print("输入的题目数太大");					//限制题数过大
+					flag=0;												    }
+				if(p[1]>2){
+					System.out.print("输入的年级数太大");					//限制年级数过大													 
+					flag=1;					   }									  
+		    	if(p[0]<=0) {
+		    		System.out.print("输入的题目数不对，应为正整数");			//限制题数为正整数
+		    		flag=2;
+		    				}
+		    	if(p[1]<=0) {
+		    		System.out.print("输入的年级数不对，应为正整数");			//限制年级数为正整数
+		    		flag=3;
+		    				}
+		    	if(flag!=4) {
+		    		System.out.println("\n"+"请输入题目数与年级");	args[0]=sc.next();args[1]=sc.next();break;	//如果输入的两个参数不对 则继续输入 直至正确为止	
+		    				}
+		    		}continue;
 			
-												}
-																				}
-}
+							}
+											}
+														}					
+				}
 		
 		
 		
