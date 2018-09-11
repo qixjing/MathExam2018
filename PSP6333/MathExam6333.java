@@ -12,25 +12,37 @@ public class MathExam6333 {
 		if(args.length==1) {//判断参数个数
 			try {
  				n = Integer.parseInt(args[0]);
- 				if (n < 0) {
- 					System.out.println("题目数量不能为负，请重新输入！");
- 				}else if (n== 0) {
- 					System.out.println("题目数量不能为0，请重新输入！");
+ 				if (n <= 0) {
+ 					System.out.println("题目数量不能为0或负数，请重新输入！");
  				}
  			} catch(NumberFormatException e) {
  				System.out.println("题目数量必须为正整数，请重新输入！");
  			}
-			
-		String[] str=  new String[50];
-		File file =new File("out6333.txt");//把题目答案放到txt文件里
-		PrintStream ps = new PrintStream(file);
-		System.setOut(ps);
-		n = Integer.parseInt(args[0]);
-		grade1(n,str);
-		System.out.println("-------------标准答案------------");
-		answer(n,str);
-		}
+			String[] str=  new String[50];
+			File file =new File("out6333.txt");//把题目答案放到txt文件里
+			PrintStream ps = new PrintStream(file);
+			System.setOut(ps);
+			n = Integer.parseInt(args[0]);
+			grade1(n,str);
+			System.out.println("-------------标准答案------------");
+			answer(n,str);
+			}
 		if(args.length==2) {//如果参数是两个该如何处理
+			try {
+ 				n = Integer.parseInt(args[0]);
+ 				grade=Integer.parseInt(args[1]);
+ 				if (n <= 0) {
+ 					System.out.println("题目数量不能为0或负数，请重新输入");
+ 				}
+ 				else if(grade>2) {
+ 					System.out.println("高年级题目还未编译完成，敬请期待！");
+ 				}
+ 				else if(grade<=0) {
+ 					System.out.println("年级不能为0或负数，请重新输入！");
+ 				}
+ 			} catch(NumberFormatException e) {
+ 				System.out.println("题目数量必须为正整数，请重新输入！");
+ 			}
 			n=Integer.parseInt(args[0]);//判断题目个数
 			grade=Integer.parseInt(args[1]);//判断年级
 			String[] str=  new String[50];
@@ -41,7 +53,6 @@ public class MathExam6333 {
 				grade1(n,str);
 				System.out.println("-------------标准答案------------");
 				answer(n,str);
-				
 			}
 			if(grade==2) {
 			grade2(n,str);
