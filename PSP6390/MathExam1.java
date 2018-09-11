@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -103,7 +105,7 @@ public class MathExam1 {
 			}
 			System.out.println(answer);
 		}
-		System.out.println("211606390 张晋誌 2018年9月11日 13：05");
+		System.out.println("211606390 张晋誌 2018年9月11日");
 		//具体的输出解决方案
 		try {
 			bw.flush();//清空缓冲区
