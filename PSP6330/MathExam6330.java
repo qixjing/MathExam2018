@@ -11,10 +11,10 @@ import java.util.Scanner;
 import javax.print.attribute.standard.Sides;
 
 public class MathExam6330 {		
-	// Éú³ÉĞ¡Ñ§Ò»Äê¼¶ÊıÑ§¼Ó¼õ¼ÆËãÌâ
+	// ç”Ÿæˆå°å­¦ä¸€å¹´çº§æ•°å­¦åŠ å‡è®¡ç®—é¢˜
 	public static void getFirstGradeMathSubject(int n,int grade){
-		/* ¶¨ÒåÁ½¸öÊı×é·Ö±ğÓÃÓÚ´æ·ÅËãÊ½ºÍ´ğ°¸
-		 ×¢Òâ:Êı×é×ó±ÕÓÒ¿ª,Êı×é³¤¶ÈÓ¦µ±Îªn+1£¬·ñÔò»áÒıÆğÊı×éÔ½½ç
+		/* å®šä¹‰ä¸¤ä¸ªæ•°ç»„åˆ†åˆ«ç”¨äºå­˜æ”¾ç®—å¼å’Œç­”æ¡ˆ
+		 æ³¨æ„:æ•°ç»„å·¦é—­å³å¼€,æ•°ç»„é•¿åº¦åº”å½“ä¸ºn+1ï¼Œå¦åˆ™ä¼šå¼•èµ·æ•°ç»„è¶Šç•Œ
 		 */
 		String[] mathSubjectArray = new String[n+1];
 		mathSubjectArray[0]="";
@@ -26,9 +26,9 @@ public class MathExam6330 {
 		    int	thirdNumber;
 		    String randomSymbol=null;
 		    Random randomNumber=new Random();
-		    /* È¡Èı¸öÔÚ[0£¬21)Ö®¼äµÄÕûÊı,Ç°Á½¸öËæ»úÕûÊı×÷ÎªËãÊ½µÄÒò×Ó,
-			µÚÈı¸öËæ»úÊı×÷ÎªÈ·¶¨ËãÊ½·ûºÅµÄÒÀ¾İ£¬µ±¸ÃËæ»úÊı´óÓÚ10Ê±,
-		       ËãÊ½Îª¼Ó·¨£¬·´Ö®Îª¼õ·¨
+		    /* å–ä¸‰ä¸ªåœ¨[0ï¼Œ21)ä¹‹é—´çš„æ•´æ•°,å‰ä¸¤ä¸ªéšæœºæ•´æ•°ä½œä¸ºç®—å¼çš„å› å­,
+			ç¬¬ä¸‰ä¸ªéšæœºæ•°ä½œä¸ºç¡®å®šç®—å¼ç¬¦å·çš„ä¾æ®ï¼Œå½“è¯¥éšæœºæ•°å¤§äº10æ—¶,
+		       ç®—å¼ä¸ºåŠ æ³•ï¼Œåä¹‹ä¸ºå‡æ³•
 		    */
 		    firstNumber=randomNumber.nextInt(21);
 		    secondNumber=randomNumber.nextInt(21-firstNumber);
@@ -54,10 +54,10 @@ public class MathExam6330 {
 		getMathAnswer();
 	}
 	
-	// Éú³ÉĞ¡Ñ§¶şÄê¼¶³Ë³ı¼ÆËãÌâ
+	// ç”Ÿæˆå°å­¦äºŒå¹´çº§ä¹˜é™¤è®¡ç®—é¢˜
 	public static void getSecondGradeMathSuject(int n,int grade){
-		/* ¶¨ÒåÁ½¸öÊı×é·Ö±ğÓÃÓÚ´æ·ÅËãÊ½ºÍ´ğ°¸
-		 ×¢Òâ:Êı×é×ó±ÕÓÒ¿ª,Êı×é³¤¶ÈÓ¦µ±Îªn+1£¬·ñÔò»áÒıÆğÊı×éÔ½½ç
+		/* å®šä¹‰ä¸¤ä¸ªæ•°ç»„åˆ†åˆ«ç”¨äºå­˜æ”¾ç®—å¼å’Œç­”æ¡ˆ
+		 æ³¨æ„:æ•°ç»„å·¦é—­å³å¼€,æ•°ç»„é•¿åº¦åº”å½“ä¸ºn+1ï¼Œå¦åˆ™ä¼šå¼•èµ·æ•°ç»„è¶Šç•Œ
 		 */
 		String[] mathSubjectArray = new String[n+1];
 		mathSubjectArray[0]="";
@@ -69,30 +69,30 @@ public class MathExam6330 {
 		    int	thirdNumber;
 		    String randomSymbol=null;
 		    Random randomNumber=new Random();
-		    /* È¡Á½¸öÔÚ1-9Ö®¼äµÄËæ»úÕûÊı×÷ÎªËãÊ½µÄÒò×Ó,
-			µÚÈı¸öËæ»úÊı×÷ÎªÈ·¶¨ËãÊ½·ûºÅµÄÒÀ¾İ£¬µ±¸ÃËæ»úÊı´óÓÚ4Ê±,
-		       ËãÊ½Îª³Ë·¨£¬·´Ö®Îª³ı·¨
+		    /* å–ä¸¤ä¸ªåœ¨1-9ä¹‹é—´çš„éšæœºæ•´æ•°ä½œä¸ºç®—å¼çš„å› å­,
+			ç¬¬ä¸‰ä¸ªéšæœºæ•°ä½œä¸ºç¡®å®šç®—å¼ç¬¦å·çš„ä¾æ®ï¼Œå½“è¯¥éšæœºæ•°å¤§äº4æ—¶,
+		       ç®—å¼ä¸ºä¹˜æ³•ï¼Œåä¹‹ä¸ºé™¤æ³•
 		    */
 		    firstNumber=randomNumber.nextInt(9)+1;
 		    secondNumber=randomNumber.nextInt(9)+1;
 		    thirdNumber=randomNumber.nextInt(9);
 		    if(thirdNumber>4){
-		    	randomSymbol="¡Á";
+		    	randomSymbol="Ã—";
 		    }else{
-		    	randomSymbol="¡Â";
+		    	randomSymbol="Ã·";
 		    }
 		    mathSubjectArray[i]="("+i+")"+" "+firstNumber+randomSymbol+secondNumber+" = ";
-		    // ¶¨ÒåÉÌºÍÓàÊı
+		    // å®šä¹‰å•†å’Œä½™æ•°
     		String quotient=null;
     		String remainder=null;
-    		// ÅĞ¶ÏËãÊ½ÊÇ³Ë·¨ÔËËã»¹ÊÇ³ı·¨ÔËËã
-		    if(randomSymbol.equals("¡Â")){
-		    	// µ±ËãÊ½Îª³ı·¨Ê±£¬ÖØĞÂÉú³ÉÁ½¸öÒòÊı£¬Ê¹µÃÁ½¸öÒòÊıĞ¡ÓÚ81
+    		// åˆ¤æ–­ç®—å¼æ˜¯ä¹˜æ³•è¿ç®—è¿˜æ˜¯é™¤æ³•è¿ç®—
+		    if(randomSymbol.equals("Ã·")){
+		    	// å½“ç®—å¼ä¸ºé™¤æ³•æ—¶ï¼Œé‡æ–°ç”Ÿæˆä¸¤ä¸ªå› æ•°ï¼Œä½¿å¾—ä¸¤ä¸ªå› æ•°å°äº81
 		    	firstNumber=randomNumber.nextInt(80)+1;
 		    	secondNumber=randomNumber.nextInt(80)+1;
-		    	// ÅĞ¶Ï±»³ıÊıÊÇ·ñ´óÓÚ³ıÊı
+		    	// åˆ¤æ–­è¢«é™¤æ•°æ˜¯å¦å¤§äºé™¤æ•°
 		    	if(firstNumber>secondNumber){
-		    		// ÅĞ¶ÏÊÇ·ñÄÜ¹»Õû³ı
+		    		// åˆ¤æ–­æ˜¯å¦èƒ½å¤Ÿæ•´é™¤
 		    		if((firstNumber%secondNumber)==0){
 		    			quotient=firstNumber/secondNumber+"";
 		    			sumArray[i]=quotient;
@@ -101,10 +101,10 @@ public class MathExam6330 {
 		    			remainder=firstNumber%secondNumber+"";
 		    			sumArray[i]=quotient+"..."+remainder;
 		    		}
-		    	// ĞŞ¸ÄÒòÊıºóÒªÏàÓ¦µÄĞŞ¸ÄËãÊ½
+		    	// ä¿®æ”¹å› æ•°åè¦ç›¸åº”çš„ä¿®æ”¹ç®—å¼
 		    	mathSubjectArray[i]="("+i+")"+" "+firstNumber+randomSymbol+secondNumber+" = ";
 		    	}else{
-		    		//µ±±»³ıÊıĞ¡ÓÚ³ıÊıÊ±½«±»³ıÊıºÍ³ıÊı»¥»»
+		    		//å½“è¢«é™¤æ•°å°äºé™¤æ•°æ—¶å°†è¢«é™¤æ•°å’Œé™¤æ•°äº’æ¢
 		    		if((secondNumber%firstNumber)==0){
 		    			quotient=secondNumber/firstNumber+"";
 		    			sumArray[i]=quotient;
@@ -123,7 +123,7 @@ public class MathExam6330 {
 		getMathAnswer();	
 	}
 	
-	// ±£´æÉú³ÉµÄÌâÄ¿¼°´ğ°¸
+	// ä¿å­˜ç”Ÿæˆçš„é¢˜ç›®åŠç­”æ¡ˆ
 	public static void saveMathAnswer(String[] mathSubjectArray, String[] sumArray){
 		File file=new File("out.txt");
 		if(!file.exists()){
@@ -141,7 +141,7 @@ public class MathExam6330 {
 		String str="";
 		try{
 			bw=new BufferedWriter(new FileWriter(file));
-			// ±£´æËãÊ½
+			// ä¿å­˜ç®—å¼
 			for(int i=1;i<mathSubjectArray.length;i++){
 				str=mathSubjectArray[i];
 				bw.write(str);
@@ -150,7 +150,7 @@ public class MathExam6330 {
 			}
 			bw.newLine();
 			bw.flush();
-			// Éú³É´ğ°¸
+			// ç”Ÿæˆç­”æ¡ˆ
 			for(int i=1;i<mathSubjectArray.length;i++){
 				str=mathSubjectArray[i]+sumArray[i];
 				bw.write(str);
@@ -163,7 +163,7 @@ public class MathExam6330 {
 		}
 	}
 	
-	// Êä³öÉú³ÉµÄÌâÄ¿ºÍ´ğ°¸
+	// è¾“å‡ºç”Ÿæˆçš„é¢˜ç›®å’Œç­”æ¡ˆ
 	public static void getMathAnswer(){
 		File file=new File("out.txt");
 		BufferedReader br=null;
@@ -183,17 +183,23 @@ public class MathExam6330 {
 	}
 	
 	public static void main(String[] args) {
-			System.out.println("ÇëÊäÈë:ÏëÒªÉú³ÉµÄÌâÄ¿Êı(1-100) Éú³É¼¸Äê¼¶µÄÌâÄ¿(1»ò2Äê¼¶)");
-			Scanner sc=new Scanner(System.in);
-			String input=sc.nextLine();
-			// ÊéĞ´·ûºÏÊäÈë¸ñÊ½µÄÕıÔò±í´ïÊ½£¬¹ıÂË²»·ûºÏ¸ñÊ½µÄÊäÈë
+			System.out.println("è¯·è¾“å…¥:æƒ³è¦ç”Ÿæˆçš„é¢˜ç›®æ•°(1-100) ç”Ÿæˆå‡ å¹´çº§çš„é¢˜ç›®(1æˆ–2å¹´çº§)");
+			String args1=args[0];
+			String args2=null;
+			if(args.length>=2) {
+				args2=args[1];
+			}else{
+				args2=1+"";
+			}
+			String input=args1+" "+args2;
+			// ä¹¦å†™ç¬¦åˆè¾“å…¥æ ¼å¼çš„æ­£åˆ™è¡¨è¾¾å¼ï¼Œè¿‡æ»¤ä¸ç¬¦åˆæ ¼å¼çš„è¾“å…¥
 			String regex="(([1-9]|[1-9][0-9]|100)( ?)(1?|2{1}))";
 			int n;
 			int grade;
-			// ÅĞ¶ÏÊäÈëÊÇ·ñÒÔ¿Õ¸ñ½áÎ²
+			// åˆ¤æ–­è¾“å…¥æ˜¯å¦ä»¥ç©ºæ ¼ç»“å°¾
 			int flag=0;
 			if(input.matches(regex)){
-				//Ö»ÊäÈëÌâÄ¿ÊıµÄÇé¿ö,Èç:10
+				//åªè¾“å…¥é¢˜ç›®æ•°çš„æƒ…å†µ,å¦‚:10
 				for(int i=0;i<input.length();i++){
 					if((input.substring(i,i+1)).equals(" ")){
 						flag=1;
@@ -206,14 +212,14 @@ public class MathExam6330 {
 					getFirstGradeMathSubject(n, grade);
 					return ;
 				}
-				// ÊäÈëÎªÌâÄ¿Êı+Ò»¸ö¿Õ¸ñµÄÇé¿ö,Èç:10+Ò»¸ö¿Õ¸ñ
+				// è¾“å…¥ä¸ºé¢˜ç›®æ•°+ä¸€ä¸ªç©ºæ ¼çš„æƒ…å†µ,å¦‚:10+ä¸€ä¸ªç©ºæ ¼
 				if(input.endsWith(" ")){
 					n=Integer.valueOf(input.substring(0, input.length()-1));
 					grade=1;
 					getFirstGradeMathSubject(n, grade);
 					return ;
 				}else{
-					// ÊäÈë·ûºÏ¸ñÊ½£¬Èç:10 1»ò2Ê±µÄÇé¿ö
+					// è¾“å…¥ç¬¦åˆæ ¼å¼ï¼Œå¦‚:10 1æˆ–2æ—¶çš„æƒ…å†µ
 					String[] spiltArray=null;
 					spiltArray=input.split(" ");
 					n=Integer.valueOf(spiltArray[0]);
@@ -226,10 +232,10 @@ public class MathExam6330 {
 					return ;
 				}
 			}else{
-				System.out.println("ÊäÈë¸ñÊ½´íÎó!"
-				+ "Çë°´ÕÕÈçÏÂ¸ñÊ½ÊäÈë:\nÏëÒªÉú³ÉµÄÌâÄ¿Êı(1-100)"+" "
-				+ "Éú³É¼¸Äê¼¶µÄÌâÄ¿(1»ò2Äê¼¶)"
-				+ "\n×¢:Èç¹ûÃ»ÓĞÖ¸¶¨Äê¼¶£¬ÔòÄ¬ÈÏÉú³ÉÒ»Äê¼¶ÊıÑ§µÄÌâÄ¿");
+				System.out.println("è¾“å…¥æ ¼å¼é”™è¯¯!"
+				+ "è¯·æŒ‰ç…§å¦‚ä¸‹æ ¼å¼è¾“å…¥:\næƒ³è¦ç”Ÿæˆçš„é¢˜ç›®æ•°(1-100)"+" "
+				+ "ç”Ÿæˆå‡ å¹´çº§çš„é¢˜ç›®(1æˆ–2å¹´çº§)"
+				+ "\næ³¨:å¦‚æœæ²¡æœ‰æŒ‡å®šå¹´çº§ï¼Œåˆ™é»˜è®¤ç”Ÿæˆä¸€å¹´çº§æ•°å­¦çš„é¢˜ç›®");
 			}
 		
 		}
