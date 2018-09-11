@@ -10,19 +10,37 @@ import java.util.Scanner;
 public class MathExam6328 {
 	public static void main(String[] args) throws IOException{
 		Scanner in=new Scanner(System.in);
+		System.out.println("请输入您所需要的题数与年级:");
 		String str1=in.nextLine();
 		String str2=in.nextLine();
 		int n=0,m=0;
-		if(isNumber(str1)) {
-			n=Integer.parseInt(str1);
+		while (true) {
+			if(choose(str1, str2)) {
+				n=Integer.parseInt(str1);
+				m=Integer.parseInt(str2);
+				grade(n, m);
+				break;
+			}
+			else {
+				System.out.println("请重新输入题数与年级:");
+				str1=in.nextLine();
+				str2=in.nextLine();
+			}
 		}
-		else System.out.println("请输入正确的题数！");
-		if(isNumber(str2)) {
-			m=Integer.parseInt(str2);
-			if(m!=1&&m!=2) System.out.println("请输入正确的年级！");
-		}
-		grade(n, m);
 	}
+	public static boolean choose(String str1,String str2) {
+		int a=0,b=0;
+		if(isNumber(str1)) {
+			a=1;
+		}else System.out.println("请输入正确的题数！");
+		if(isNumber(str2)) {
+			if(Integer.parseInt(str2)==1||Integer.parseInt(str2)==2) {b=1;}
+		}
+		else System.out.println("请输入正确的年级！");
+		if(a==1&&b==1) return true;
+		else return false;
+	}
+	
 	public static void grade(int n,int m){
 		int number1[]=new int[n];
 		int number2[]=new int[n];		
