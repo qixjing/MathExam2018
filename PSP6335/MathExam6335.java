@@ -11,11 +11,11 @@ import java.util.regex.Pattern;
 public class MathExam6335 {
 	/*
 	 * 完成一个命令行工具MathExam，自动生成一份小学一年级的数学四则运算题。
-	 *     1.为加减乘除运算方法添加了符合实际的限制；
-	 *     
+	 *     1.为除法运算方法添加了余数计算结果；
+	 *     2.取消了输入完参数后在控制台显示题目的功能。
 	 *     【ps：还存在输入“00000000001”的识别错误bug，待修正】
 	 * 		coding ： GBK
-	 * 		MathExam_V1.0.6
+	 * 		MathExam_V1.0.7
 	 */	
 	int firstNumber, secondNumber;		
 	int symbol;	
@@ -31,38 +31,46 @@ public class MathExam6335 {
 		// TODO Auto-generated constructor stub
 		mathProblem(count);
 		
-		for (int i = 0; i < count; i++) {
-			System.out.println(str_ArithmeticProblem[i]);
-		}
-		System.out.println(cutLine);
-		for (int i = 0; i < count; i++) {
-			System.out.println(str_MathAnswer[i]);
-		}
-		
 		outPut();
 	}
 	
 	private static void inPut(String args0,String args1) {
 		// TODO Auto-generated method stub
-		boolean flag;
+		boolean flag1 = true;
+		boolean flag2 = true;
+		
 		Scanner in = new Scanner(System.in);
-		String regex = "[1-9]{1}[0-9]{0,1}";		//正则表达式判断输入参数为非零正整数
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher;
+		String regex1 = "[1-9]{1}[0-9]{0,1}";		//正则表达式判断输入参数为非零正整数
+		String regex2 = "[1-2]{1}{0}";
+		Pattern pattern1 = Pattern.compile(regex1);
+		Pattern pattern2 = Pattern.compile(regex2);
+		Matcher matcher1,matcher2;
+		
 		while (true) {
-			matcher = pattern.matcher(args0);
+			
+			matcher1 = pattern1.matcher(args0);
+			matcher2 = pattern2.matcher(args1);
+			
 			try {
-				flag = matcher.matches();
-				if(!flag){
-					throw new NumberFormatException();
-				} else {
+				flag1 = matcher1.matches();
+				flag2 = matcher2.matches();
+				
+				if(!flag1 || !flag2){	
+						throw new NumberFormatException();		
+				} else {	
 					count = Integer.valueOf(args0);
 					grade = Integer.valueOf(args1);
 				}
 			} catch (NumberFormatException e) {
 				// TODO: handle exception
-				System.out.println("输入错误，请重新输入题目数量 : ");
-				args0 = in.next();
+				if(!flag1){
+					System.out.println("--------   只能输入99以内的题目数量，请按规定重新输入题目数量 :    --------");
+					args0 = in.next();
+				} 
+				if(!flag2){
+					System.out.println("--------   年级为\"1\"或\"2\" ，请按规定重新输入年级 :   --------");
+					args1 = in.next();
+				}
 				continue;
 			}			
 			break;
@@ -168,20 +176,23 @@ public class MathExam6335 {
 	 * 除法：
 	 * 
 	 * 1.一二年级的除法运算应该在”九九乘法表“范围以内；
-	 * 2.分母不能为”0“。
+	 * 2.分母不能为”0“;
+	 * 3.二年级有余数计算能力。
 	 * 
 */
-	private void div(int n1, int n2,int i) {
+	private void div(int i) {
 		// TODO Auto-generated method stub
 		while(true){
+			int n1 = (int)(Math.random()*82);
+			int n2 = (int)(Math.random()*81+1);
 			if(n1 % n2 == 0){
 				result = n1 / n2;
 				str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
 				str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = " + result;
 			}else if(n1 % n2 != 0){
-				n1 = (int)(Math.random()*82);
-				n2 = (int)(Math.random()*81+1);
-				continue;
+				result = n1 / n2;
+				str_ArithmeticProblem[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = ";
+				str_MathAnswer[i] = "(" + (i+1) +") " + n1 + " / " + n2 + " = " + result + "..." + (n1 % n2);
 			}
 			break;
 		}
@@ -193,8 +204,8 @@ public class MathExam6335 {
 		
 		for (int i = 0; i < count; i++) {
 			symbol = rnd.nextInt(grade*2);
-			firstNumber = (int)(Math.random()*100+1);
-			secondNumber = (int)(Math.random()*100+1);
+			firstNumber = (int)(Math.random()*20+1);
+			secondNumber = (int)(Math.random()*20+1);
 			
 			if(grade == 1){
 				switch (symbol) {
@@ -224,7 +235,7 @@ public class MathExam6335 {
 					break;
 					
 				case 3:
-					div(firstNumber,secondNumber,i);
+					div(i);
 					break;
 
 				default:
