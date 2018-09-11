@@ -1,5 +1,4 @@
 
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,17 +16,16 @@ import java.util.regex.Pattern;
 
 
 public class MathExam6352 {
-	
+
 	int FN, SN;		
 	int symbol;	
 	static int grade;
 	static int count;		
-	int answer;		
-	String title = "================ç­”æ¡ˆ================";
+	int result;		
+	String cutLine = "==============´ğ°¸==============";
 	
-	String[] str_MathProblem = new String[100+1];
+	String[] str_MathQuestion = new String[100+1];	
 	String[] str_MathAnswer = new String[100+1];
-	
 
 	public MathExam6352(){
 		String count_Default = "10";	
@@ -37,12 +35,14 @@ public class MathExam6352 {
 		outPut();
 	}
 	
+	
 	public MathExam6352(String args0){
 		String grade_Default = "2";
 		inPut(args0, grade_Default);
 		mathProblem(count);
 		outPut();
 	}
+	
 	
 	public MathExam6352(String args0,String args1){
 		inPut(args0, args1);
@@ -51,8 +51,7 @@ public class MathExam6352 {
 	}
 
 	private void inPut(String str0,String str1) {
-		// TODO Auto-generated method stub
-		boolean flag1 = true;		
+		boolean flag1 = true;	
 		boolean flag2 = true;
 		
 		Scanner in = new Scanner(System.in);
@@ -78,13 +77,12 @@ public class MathExam6352 {
 					grade = Integer.valueOf(str1);
 				}
 			} catch (NumberFormatException e) {
-				// TODO: handle exception
 				if(!flag1){
-					System.out.println("è¾“å…¥é”™è¯¯ï¼Œåªèƒ½è¾“å…¥99ä»¥å†…çš„é¢˜ç›®æ•°é‡ï¼Œè¯·æŒ‰è§„å®šé‡æ–°è¾“å…¥é¢˜ç›®æ•°é‡ : ");
+					System.out.println("ÊäÈë´íÎó£¬Ö»ÄÜÊäÈë99ÒÔÄÚµÄÊıÁ¿£¬Çë°´ÖØĞÂÊäÈëÌâÄ¿ÊıÁ¿ : ");
 					str0 = in.next();
 				} 
 				if(!flag2){
-					System.out.println("è¾“å…¥é”™è¯¯ï¼Œå¹´çº§ä¸º\"1\"æˆ–\"2\" ï¼Œè¯·æŒ‰è§„å®šé‡æ–°è¾“å…¥å¹´çº§ : ");
+					System.out.println("ÊäÈë´íÎó£¬Äê¼¶Îª\"1\"»ò\"2\" £¬Çë°´ÖØĞÂÊäÈëÄê¼¶ : ");
 					str1 = in.next();
 				}
 				continue;
@@ -95,31 +93,29 @@ public class MathExam6352 {
 	}
 	
 	private void outPut() {
-		// TODO Auto-generated method stub
 		File file = new File("out.txt");
-		Date date = new Date();
+		Date date = new Date();/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		String currentTime = "\r\n 211606352 é™ˆå½¬  " + sdf.format(date);
+		String currentTime = "\r\n         211606352   ³Â±ò   " + sdf.format(date);
 		byte[] bytesdate = currentTime.getBytes();
 
 		if(!file.exists()){	
 			try {
 				file.createNewFile();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("æ–‡ä»¶åˆ›å»ºæ—¶å‡ºç°é”™è¯¯!");
+				System.out.println("ÎÄ¼ş´´½¨Ê±³öÏÖ´íÎó!");
 			}
 		}
 		
 		try {
 			String str = "\r\n";
 			byte[] bytes = str.getBytes();		
-			byte[] bytescut = title.getBytes();
+			byte[] bytescut = cutLine.getBytes();
 			
 			FileOutputStream fos = new FileOutputStream(file);	
 			for (int i = 0; i < count; i++) {
-				byte[] b_MathProblem = str_MathProblem[i].getBytes();
-				fos.write(b_MathProblem);
+				byte[] b_MathQuestion = str_MathQuestion[i].getBytes();
+				fos.write(b_MathQuestion);
 				fos.write(bytes);
 			}
 			fos.write(bytescut);
@@ -133,18 +129,19 @@ public class MathExam6352 {
 			fos.write(bytesdate);
 			fos.flush();
 			fos.close();	
-			System.out.print("-------  æœ¬æ¬¡å…±ç”Ÿæˆ" + count + "é“å°å­¦"+ grade + "å¹´çº§ç®—æ•°é¢˜ï¼Œè¯·æ‰“å¼€out.txtæ–‡ä»¶æŸ¥çœ‹è¯¦æƒ…    -------"); 
+			
+			System.out.print("-------  ±¾´Î¹²Éú³É" + count + "µÀĞ¡Ñ§"+ grade + "Äê¼¶ËãÊıÌâ£¬Çë´ò¿ªout.txtÎÄ¼ş²é¿´ÏêÇé    -------"); 
 
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("æœªæ‰¾åˆ°æŒ‡å®šæ–‡ä»¶!");
+			System.out.println("Î´ÕÒµ½Ö¸¶¨ÎÄ¼ş!");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("æ–‡ä»¶å†™å…¥æœ‰è¯¯!");
+			System.out.println("ÎÄ¼şĞ´ÈëÓĞÎó!");
 		} 
 		
 	}
+	
+	
 	private void mathProblem(int count) {	
 		Random rnd = new Random();
 		
@@ -193,37 +190,67 @@ public class MathExam6352 {
 	}
 
 	private void add(int n1, int n2,int i) {
-		// TODO Auto-generated method stub
-		answer = n1 + n2;
-		str_MathProblem[i] = "( " + (i+1) +" ) " + n1 + " + " + n2 + " = ";
-		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " + " + n2 + " = " + answer;
+		result = n1 + n2;
+		str_MathQuestion[i] = "( " + (i+1) +" ) " + n1 + " + " + n2 + " = ";
+		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " + " + n2 + " = " + result;
 	}
 	
-
+	
 	private void sub(int n1, int n2,int i) {
-		// TODO Auto-generated method stub
 		if (n1 < n2) {		
 			int num;
 			num = n1;
 			n1 = n2;
 			n2 = num;
 		}
-		answer = n1 - n2;
-		str_MathProblem[i] = "( " + (i+1) +" ) " + n1 + " - " + n2 + " = ";
-		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " - " + n2 + " = " + answer;
+		result = n1 - n2;
+		str_MathQuestion[i] = "( " + (i+1) +" ) " + n1 + " - " + n2 + " = ";
+		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " - " + n2 + " = " + result;
 	}
 	
-
-
+	
+	private void mul(int n1, int n2,int i) {
+		if (n1 > 9) {
+			n1 = (int)(Math.random()*10);
+		} 
+		if (n2 > 9) {
+			n2 = (int)(Math.random()*10);
+		}
+		result = n1 * n2;
+		str_MathQuestion[i] = "( " + (i+1) +" ) " + n1 + " x " + n2 + " = ";
+		str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " x " + n2 + " = " + result;
+	}
+	
+	
+	private void div(int i) {
+		while(true){
+			int n1 = (int)(Math.random()*82);
+			int n2 = (int)(Math.random()*81+1);
+			if(n1 % n2 == 0){
+				result = n1 / n2;
+				str_MathQuestion[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = ";
+				str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = " + result;
+			}else if(n1 % n2 != 0){
+				result = n1 / n2;
+				str_MathQuestion[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = ";
+				str_MathAnswer[i] = "( " + (i+1) +" ) " + n1 + " / " + n2 + " = " + result + "..." + (n1 % n2);
+			}
+			break;
+		}
+	}
+	
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		MathExam.inPut(args[0], args[1]);
 		if(args.length == 0){
 			new MathExam6352();
-		} else {
+		} else if(args.length == 1){
 			new MathExam6352(args[0]);
 		}
-
+		else if(args.length == 2){
+			new MathExam6352(args[0], args[1]);
+		}else {
+			new MathExam6352(args[0], args[1]);
+		}
 		
 	}
 
