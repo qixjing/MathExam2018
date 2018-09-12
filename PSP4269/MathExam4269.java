@@ -222,9 +222,19 @@ public class MathExam4269 {
 	}
 
 	public static void main(String[] args) {
-		if (args.length != 2) {
-			System.out.println("输入的参数个数不为2,请重试");
-		} else {
+		if (args.length != 1 && args.length != 2) {
+			System.out.println("输入的参数个数不正确,请重试");
+		} else if (args.length == 1) {
+			String str1 = args[0];
+			if (isNum(str1)) {
+				if (str1.length() >= 5) {
+					System.out.println("输入题数过大,请重试");
+				} else {
+					mathOne(Integer.parseInt(str1));
+				}
+			}
+		} else if (args.length == 2) {
+
 			String str1 = args[0];
 			String str2 = args[1];
 			if (isNum(str1)) {
@@ -234,7 +244,7 @@ public class MathExam4269 {
 					if (!str2.equals("1") && !str2.equals("2")) {
 						System.out.println("输入的年级有误,请重试");
 					} else {
-						if (str2 == "1") {
+						if (str2 .equals("1")) {
 							mathOne(Integer.parseInt(str1));
 						} else {
 							mathTwo(Integer.parseInt(str1));
