@@ -65,7 +65,7 @@ public static void main(String[] args) throws IOException {
 			// 记录题目与答案
 			problem.append("("+i+") "+ num1 + " " + symbol + " " + num2 + "\r\n");
 		}
-			problem.append("----------标准答案----------");
+			problem.append("---------标准答案---------");
 			
 			for(int i = 1; i <= len ; i++) {
 			answer.append("("+i+") "+n1[i]+" "+n[i]+" "+n2[i]+" "+"= "+n3[i]+ "\r\n");
