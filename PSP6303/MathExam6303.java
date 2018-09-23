@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 public class MathExam6303 {	
 	private static int len;// 保存用户输入的题目数量
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unused ")
 	private static int grade = 1;//默认是1年级
     private static final String[] sign = {"+", "-", "*", "/"};
     static StringBuffer questions = new StringBuffer(); // 用途：题目与答案的拼接
