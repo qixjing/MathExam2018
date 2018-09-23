@@ -83,7 +83,7 @@ public class Bean {
 		if (count != 1)
 			text1.append("\n") ;
 		text1.append("(" + count + ")" + " " + String.valueOf(this.getNumberA()) + " " + symbol + " "
-				+ String.valueOf(this.getNumberB()) + " =");
+				+ String.valueOf(this.getNumberB()));
 	}
 
 	private void setText2() {
