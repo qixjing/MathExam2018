@@ -17,57 +17,57 @@ public class MathExam6353 {
 		int y;
 		int f;
 		
-		File file = new File("out353.txt");
-		//´´½¨Ö¸ÏòÎÄ¼şµÄÊı¾İÊä³öÁ÷
+		File file = new File("out.txt");
+		//åˆ›å»ºæŒ‡å‘æ–‡ä»¶çš„æ•°æ®è¾“å‡ºæµ
 		DataOutputStream out = new DataOutputStream(new FileOutputStream(file));
 		
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
-		System.out.println("Ğ¡Ñ§Ò»Äê¼¶ÊıÑ§¼Ó¼õ¼ÆËãÌâ");
-		System.out.println("ÇëÊäÈëÌâÄ¿ÊıÁ¿£º");
-		//»ñÈ¡¿ØÖÆÌ¨ÊäÈëÌâÄ¿ÊıÁ¿n
+		System.out.println("å°å­¦ä¸€å¹´çº§æ•°å­¦åŠ å‡è®¡ç®—é¢˜");
+		System.out.println("è¯·è¾“å…¥é¢˜ç›®æ•°é‡ï¼š");
+		//è·å–æ§åˆ¶å°è¾“å…¥é¢˜ç›®æ•°é‡n
 		
 	
 		int n = input.nextInt();
 
-		//Éú³ÉÌâÄ¿
+		//ç”Ÿæˆé¢˜ç›®
 		for (int i = 1; i <= n; i++) {
-			//Éú³ÉÁ½¸öËæ»úÊı
+			//ç”Ÿæˆä¸¤ä¸ªéšæœºæ•°
 			x = (int)(Math.random()*100+1);
 			y = (int)(Math.random()*100+1);
 			f = (int)(Math.random()*2);
-			//ÅĞ¶Ï¼Ó·¨ºÍ¼õ·¨  0Îª¼Ó·¨
+			//åˆ¤æ–­åŠ æ³•å’Œå‡æ³•  0ä¸ºåŠ æ³•
 			if(f==0) {
-				//Éú³É¼õ·¨
+				//ç”Ÿæˆå‡æ³•
 				System.out.println("("+ i +") " + x +" - "+ y + " =");
 				String str1 = ("("+ i +") " + x +" - "+ y + " = " + (x-y));
-				//Ğ´ÈëÊı¾İ
+				//å†™å…¥æ•°æ®
 				out.writeUTF(str1);
 //				System.out.println(str);
 			}	
 			else {
-				//Éú³É¼Ó·¨
+				//ç”ŸæˆåŠ æ³•
 				System.out.println("("+ i +") " + x +" + "+ y + " =");
 				String str1 = ("("+ i +") " + x +" + "+ y + " = " + (x+y));
-				//Ğ´ÈëÊı¾İ°É
+				//å†™å…¥æ•°æ®å§
 				out.writeUTF(str1);
 //				System.out.println(str);
 			}
 		}
 		out.close();
 		
-		System.out.println("------------------±ê×¼´ğ°¸------------------");
+		System.out.println("------------------æ ‡å‡†ç­”æ¡ˆ------------------");
 		
-		//´´½¨Ö¸ÏòÎÄ¼şµÄÊı¾İÊäÈëÁ÷
+		//åˆ›å»ºæŒ‡å‘æ–‡ä»¶çš„æ•°æ®è¾“å…¥æµ
 		DataInputStream in = new DataInputStream(new FileInputStream(file));
-		//¶ÁÊı¾İ
+		//è¯»æ•°æ®
 		for (int i = 0; i < n; i++) {
 			System.out.println(in.readUTF());
 		}
 		in.close();
-		//Êä³öÈÕÆÚºÍÑ§ºÅĞÕÃû
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ HH:mm");
-		System.out.println("              211606353 ĞÕÃû£º³Â±şĞñ  " +sdf.format(new Date(n)));
+		//è¾“å‡ºæ—¥æœŸå’Œå­¦å·å§“å
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥ HH:mm");
+		System.out.println("              211606353 å§“åï¼šé™ˆç‚³æ—­  " +sdf.format(new Date(n)));
 	}//main
 
 	
